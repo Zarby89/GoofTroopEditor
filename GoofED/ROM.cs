@@ -69,7 +69,16 @@ namespace GoofED
             short cs = (short)((c.R / 8) + ((c.G / 8) << 5) + ((c.B / 8) << 10));
             WriteShort(addr, cs);
         }
-        
+
+        public ushort ReadShortI(int addr)
+        {
+            return (ushort)((data[addr] << 8) + data[addr + 1]);
+        }
+        public int ReadLongI(int addr)
+        {
+            return ((data[addr] << 16) + (data[addr + 1] << 8) + data[addr + 2]);
+        }
+
 
     }
 }

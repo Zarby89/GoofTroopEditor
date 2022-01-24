@@ -66,6 +66,8 @@
     <Compile Include="Data\LiftObject.cs" />
     <Compile Include="Data\LockedDoor.cs" />
     <Compile Include="Data\Plank.cs" />
+    <Compile Include="Data\SPCCommand.cs" />
+    <Compile Include="Data\SpcNote.cs" />
     <Compile Include="Data\Sprite.cs" />
     <Compile Include="Data\Tile16.cs" />
     <Compile Include="Data\Tile32.cs" />
@@ -130,6 +132,12 @@
     <Compile Include="Gui\GetPluginName.Designer.cs">
       <DependentUpon>GetPluginName.cs</DependentUpon>
     </Compile>
+    <Compile Include="Gui\MusicViewer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Gui\MusicViewer.Designer.cs">
+      <DependentUpon>MusicViewer.cs</DependentUpon>
+    </Compile>
     <Compile Include="Gui\PaletteEditor.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -175,6 +183,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Gui\GetPluginName.resx">
       <DependentUpon>GetPluginName.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Gui\MusicViewer.resx">
+      <DependentUpon>MusicViewer.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Gui\PaletteEditor.resx">
       <DependentUpon>PaletteEditor.cs</DependentUpon>

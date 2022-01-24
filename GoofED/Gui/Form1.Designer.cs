@@ -160,6 +160,8 @@ namespace GoofED
             this.loadScratchpadToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aSMToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.manageASMToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.projectToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.clearAllMapsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.viewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.darkThemeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.animatedPaletteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -194,6 +196,7 @@ namespace GoofED
             this.sprvisibleButton = new System.Windows.Forms.CheckBox();
             this.bg2visibleButton = new System.Windows.Forms.CheckBox();
             this.bg1visibleButton = new System.Windows.Forms.CheckBox();
+            this.musicViewerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.enemyDoorPanel.SuspendLayout();
@@ -1490,6 +1493,7 @@ namespace GoofED
             this.toolsToolStripMenuItem,
             this.graphicsToolStripMenuItem,
             this.aSMToolStripMenuItem,
+            this.projectToolStripMenuItem,
             this.viewToolStripMenuItem,
             this.aboutToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
@@ -1609,7 +1613,8 @@ namespace GoofED
             this.textEditorToolStripMenuItem,
             this.passwordEditorToolStripMenuItem,
             this.paletteEditorToolStripMenuItem,
-            this.creditsEditorToolStripMenuItem});
+            this.creditsEditorToolStripMenuItem,
+            this.musicViewerToolStripMenuItem});
             this.toolsToolStripMenuItem.Enabled = false;
             this.toolsToolStripMenuItem.Name = "toolsToolStripMenuItem";
             this.toolsToolStripMenuItem.Size = new System.Drawing.Size(46, 20);
@@ -1698,6 +1703,22 @@ namespace GoofED
             this.manageASMToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
             this.manageASMToolStripMenuItem.Text = "Manage ASM";
             this.manageASMToolStripMenuItem.Click += new System.EventHandler(this.manageASMToolStripMenuItem_Click);
+            // 
+            // projectToolStripMenuItem
+            // 
+            this.projectToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.clearAllMapsToolStripMenuItem});
+            this.projectToolStripMenuItem.Enabled = false;
+            this.projectToolStripMenuItem.Name = "projectToolStripMenuItem";
+            this.projectToolStripMenuItem.Size = new System.Drawing.Size(56, 20);
+            this.projectToolStripMenuItem.Text = "Project";
+            // 
+            // clearAllMapsToolStripMenuItem
+            // 
+            this.clearAllMapsToolStripMenuItem.Name = "clearAllMapsToolStripMenuItem";
+            this.clearAllMapsToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
+            this.clearAllMapsToolStripMenuItem.Text = "Clear all maps";
+            this.clearAllMapsToolStripMenuItem.Click += new System.EventHandler(this.clearAllMapsToolStripMenuItem_Click);
             // 
             // viewToolStripMenuItem
             // 
@@ -2096,6 +2117,13 @@ namespace GoofED
             this.bg1visibleButton.UseVisualStyleBackColor = true;
             this.bg1visibleButton.Click += new System.EventHandler(this.transitionvisibleVutton_Click);
             // 
+            // musicViewerToolStripMenuItem
+            // 
+            this.musicViewerToolStripMenuItem.Name = "musicViewerToolStripMenuItem";
+            this.musicViewerToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.musicViewerToolStripMenuItem.Text = "Music Viewer";
+            this.musicViewerToolStripMenuItem.Click += new System.EventHandler(this.musicViewerToolStripMenuItem_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2117,7 +2145,7 @@ namespace GoofED
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Form1";
-            this.Text = "Goof Troop Editor 1.2";
+            this.Text = "Goof Troop Editor 1.3";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.Load += new System.EventHandler(this.Form1_Load);
             this.Shown += new System.EventHandler(this.Form1_Shown);
@@ -2338,6 +2366,9 @@ namespace GoofED
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.ToolStripMenuItem creditsEditorToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem projectToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem clearAllMapsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem musicViewerToolStripMenuItem;
     }
 }
 

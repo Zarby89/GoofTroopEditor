@@ -317,6 +317,7 @@ namespace GoofED
         public void Draw(Graphics g)
         {
             g.Clear(Color.Transparent);
+            
             if (selectedWidth == 0 && selectedHeight == 0)
             {
                 g.DrawRectangle(Pens.White, new Rectangle(lastTilemouseX * 32, lastTilemouseY * 32, 32, 32));

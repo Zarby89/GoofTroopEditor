@@ -44,6 +44,7 @@ namespace GoofED
         LockedDoorMode lockedDoorMode;
         EnemyDoorMode enemyDoorMode;
         Bitmap editorBitmap = new Bitmap(512, 448);
+        MusicViewer mv;
         List<ItemName> itemList = new List<ItemName>()
         {
             new ItemName(0x08,"Hookshot"),
@@ -140,6 +141,7 @@ namespace GoofED
                 button1.Enabled = true;
                 aSMToolStripMenuItem.Enabled = true;
                 viewToolStripMenuItem.Enabled = true;
+                projectToolStripMenuItem.Enabled = true;
                 collisionLabel.Enabled = true;
                 if (File.Exists("ScratchPad.bin"))
                 {
@@ -156,7 +158,7 @@ namespace GoofED
                 }
 
                 asmManager = new AsmManagerNew(filename);
-
+                mv = new MusicViewer(game);
                 saveROMAsToolStripMenuItem.Enabled = true;
                 saveROMToolStripMenuItem.Enabled = true;
                 editToolStripMenuItem.Enabled = true;
@@ -875,9 +877,12 @@ namespace GoofED
                     e.Graphics.DrawImage(GFX.BG2BitmapMask, new Rectangle(0, 0, 512, 512), 0, 0, 256, 256, GraphicsUnit.Pixel);
                 }
 
-
-                bgMode.Draw(gMain);
-                e.Graphics.DrawImage(editorBitmap, 0, 0);
+                if (bg1TButton.Checked || bg2TButton.Checked)
+                {
+                    bgMode.Draw(gMain);
+                    e.Graphics.DrawImage(editorBitmap, 0, 0);
+                }
+               
             }
         }
 
@@ -1340,6 +1345,7 @@ namespace GoofED
                     fromForm = false;
                 }
             }
+
             else if (plankTButton.Checked)
             {
                 plankMode.mouseDown(sender, e);
@@ -1379,6 +1385,9 @@ namespace GoofED
                 blockDoorMode.mouseDown(sender, e);
                 if (blockDoorMode.selectedObject != null)
                 {
+                    blockPanel.Enabled = true;
+                    blockPanel.Visible = true;
+
                     fromForm = true;
                     savedoorCheckbox.Checked = blockDoorMode.selectedObject.saved;
                     drawswitchCheckbox.Checked = blockDoorMode.selectedObject.drawswitch;
@@ -2150,6 +2159,10 @@ namespace GoofED
             else if (sender == doorTButton)
             {
                 doorPanel.Visible = true;
+            }
+            else if (sender == blockTButton)
+            {
+                blockPanel.Visible = true;
             }
             else if (sender == hooksTButton)
             {
@@ -3939,6 +3952,59 @@ namespace GoofED
             vramPicturebox.Refresh();
             //restore gfx here
 
+        }
+
+        private void clearAllMapsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Are you sure you want to remove everything from the game?\r\nTiles, Items, Objects, Hooks, Doors, etc...","Warning",MessageBoxButtons.YesNo) == DialogResult.Yes)
+            {
+                for (int l = 0; l < 5; l++)
+                {
+                    for (int m = 0; m < game.levels[l].maps.Count; m++)
+                    {
+                        game.levels[l].maps[m].hooks.Clear();
+                        game.levels[l].maps[m].planks.Clear();
+                        game.levels[l].maps[m].sprites.Clear();
+                        game.levels[l].maps[m].items.Clear();
+                        game.levels[l].maps[m].transitions.Clear();
+                        game.levels[l].maps[m].lockedDoors.Clear();
+                        game.levels[l].maps[m].objects.Clear();
+                        game.levels[l].maps[m].enemyDoors.Clear();
+                        game.levels[l].maps[m].blockDoors.Clear();
+
+                        for (int i = 0; i < 256; i++)
+                        {
+                            game.levels[l].maps[m].bg1tilemap16[i] = 0;
+                            game.levels[l].maps[m].bg2tilemap16[i] = 0x131;
+
+                            Tile16 t = game.tiles16[game.levels[game.selectedLevel].maps[game.selectedMap].bg1tilemap16[i]];
+                            game.levels[game.selectedLevel].maps[game.selectedMap].bg1tilemap8[i] = t.tile0.toShort();
+                            game.levels[game.selectedLevel].maps[game.selectedMap].bg1tilemap8[i+1] = t.tile1.toShort();
+                            game.levels[game.selectedLevel].maps[game.selectedMap].bg1tilemap8[i+16] = t.tile2.toShort();
+                            game.levels[game.selectedLevel].maps[game.selectedMap].bg1tilemap8[i+17] = t.tile3.toShort();
+
+
+                            t = game.tiles16[game.levels[game.selectedLevel].maps[game.selectedMap].bg2tilemap16[i]];
+                            game.levels[game.selectedLevel].maps[game.selectedMap].bg2tilemap8[i] = t.tile0.toShort();
+                            game.levels[game.selectedLevel].maps[game.selectedMap].bg2tilemap8[i + 1] = t.tile1.toShort();
+                            game.levels[game.selectedLevel].maps[game.selectedMap].bg2tilemap8[i + 16] = t.tile2.toShort();
+                            game.levels[game.selectedLevel].maps[game.selectedMap].bg2tilemap8[i + 17] = t.tile3.toShort();
+
+                        }
+                        for (int i = 0; i < 64; i++)
+                        {
+                            game.levels[l].maps[m].bg1tilemap32[i] = 0;
+                            game.levels[l].maps[m].bg2tilemap32[i] = 0;
+                        }
+                    }
+                }
+                
+            }
+        }
+        
+        private void musicViewerToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            mv.ShowDialog();
         }
     }
 
