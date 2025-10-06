@@ -124,6 +124,11 @@ namespace GoofED
                         }
                         break;
                     case 0x02: //bee
+                        byte pal = 15;
+                        if (game.selectedMap == 0)
+                        {
+                            pal = 8;
+                        }
                         GFX.DrawFromVRAM(GFX.SprBuffer, 1923, (byte)(spr.x - 2), (byte)(spr.y - 29), false, 1, 0, 15);
                         GFX.DrawFromVRAM(GFX.SprBuffer, 1939, (byte)(spr.x - 10), (byte)(spr.y - 32), false, 1, 0, 15);
                         GFX.DrawFromVRAM(GFX.SprBuffer, 1921, (byte)(spr.x - 10), (byte)(spr.y - 27), true, 1, 0, 15);

@@ -29,7 +29,16 @@ namespace GoofED
         {
 
             FileStream fs = new FileStream(fn, FileMode.Open, FileAccess.Read);
-            fs.Read(rom.data, 0, (int)fs.Length);
+            byte[] temp = new byte[fs.Length];
+            fs.Read(temp, 0, (int)fs.Length);
+            int header = 0;
+
+            if ((fs.Length & 0x200) == 0x200)
+            {
+                MessageBox.Show("The ROM you opened is headered, the header will be removed on save");
+                header = 0x200;
+            }
+            Array.Copy(temp, header, rom.data, 0, fs.Length - header);
 
             fs.Close();
 
@@ -259,19 +268,46 @@ namespace GoofED
 
         public void LoadTiles16()
         {
-            int ttpos = Constants.Tiles16Data;
-
-            for (int i = 0; i < 0xC48; i += 1)
+            if (rom.data[Constants.EditorVersion] == 0x6C)
             {
-                GFX.scratchpadTiles[i] = 0;
-                ushort t0i = rom.ReadShort(ttpos);
-                ushort t1i = rom.ReadShort(ttpos + 2);
-                ushort t2i = rom.ReadShort(ttpos + 4);
-                ushort t3i = rom.ReadShort(ttpos + 6);
-                ttpos += 8;
+                int ttpos = Constants.Tiles16Data;
 
-                tiles16.Add(new Tile16(gettilesinfo(t0i), gettilesinfo(t1i), gettilesinfo(t2i), gettilesinfo(t3i)));
-                collisions.Add(rom.ReadByte(Constants.Tile16CollisionMap + i));
+                for (int i = 0; i < 0xF00; i += 1)
+                {
+                    GFX.scratchpadTiles[i] = 0;
+                    ushort t0i = rom.ReadShort(ttpos);
+                    ushort t1i = rom.ReadShort(ttpos + 2);
+                    ushort t2i = rom.ReadShort(ttpos + 4);
+                    ushort t3i = rom.ReadShort(ttpos + 6);
+                    ttpos += 8;
+                    if (i < 0xC48)
+                    {
+                        tiles16.Add(new Tile16(gettilesinfo(t0i), gettilesinfo(t1i), gettilesinfo(t2i), gettilesinfo(t3i)));
+                        collisions.Add(rom.ReadByte(Constants.Tile16CollisionMap + i));
+                    }
+                    else
+                    {
+                        tiles16.Add(new Tile16(new TileInfo(0,0,0,0,0), new TileInfo(0, 0, 0, 0, 0), new TileInfo(0, 0, 0, 0, 0), new TileInfo(0, 0, 0, 0, 0)));
+                        collisions.Add(0);
+                    }
+                }
+            }
+            else // we already modified the rom with this version
+            {
+                int ttpos = Constants.Tiles16DataExt;
+
+                for (int i = 0; i < 0xF00; i += 1)
+                {
+                    GFX.scratchpadTiles[i] = 0;
+                    ushort t0i = rom.ReadShort(ttpos);
+                    ushort t1i = rom.ReadShort(ttpos + 2);
+                    ushort t2i = rom.ReadShort(ttpos + 4);
+                    ushort t3i = rom.ReadShort(ttpos + 6);
+                    ttpos += 8;
+
+                    tiles16.Add(new Tile16(gettilesinfo(t0i), gettilesinfo(t1i), gettilesinfo(t2i), gettilesinfo(t3i)));
+                    collisions.Add(rom.ReadByte(Constants.Tile16CollisionMap + i));
+                }
             }
 
         }

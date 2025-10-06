@@ -32,15 +32,19 @@ namespace GoofED
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.levelsongCombobox = new System.Windows.Forms.ComboBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.levelGfx2Textbox = new System.Windows.Forms.TextBox();
-            this.levelGfx1Textbox = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.selectedMapTextbox = new System.Windows.Forms.TextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.panel6 = new System.Windows.Forms.Panel();
+            this.itemPanel = new System.Windows.Forms.Panel();
+            this.itemsubtypeTextbox = new System.Windows.Forms.TextBox();
+            this.label37 = new System.Windows.Forms.Label();
+            this.selectedItemCombobox = new System.Windows.Forms.ComboBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.palPanel = new System.Windows.Forms.Panel();
+            this.mainPicturebox = new System.Windows.Forms.PictureBox();
             this.plankPanel = new System.Windows.Forms.Panel();
+            this.objectPanel = new System.Windows.Forms.Panel();
+            this.label9 = new System.Windows.Forms.Label();
+            this.selectedobjectCombobox = new System.Windows.Forms.ComboBox();
             this.enemyDoorPanel = new System.Windows.Forms.Panel();
             this.enemydoorpiratecountUpDown = new System.Windows.Forms.NumericUpDown();
             this.label36 = new System.Windows.Forms.Label();
@@ -52,22 +56,22 @@ namespace GoofED
             this.label33 = new System.Windows.Forms.Label();
             this.saveEnemyDoorCheckbox = new System.Windows.Forms.CheckBox();
             this.saveslotEnemyDoor = new System.Windows.Forms.NumericUpDown();
-            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.bg1TButton = new System.Windows.Forms.ToolStripButton();
-            this.bg2TButton = new System.Windows.Forms.ToolStripButton();
-            this.sprTButton = new System.Windows.Forms.ToolStripButton();
-            this.itemTButton = new System.Windows.Forms.ToolStripButton();
-            this.objectTButton = new System.Windows.Forms.ToolStripButton();
-            this.blockTButton = new System.Windows.Forms.ToolStripButton();
-            this.transitionsTButton = new System.Windows.Forms.ToolStripButton();
-            this.hooksTButton = new System.Windows.Forms.ToolStripButton();
-            this.doorTButton = new System.Windows.Forms.ToolStripButton();
-            this.enemydoorTButton = new System.Windows.Forms.ToolStripButton();
-            this.plankTButton = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.playtestTButton = new System.Windows.Forms.ToolStripButton();
-            this.playdebugTbutton = new System.Windows.Forms.ToolStripButton();
-            this.demorecorderTButton = new System.Windows.Forms.ToolStripButton();
+            this.spritePanel = new System.Windows.Forms.Panel();
+            this.label20 = new System.Windows.Forms.Label();
+            this.sprParamTextbox = new System.Windows.Forms.TextBox();
+            this.label13 = new System.Windows.Forms.Label();
+            this.sprSubtypeTextbox = new System.Windows.Forms.TextBox();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.selectedSpriteCombobox = new System.Windows.Forms.ComboBox();
+            this.blockPanel = new System.Windows.Forms.Panel();
+            this.blockdoordirCombobox = new System.Windows.Forms.ComboBox();
+            this.label25 = new System.Windows.Forms.Label();
+            this.label22 = new System.Windows.Forms.Label();
+            this.label21 = new System.Windows.Forms.Label();
+            this.saveslotBlockDoor = new System.Windows.Forms.NumericUpDown();
+            this.savedoorCheckbox = new System.Windows.Forms.CheckBox();
+            this.drawswitchCheckbox = new System.Windows.Forms.CheckBox();
             this.doorPanel = new System.Windows.Forms.Panel();
             this.label24 = new System.Windows.Forms.Label();
             this.bosskeyCheckbox = new System.Windows.Forms.CheckBox();
@@ -75,9 +79,6 @@ namespace GoofED
             this.savelockeddoorCheckbox = new System.Windows.Forms.CheckBox();
             this.label23 = new System.Windows.Forms.Label();
             this.saveslotlockedDoor = new System.Windows.Forms.NumericUpDown();
-            this.hookPanel = new System.Windows.Forms.Panel();
-            this.hooktypeCombobox = new System.Windows.Forms.ComboBox();
-            this.label14 = new System.Windows.Forms.Label();
             this.transitionPanel = new System.Windows.Forms.Panel();
             this.transitionyposLabel = new System.Windows.Forms.Label();
             this.transitionxposLabel = new System.Windows.Forms.Label();
@@ -91,30 +92,26 @@ namespace GoofED
             this.label16 = new System.Windows.Forms.Label();
             this.transitionDirCombobox = new System.Windows.Forms.ComboBox();
             this.label15 = new System.Windows.Forms.Label();
-            this.blockPanel = new System.Windows.Forms.Panel();
-            this.blockdoordirCombobox = new System.Windows.Forms.ComboBox();
-            this.label25 = new System.Windows.Forms.Label();
-            this.label22 = new System.Windows.Forms.Label();
-            this.label21 = new System.Windows.Forms.Label();
-            this.saveslotBlockDoor = new System.Windows.Forms.NumericUpDown();
-            this.savedoorCheckbox = new System.Windows.Forms.CheckBox();
-            this.drawswitchCheckbox = new System.Windows.Forms.CheckBox();
-            this.spritePanel = new System.Windows.Forms.Panel();
-            this.label20 = new System.Windows.Forms.Label();
-            this.sprParamTextbox = new System.Windows.Forms.TextBox();
-            this.label13 = new System.Windows.Forms.Label();
-            this.sprSubtypeTextbox = new System.Windows.Forms.TextBox();
-            this.label12 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
-            this.selectedSpriteCombobox = new System.Windows.Forms.ComboBox();
-            this.itemPanel = new System.Windows.Forms.Panel();
-            this.itemsubtypeTextbox = new System.Windows.Forms.TextBox();
-            this.label37 = new System.Windows.Forms.Label();
-            this.selectedItemCombobox = new System.Windows.Forms.ComboBox();
-            this.label8 = new System.Windows.Forms.Label();
-            this.objectPanel = new System.Windows.Forms.Panel();
-            this.label9 = new System.Windows.Forms.Label();
-            this.selectedobjectCombobox = new System.Windows.Forms.ComboBox();
+            this.hookPanel = new System.Windows.Forms.Panel();
+            this.hooktypeCombobox = new System.Windows.Forms.ComboBox();
+            this.label14 = new System.Windows.Forms.Label();
+            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.bg1TButton = new System.Windows.Forms.ToolStripButton();
+            this.bg2TButton = new System.Windows.Forms.ToolStripButton();
+            this.sprTButton = new System.Windows.Forms.ToolStripButton();
+            this.itemTButton = new System.Windows.Forms.ToolStripButton();
+            this.objectTButton = new System.Windows.Forms.ToolStripButton();
+            this.blockTButton = new System.Windows.Forms.ToolStripButton();
+            this.transitionsTButton = new System.Windows.Forms.ToolStripButton();
+            this.hooksTButton = new System.Windows.Forms.ToolStripButton();
+            this.doorTButton = new System.Windows.Forms.ToolStripButton();
+            this.enemydoorTButton = new System.Windows.Forms.ToolStripButton();
+            this.plankTButton = new System.Windows.Forms.ToolStripButton();
+            this.palTButton = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.playtestTButton = new System.Windows.Forms.ToolStripButton();
+            this.playdebugTbutton = new System.Windows.Forms.ToolStripButton();
+            this.demorecorderTButton = new System.Windows.Forms.ToolStripButton();
             this.mapPanel = new System.Windows.Forms.Panel();
             this.animatedpalTextbox = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
@@ -128,7 +125,14 @@ namespace GoofED
             this.label6 = new System.Windows.Forms.Label();
             this.spritesetTextbox = new System.Windows.Forms.TextBox();
             this.spritesetLabel = new System.Windows.Forms.Label();
-            this.mainPicturebox = new System.Windows.Forms.PictureBox();
+            this.levelpropertyPanel = new System.Windows.Forms.Panel();
+            this.levelsongCombobox = new System.Windows.Forms.ComboBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.selectedMapTextbox = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.levelGfx1Textbox = new System.Windows.Forms.TextBox();
+            this.levelGfx2Textbox = new System.Windows.Forms.TextBox();
             this.levelCombobox = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.tilePanel = new System.Windows.Forms.Panel();
@@ -153,11 +157,13 @@ namespace GoofED
             this.passwordEditorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.paletteEditorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.creditsEditorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.musicViewerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.graphicsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exportAllToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.importAllToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveScratchpadToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.loadScratchpadToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.gfxEditornewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aSMToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.manageASMToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.projectToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -187,6 +193,9 @@ namespace GoofED
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+            this.label31 = new System.Windows.Forms.Label();
+            this.button2 = new System.Windows.Forms.Button();
             this.palettePicturebox = new System.Windows.Forms.PictureBox();
             this.editingtilePicturebox = new System.Windows.Forms.PictureBox();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -196,25 +205,30 @@ namespace GoofED
             this.sprvisibleButton = new System.Windows.Forms.CheckBox();
             this.bg2visibleButton = new System.Windows.Forms.CheckBox();
             this.bg1visibleButton = new System.Windows.Forms.CheckBox();
-            this.musicViewerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mainPanel = new System.Windows.Forms.Panel();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.zoomIncreaseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.zoomDecreaseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            this.panel6.SuspendLayout();
+            this.itemPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.mainPicturebox)).BeginInit();
+            this.objectPanel.SuspendLayout();
             this.enemyDoorPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.enemydoorpiratecountUpDown)).BeginInit();
             this.enemydoorDIRPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.saveslotEnemyDoor)).BeginInit();
-            this.toolStrip1.SuspendLayout();
-            this.doorPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.saveslotlockedDoor)).BeginInit();
-            this.hookPanel.SuspendLayout();
-            this.transitionPanel.SuspendLayout();
+            this.spritePanel.SuspendLayout();
             this.blockPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.saveslotBlockDoor)).BeginInit();
-            this.spritePanel.SuspendLayout();
-            this.itemPanel.SuspendLayout();
-            this.objectPanel.SuspendLayout();
+            this.doorPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.saveslotlockedDoor)).BeginInit();
+            this.transitionPanel.SuspendLayout();
+            this.hookPanel.SuspendLayout();
+            this.toolStrip1.SuspendLayout();
             this.mapPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.mainPicturebox)).BeginInit();
+            this.levelpropertyPanel.SuspendLayout();
             this.tilePanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tiles16Picturebox)).BeginInit();
             this.menuStrip1.SuspendLayout();
@@ -225,157 +239,203 @@ namespace GoofED
             this.panel1.SuspendLayout();
             this.panel4.SuspendLayout();
             this.panel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.palettePicturebox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.editingtilePicturebox)).BeginInit();
             this.panel2.SuspendLayout();
+            this.mainPanel.SuspendLayout();
+            this.panel5.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.levelsongCombobox);
-            this.groupBox1.Controls.Add(this.label5);
-            this.groupBox1.Controls.Add(this.levelGfx2Textbox);
-            this.groupBox1.Controls.Add(this.levelGfx1Textbox);
-            this.groupBox1.Controls.Add(this.label4);
-            this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Controls.Add(this.selectedMapTextbox);
             this.groupBox1.Controls.Add(this.groupBox2);
+            this.groupBox1.Controls.Add(this.levelpropertyPanel);
+            this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox1.Enabled = false;
-            this.groupBox1.Location = new System.Drawing.Point(15, 57);
+            this.groupBox1.Location = new System.Drawing.Point(0, 44);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(539, 698);
+            this.groupBox1.Size = new System.Drawing.Size(541, 873);
             this.groupBox1.TabIndex = 10;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Level Settings";
             // 
-            // levelsongCombobox
-            // 
-            this.levelsongCombobox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.levelsongCombobox.FormattingEnabled = true;
-            this.levelsongCombobox.Items.AddRange(new object[] {
-            "0x00 Staff Roll",
-            "0x01 Staff Roll",
-            "0x02 Staff Roll",
-            "0x03 Staff Roll",
-            "0x04 Staff Roll",
-            "0x05 Staff Roll",
-            "0x06 Staff Roll",
-            "0x07 Staff Roll",
-            "0x08 Staff Roll",
-            "0x09 Staff Roll",
-            "0x0A Staff Roll",
-            "0x0B Staff Roll",
-            "0x0C Staff Roll",
-            "0x0D Staff Roll",
-            "0x0E Staff Roll",
-            "0x0F Staff Roll",
-            "0x10 Capcom",
-            "0x11 To the south",
-            "0x12 Illusion",
-            "0x13 Lose my way",
-            "0x14 Sea Robbber",
-            "0x15 Let\'s Start",
-            "0x16 Break",
-            "0x17 Map",
-            "0x18 Go On?",
-            "0x19 The End",
-            "0x1A Goofy or Max?",
-            "0x1B Fight Fight!",
-            "0x1C Satisfied!",
-            "0x1D Flashback",
-            "0x1E Hamlet",
-            "0x1F Fight a Battle",
-            "0x20 Staff Roll",
-            "0x21 Game Over",
-            "0x22 Rest"});
-            this.levelsongCombobox.Location = new System.Drawing.Point(398, 11);
-            this.levelsongCombobox.Name = "levelsongCombobox";
-            this.levelsongCombobox.Size = new System.Drawing.Size(135, 21);
-            this.levelsongCombobox.TabIndex = 13;
-            this.levelsongCombobox.SelectedIndexChanged += new System.EventHandler(this.levelGfx1Textbox_TextChanged);
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(322, 14);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(70, 13);
-            this.label5.TabIndex = 16;
-            this.label5.Text = "Level Song : ";
-            // 
-            // levelGfx2Textbox
-            // 
-            this.levelGfx2Textbox.Location = new System.Drawing.Point(292, 12);
-            this.levelGfx2Textbox.Name = "levelGfx2Textbox";
-            this.levelGfx2Textbox.Size = new System.Drawing.Size(24, 20);
-            this.levelGfx2Textbox.TabIndex = 15;
-            this.levelGfx2Textbox.Text = "00";
-            this.levelGfx2Textbox.TextChanged += new System.EventHandler(this.levelGfx1Textbox_TextChanged);
-            // 
-            // levelGfx1Textbox
-            // 
-            this.levelGfx1Textbox.Location = new System.Drawing.Point(262, 12);
-            this.levelGfx1Textbox.Name = "levelGfx1Textbox";
-            this.levelGfx1Textbox.Size = new System.Drawing.Size(24, 20);
-            this.levelGfx1Textbox.TabIndex = 14;
-            this.levelGfx1Textbox.Text = "00";
-            this.levelGfx1Textbox.TextChanged += new System.EventHandler(this.levelGfx1Textbox_TextChanged);
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(180, 14);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(76, 13);
-            this.label4.TabIndex = 13;
-            this.label4.Text = "Blockset Gfx : ";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(9, 15);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(82, 13);
-            this.label3.TabIndex = 1;
-            this.label3.Text = "Selected Map : ";
-            // 
-            // selectedMapTextbox
-            // 
-            this.selectedMapTextbox.Location = new System.Drawing.Point(97, 12);
-            this.selectedMapTextbox.Name = "selectedMapTextbox";
-            this.selectedMapTextbox.Size = new System.Drawing.Size(24, 20);
-            this.selectedMapTextbox.TabIndex = 12;
-            this.selectedMapTextbox.Text = "00";
-            this.selectedMapTextbox.TextChanged += new System.EventHandler(this.selectedMapTextbox_TextChanged);
-            // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.plankPanel);
-            this.groupBox2.Controls.Add(this.enemyDoorPanel);
+            this.groupBox2.Controls.Add(this.panel6);
             this.groupBox2.Controls.Add(this.toolStrip1);
-            this.groupBox2.Controls.Add(this.doorPanel);
-            this.groupBox2.Controls.Add(this.hookPanel);
-            this.groupBox2.Controls.Add(this.transitionPanel);
-            this.groupBox2.Controls.Add(this.blockPanel);
-            this.groupBox2.Controls.Add(this.spritePanel);
-            this.groupBox2.Controls.Add(this.itemPanel);
-            this.groupBox2.Controls.Add(this.objectPanel);
             this.groupBox2.Controls.Add(this.mapPanel);
-            this.groupBox2.Controls.Add(this.mainPicturebox);
-            this.groupBox2.Location = new System.Drawing.Point(6, 58);
+            this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBox2.Location = new System.Drawing.Point(3, 49);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(526, 630);
+            this.groupBox2.Size = new System.Drawing.Size(535, 821);
             this.groupBox2.TabIndex = 11;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Selected Map Settings";
             // 
+            // panel6
+            // 
+            this.panel6.AutoScroll = true;
+            this.panel6.Controls.Add(this.itemPanel);
+            this.panel6.Controls.Add(this.palPanel);
+            this.panel6.Controls.Add(this.mainPicturebox);
+            this.panel6.Controls.Add(this.plankPanel);
+            this.panel6.Controls.Add(this.objectPanel);
+            this.panel6.Controls.Add(this.enemyDoorPanel);
+            this.panel6.Controls.Add(this.spritePanel);
+            this.panel6.Controls.Add(this.blockPanel);
+            this.panel6.Controls.Add(this.doorPanel);
+            this.panel6.Controls.Add(this.transitionPanel);
+            this.panel6.Controls.Add(this.hookPanel);
+            this.panel6.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel6.Location = new System.Drawing.Point(3, 88);
+            this.panel6.Name = "panel6";
+            this.panel6.Size = new System.Drawing.Size(529, 730);
+            this.panel6.TabIndex = 36;
+            // 
+            // itemPanel
+            // 
+            this.itemPanel.Controls.Add(this.itemsubtypeTextbox);
+            this.itemPanel.Controls.Add(this.label37);
+            this.itemPanel.Controls.Add(this.selectedItemCombobox);
+            this.itemPanel.Controls.Add(this.label8);
+            this.itemPanel.Location = new System.Drawing.Point(4, 3);
+            this.itemPanel.Name = "itemPanel";
+            this.itemPanel.Size = new System.Drawing.Size(512, 64);
+            this.itemPanel.TabIndex = 27;
+            this.itemPanel.Visible = false;
+            // 
+            // itemsubtypeTextbox
+            // 
+            this.itemsubtypeTextbox.Enabled = false;
+            this.itemsubtypeTextbox.Location = new System.Drawing.Point(97, 27);
+            this.itemsubtypeTextbox.Name = "itemsubtypeTextbox";
+            this.itemsubtypeTextbox.Size = new System.Drawing.Size(26, 20);
+            this.itemsubtypeTextbox.TabIndex = 8;
+            this.itemsubtypeTextbox.TextChanged += new System.EventHandler(this.itemsubtypeTextbox_TextChanged);
+            // 
+            // label37
+            // 
+            this.label37.AutoSize = true;
+            this.label37.Location = new System.Drawing.Point(3, 30);
+            this.label37.Name = "label37";
+            this.label37.Size = new System.Drawing.Size(75, 13);
+            this.label37.TabIndex = 7;
+            this.label37.Text = "Item Subtype :";
+            // 
+            // selectedItemCombobox
+            // 
+            this.selectedItemCombobox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.selectedItemCombobox.FormattingEnabled = true;
+            this.selectedItemCombobox.Items.AddRange(new object[] {
+            "0x08 Hookshot",
+            "0x09 Candle",
+            "0x0A Small Key",
+            "0x0B Big Key",
+            "0x0C Shovel",
+            "0x0D Bell",
+            "0x0E Plank",
+            "0x40 Cherry",
+            "0x42 Banana",
+            "0x44 Red Gem",
+            "0x46 Blue Gem",
+            "0x60 Canon Ball Shooter",
+            "0x62 Canon Ball Following Path",
+            "0x64 Bouncing Boulder",
+            "0x66 Jumping Fishes",
+            "0x68 Barrel Conveyor"});
+            this.selectedItemCombobox.Location = new System.Drawing.Point(97, 0);
+            this.selectedItemCombobox.Name = "selectedItemCombobox";
+            this.selectedItemCombobox.Size = new System.Drawing.Size(240, 21);
+            this.selectedItemCombobox.TabIndex = 1;
+            this.selectedItemCombobox.SelectedIndexChanged += new System.EventHandler(this.selectedItemCombobox_SelectedIndexChanged);
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(3, 3);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(81, 13);
+            this.label8.TabIndex = 0;
+            this.label8.Text = "Selected Item : ";
+            // 
+            // palPanel
+            // 
+            this.palPanel.Location = new System.Drawing.Point(5, 527);
+            this.palPanel.Name = "palPanel";
+            this.palPanel.Size = new System.Drawing.Size(514, 190);
+            this.palPanel.TabIndex = 35;
+            this.palPanel.Visible = false;
+            // 
+            // mainPicturebox
+            // 
+            this.mainPicturebox.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.mainPicturebox.Location = new System.Drawing.Point(7, 3);
+            this.mainPicturebox.Name = "mainPicturebox";
+            this.mainPicturebox.Size = new System.Drawing.Size(512, 448);
+            this.mainPicturebox.TabIndex = 0;
+            this.mainPicturebox.TabStop = false;
+            this.mainPicturebox.Paint += new System.Windows.Forms.PaintEventHandler(this.mainPicturebox_Paint);
+            this.mainPicturebox.DoubleClick += new System.EventHandler(this.mainPicturebox_DoubleClick);
+            this.mainPicturebox.MouseDown += new System.Windows.Forms.MouseEventHandler(this.mainPicturebox_MouseDown);
+            this.mainPicturebox.MouseMove += new System.Windows.Forms.MouseEventHandler(this.mainPicturebox_MouseMove);
+            this.mainPicturebox.MouseUp += new System.Windows.Forms.MouseEventHandler(this.mainPicturebox_MouseUp);
+            // 
             // plankPanel
             // 
-            this.plankPanel.Location = new System.Drawing.Point(4, 334);
+            this.plankPanel.Location = new System.Drawing.Point(5, 513);
             this.plankPanel.Name = "plankPanel";
-            this.plankPanel.Size = new System.Drawing.Size(512, 10);
+            this.plankPanel.Size = new System.Drawing.Size(512, 28);
             this.plankPanel.TabIndex = 33;
             this.plankPanel.Visible = false;
+            // 
+            // objectPanel
+            // 
+            this.objectPanel.Controls.Add(this.label9);
+            this.objectPanel.Controls.Add(this.selectedobjectCombobox);
+            this.objectPanel.Location = new System.Drawing.Point(4, 69);
+            this.objectPanel.Name = "objectPanel";
+            this.objectPanel.Size = new System.Drawing.Size(512, 64);
+            this.objectPanel.TabIndex = 27;
+            this.objectPanel.Visible = false;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(0, 7);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(89, 13);
+            this.label9.TabIndex = 2;
+            this.label9.Text = "Selected Object :";
+            // 
+            // selectedobjectCombobox
+            // 
+            this.selectedobjectCombobox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.selectedobjectCombobox.FormattingEnabled = true;
+            this.selectedobjectCombobox.Items.AddRange(new object[] {
+            "0x00 Barrel",
+            "0x02 Pot",
+            "0x04 Egg",
+            "0x06 Sign",
+            "0x08 Plant",
+            "0x0A Bomb",
+            "0x0C Log",
+            "0x0E Fence",
+            "0x10 Ice",
+            "0x12 Shell",
+            "0x14 Plates",
+            "0x16 Rock",
+            "0x18 Nut",
+            "0x1A Star Block",
+            "0x1C Bomb Block Green",
+            "0x1E Bomb Block Yellow",
+            "0x20 Bomb Block Red",
+            "0x22 Bomb Block Black"});
+            this.selectedobjectCombobox.Location = new System.Drawing.Point(97, 3);
+            this.selectedobjectCombobox.Name = "selectedobjectCombobox";
+            this.selectedobjectCombobox.Size = new System.Drawing.Size(240, 21);
+            this.selectedobjectCombobox.TabIndex = 0;
+            this.selectedobjectCombobox.SelectedIndexChanged += new System.EventHandler(this.selectedobjectCombobox_SelectedIndexChanged);
             // 
             // enemyDoorPanel
             // 
@@ -387,7 +447,7 @@ namespace GoofED
             this.enemyDoorPanel.Controls.Add(this.label33);
             this.enemyDoorPanel.Controls.Add(this.saveEnemyDoorCheckbox);
             this.enemyDoorPanel.Controls.Add(this.saveslotEnemyDoor);
-            this.enemyDoorPanel.Location = new System.Drawing.Point(3, 485);
+            this.enemyDoorPanel.Location = new System.Drawing.Point(4, 394);
             this.enemyDoorPanel.Name = "enemyDoorPanel";
             this.enemyDoorPanel.Size = new System.Drawing.Size(512, 64);
             this.enemyDoorPanel.TabIndex = 34;
@@ -507,185 +567,219 @@ namespace GoofED
             this.saveslotEnemyDoor.TabIndex = 14;
             this.saveslotEnemyDoor.ValueChanged += new System.EventHandler(this.saveslotEnemyDoor_ValueChanged);
             // 
-            // toolStrip1
+            // spritePanel
             // 
-            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.bg1TButton,
-            this.bg2TButton,
-            this.sprTButton,
-            this.itemTButton,
-            this.objectTButton,
-            this.blockTButton,
-            this.transitionsTButton,
-            this.hooksTButton,
-            this.doorTButton,
-            this.enemydoorTButton,
-            this.plankTButton,
-            this.toolStripSeparator1,
-            this.playtestTButton,
-            this.playdebugTbutton,
-            this.demorecorderTButton});
-            this.toolStrip1.Location = new System.Drawing.Point(3, 63);
-            this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(520, 25);
-            this.toolStrip1.TabIndex = 26;
-            this.toolStrip1.Text = "toolStrip1";
+            this.spritePanel.Controls.Add(this.label20);
+            this.spritePanel.Controls.Add(this.sprParamTextbox);
+            this.spritePanel.Controls.Add(this.label13);
+            this.spritePanel.Controls.Add(this.sprSubtypeTextbox);
+            this.spritePanel.Controls.Add(this.label12);
+            this.spritePanel.Controls.Add(this.label11);
+            this.spritePanel.Controls.Add(this.selectedSpriteCombobox);
+            this.spritePanel.Location = new System.Drawing.Point(4, 134);
+            this.spritePanel.Name = "spritePanel";
+            this.spritePanel.Size = new System.Drawing.Size(512, 64);
+            this.spritePanel.TabIndex = 28;
+            this.spritePanel.Visible = false;
             // 
-            // bg1TButton
+            // label20
             // 
-            this.bg1TButton.Checked = true;
-            this.bg1TButton.CheckOnClick = true;
-            this.bg1TButton.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.bg1TButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.bg1TButton.Image = ((System.Drawing.Image)(resources.GetObject("bg1TButton.Image")));
-            this.bg1TButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.bg1TButton.Name = "bg1TButton";
-            this.bg1TButton.Size = new System.Drawing.Size(23, 22);
-            this.bg1TButton.Text = "Back Layer";
-            this.bg1TButton.Click += new System.EventHandler(this.bg1TButton_Click);
+            this.label20.AutoSize = true;
+            this.label20.Location = new System.Drawing.Point(291, 34);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(94, 13);
+            this.label20.TabIndex = 10;
+            this.label20.Text = "(Not displayed yet)";
             // 
-            // bg2TButton
+            // sprParamTextbox
             // 
-            this.bg2TButton.CheckOnClick = true;
-            this.bg2TButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.bg2TButton.Image = ((System.Drawing.Image)(resources.GetObject("bg2TButton.Image")));
-            this.bg2TButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.bg2TButton.Name = "bg2TButton";
-            this.bg2TButton.Size = new System.Drawing.Size(23, 22);
-            this.bg2TButton.Text = "Front Layer";
-            this.bg2TButton.Click += new System.EventHandler(this.bg1TButton_Click);
+            this.sprParamTextbox.Location = new System.Drawing.Point(259, 31);
+            this.sprParamTextbox.Name = "sprParamTextbox";
+            this.sprParamTextbox.Size = new System.Drawing.Size(26, 20);
+            this.sprParamTextbox.TabIndex = 8;
+            this.sprParamTextbox.TextChanged += new System.EventHandler(this.sprParamTextbox_TextChanged);
             // 
-            // sprTButton
+            // label13
             // 
-            this.sprTButton.CheckOnClick = true;
-            this.sprTButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.sprTButton.Image = ((System.Drawing.Image)(resources.GetObject("sprTButton.Image")));
-            this.sprTButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.sprTButton.Name = "sprTButton";
-            this.sprTButton.Size = new System.Drawing.Size(23, 22);
-            this.sprTButton.Text = "Sprite Mode";
-            this.sprTButton.Click += new System.EventHandler(this.bg1TButton_Click);
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(129, 34);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(124, 13);
+            this.label13.TabIndex = 7;
+            this.label13.Text = "Sprite Param (Direction) :";
             // 
-            // itemTButton
+            // sprSubtypeTextbox
             // 
-            this.itemTButton.CheckOnClick = true;
-            this.itemTButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.itemTButton.Image = ((System.Drawing.Image)(resources.GetObject("itemTButton.Image")));
-            this.itemTButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.itemTButton.Name = "itemTButton";
-            this.itemTButton.Size = new System.Drawing.Size(23, 22);
-            this.itemTButton.Text = "Item Mode";
-            this.itemTButton.Click += new System.EventHandler(this.bg1TButton_Click);
+            this.sprSubtypeTextbox.Location = new System.Drawing.Point(97, 31);
+            this.sprSubtypeTextbox.Name = "sprSubtypeTextbox";
+            this.sprSubtypeTextbox.Size = new System.Drawing.Size(26, 20);
+            this.sprSubtypeTextbox.TabIndex = 6;
+            this.sprSubtypeTextbox.TextChanged += new System.EventHandler(this.sprSubtypeTextbox_TextChanged);
             // 
-            // objectTButton
+            // label12
             // 
-            this.objectTButton.CheckOnClick = true;
-            this.objectTButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.objectTButton.Image = ((System.Drawing.Image)(resources.GetObject("objectTButton.Image")));
-            this.objectTButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.objectTButton.Name = "objectTButton";
-            this.objectTButton.Size = new System.Drawing.Size(23, 22);
-            this.objectTButton.Text = "Object Mode";
-            this.objectTButton.Click += new System.EventHandler(this.bg1TButton_Click);
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(3, 34);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(82, 13);
+            this.label12.TabIndex = 5;
+            this.label12.Text = "Sprite Subtype :";
             // 
-            // blockTButton
+            // label11
             // 
-            this.blockTButton.CheckOnClick = true;
-            this.blockTButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.blockTButton.Image = ((System.Drawing.Image)(resources.GetObject("blockTButton.Image")));
-            this.blockTButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.blockTButton.Name = "blockTButton";
-            this.blockTButton.Size = new System.Drawing.Size(23, 22);
-            this.blockTButton.Text = "Block Mode";
-            this.blockTButton.Click += new System.EventHandler(this.bg1TButton_Click);
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(2, 7);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(85, 13);
+            this.label11.TabIndex = 4;
+            this.label11.Text = "Selected Sprite :";
             // 
-            // transitionsTButton
+            // selectedSpriteCombobox
             // 
-            this.transitionsTButton.CheckOnClick = true;
-            this.transitionsTButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.transitionsTButton.Image = ((System.Drawing.Image)(resources.GetObject("transitionsTButton.Image")));
-            this.transitionsTButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.transitionsTButton.Name = "transitionsTButton";
-            this.transitionsTButton.Size = new System.Drawing.Size(23, 22);
-            this.transitionsTButton.Text = "Transition Mode";
-            this.transitionsTButton.Click += new System.EventHandler(this.bg1TButton_Click);
+            this.selectedSpriteCombobox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.selectedSpriteCombobox.FormattingEnabled = true;
+            this.selectedSpriteCombobox.Items.AddRange(new object[] {
+            "0x00 Edgehog",
+            "0x02 Bee",
+            "0x04 Floor Spikes (Collsion Only)",
+            "0x06 Snake",
+            "0x08 Ghost",
+            "0x0A Bat",
+            "0x0C Pirates type is defined by subtype",
+            "0x0E Islander message defined by subtype",
+            "0x10 Alive Armor",
+            "0x12 Small Cannon ball",
+            "0x14 Big cannon ball following a path in the room",
+            "0x16 Rolling pin spikes in level2",
+            "0x18 Moving spike up & down",
+            "0x1A Frog",
+            "0x1C Fireball ",
+            "0x1E Unused??? Wall spike or something",
+            "0x20 Small canon on last level",
+            "0x22 Canon",
+            "0x24 LEVEL 4 Boss",
+            "0x26 LEVEL 3 BOSS (subtype 00 for red, subtype 02 for blue)",
+            "0x28 Pirate Boss LEVEL1 Boss",
+            "0x2A Switches",
+            "0x2C Breakable Wall, Bridge",
+            "0x2E Boss LEVEL 2",
+            "0x30 Flamethrower projecile (red big pirate)",
+            "0x32 Switch triggering bridge on level3?",
+            "0x34 Wall Switch",
+            "0x36 pirates throwing barrels in BOSS LEVEL2",
+            "0x38 Moving rail platform",
+            "0x3A Final Boss PETE",
+            "0x3C Pete Intro",
+            "0x3E Pirate sword projectile",
+            "0x40 Bouncing Rocks",
+            "0x42 Order Switch",
+            "0x44 Timed Switch ",
+            "0x46 Moving wooden platform up & down",
+            "0x48 moving platform with 9 arrows",
+            "0x4A Destroyable tile",
+            "0x4C Minecart",
+            "0x4E Pete something?",
+            "0x50 Actual Fish",
+            "0x52 Rotating Canon with buttons",
+            "0x54 Pirate Flag!"});
+            this.selectedSpriteCombobox.Location = new System.Drawing.Point(97, 4);
+            this.selectedSpriteCombobox.Name = "selectedSpriteCombobox";
+            this.selectedSpriteCombobox.Size = new System.Drawing.Size(238, 21);
+            this.selectedSpriteCombobox.TabIndex = 3;
+            this.selectedSpriteCombobox.SelectedIndexChanged += new System.EventHandler(this.selectedSpriteCombobox_SelectedIndexChanged);
             // 
-            // hooksTButton
+            // blockPanel
             // 
-            this.hooksTButton.CheckOnClick = true;
-            this.hooksTButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.hooksTButton.Image = ((System.Drawing.Image)(resources.GetObject("hooksTButton.Image")));
-            this.hooksTButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.hooksTButton.Name = "hooksTButton";
-            this.hooksTButton.Size = new System.Drawing.Size(23, 22);
-            this.hooksTButton.Text = "Hooks Mode";
-            this.hooksTButton.Click += new System.EventHandler(this.bg1TButton_Click);
+            this.blockPanel.Controls.Add(this.blockdoordirCombobox);
+            this.blockPanel.Controls.Add(this.label25);
+            this.blockPanel.Controls.Add(this.label22);
+            this.blockPanel.Controls.Add(this.label21);
+            this.blockPanel.Controls.Add(this.saveslotBlockDoor);
+            this.blockPanel.Controls.Add(this.savedoorCheckbox);
+            this.blockPanel.Controls.Add(this.drawswitchCheckbox);
+            this.blockPanel.Location = new System.Drawing.Point(5, 199);
+            this.blockPanel.Name = "blockPanel";
+            this.blockPanel.Size = new System.Drawing.Size(512, 64);
+            this.blockPanel.TabIndex = 29;
+            this.blockPanel.Visible = false;
             // 
-            // doorTButton
+            // blockdoordirCombobox
             // 
-            this.doorTButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.doorTButton.Image = ((System.Drawing.Image)(resources.GetObject("doorTButton.Image")));
-            this.doorTButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.doorTButton.Name = "doorTButton";
-            this.doorTButton.Size = new System.Drawing.Size(23, 22);
-            this.doorTButton.Text = "Door Mode";
-            this.doorTButton.Click += new System.EventHandler(this.bg1TButton_Click);
+            this.blockdoordirCombobox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.blockdoordirCombobox.FormattingEnabled = true;
+            this.blockdoordirCombobox.Items.AddRange(new object[] {
+            "0x00 - 64x64",
+            "0x02 - 32x64",
+            "0x04 - 64x32",
+            "0x06 - ?? ??",
+            "0x08 - ?? ??"});
+            this.blockdoordirCombobox.Location = new System.Drawing.Point(403, 4);
+            this.blockdoordirCombobox.Name = "blockdoordirCombobox";
+            this.blockdoordirCombobox.Size = new System.Drawing.Size(104, 21);
+            this.blockdoordirCombobox.TabIndex = 14;
+            this.blockdoordirCombobox.SelectedIndexChanged += new System.EventHandler(this.blockdoordirCombobox_SelectedIndexChanged);
             // 
-            // enemydoorTButton
+            // label25
             // 
-            this.enemydoorTButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.enemydoorTButton.Image = ((System.Drawing.Image)(resources.GetObject("enemydoorTButton.Image")));
-            this.enemydoorTButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.enemydoorTButton.Name = "enemydoorTButton";
-            this.enemydoorTButton.Size = new System.Drawing.Size(23, 22);
-            this.enemydoorTButton.Text = "Enemy Door Mode";
-            this.enemydoorTButton.Click += new System.EventHandler(this.bg1TButton_Click);
+            this.label25.AutoSize = true;
+            this.label25.Location = new System.Drawing.Point(335, 7);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(62, 13);
+            this.label25.TabIndex = 13;
+            this.label25.Text = "Door Size : ";
             // 
-            // plankTButton
+            // label22
             // 
-            this.plankTButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.plankTButton.Image = ((System.Drawing.Image)(resources.GetObject("plankTButton.Image")));
-            this.plankTButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.plankTButton.Name = "plankTButton";
-            this.plankTButton.Size = new System.Drawing.Size(23, 22);
-            this.plankTButton.Text = "Plank Mode (Still need to be recoded limited to 3-4 planks)";
-            this.plankTButton.Click += new System.EventHandler(this.bg1TButton_Click);
+            this.label22.AutoSize = true;
+            this.label22.Location = new System.Drawing.Point(115, 49);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(312, 13);
+            this.label22.TabIndex = 4;
+            this.label22.Text = "If you have same slot setted on another door both will be opened";
             // 
-            // toolStripSeparator1
+            // label21
             // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
+            this.label21.AutoSize = true;
+            this.label21.Location = new System.Drawing.Point(170, 28);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(185, 13);
+            this.label21.TabIndex = 3;
+            this.label21.Text = "you can save up to 24 doors per level";
             // 
-            // playtestTButton
+            // saveslotBlockDoor
             // 
-            this.playtestTButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.playtestTButton.Image = ((System.Drawing.Image)(resources.GetObject("playtestTButton.Image")));
-            this.playtestTButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.playtestTButton.Name = "playtestTButton";
-            this.playtestTButton.Size = new System.Drawing.Size(23, 22);
-            this.playtestTButton.Text = "Playtest";
-            this.playtestTButton.Click += new System.EventHandler(this.playtestTButton_Click);
+            this.saveslotBlockDoor.Location = new System.Drawing.Point(116, 26);
+            this.saveslotBlockDoor.Maximum = new decimal(new int[] {
+            23,
+            0,
+            0,
+            0});
+            this.saveslotBlockDoor.Name = "saveslotBlockDoor";
+            this.saveslotBlockDoor.Size = new System.Drawing.Size(48, 20);
+            this.saveslotBlockDoor.TabIndex = 2;
+            this.saveslotBlockDoor.ValueChanged += new System.EventHandler(this.saveslotBlockDoor_ValueChanged);
             // 
-            // playdebugTbutton
+            // savedoorCheckbox
             // 
-            this.playdebugTbutton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.playdebugTbutton.Image = ((System.Drawing.Image)(resources.GetObject("playdebugTbutton.Image")));
-            this.playdebugTbutton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.playdebugTbutton.Name = "playdebugTbutton";
-            this.playdebugTbutton.Size = new System.Drawing.Size(23, 22);
-            this.playdebugTbutton.Text = "Playtest Debug";
-            this.playdebugTbutton.Click += new System.EventHandler(this.playdebugTbutton_Click);
+            this.savedoorCheckbox.AutoSize = true;
+            this.savedoorCheckbox.Location = new System.Drawing.Point(2, 27);
+            this.savedoorCheckbox.Name = "savedoorCheckbox";
+            this.savedoorCheckbox.Size = new System.Drawing.Size(108, 17);
+            this.savedoorCheckbox.TabIndex = 1;
+            this.savedoorCheckbox.Text = "Save door in slot ";
+            this.savedoorCheckbox.UseVisualStyleBackColor = true;
+            this.savedoorCheckbox.CheckedChanged += new System.EventHandler(this.drawswitchCheckbox_CheckedChanged);
             // 
-            // demorecorderTButton
+            // drawswitchCheckbox
             // 
-            this.demorecorderTButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.demorecorderTButton.Enabled = false;
-            this.demorecorderTButton.Image = ((System.Drawing.Image)(resources.GetObject("demorecorderTButton.Image")));
-            this.demorecorderTButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.demorecorderTButton.Name = "demorecorderTButton";
-            this.demorecorderTButton.Size = new System.Drawing.Size(23, 22);
-            this.demorecorderTButton.Text = "Record Demo Level";
-            this.demorecorderTButton.Click += new System.EventHandler(this.demorecorderTButton_Click);
+            this.drawswitchCheckbox.AutoSize = true;
+            this.drawswitchCheckbox.Location = new System.Drawing.Point(2, 4);
+            this.drawswitchCheckbox.Name = "drawswitchCheckbox";
+            this.drawswitchCheckbox.Size = new System.Drawing.Size(297, 17);
+            this.drawswitchCheckbox.TabIndex = 0;
+            this.drawswitchCheckbox.Text = "Draw switch (if unchecked will use the tile gfx eg. star tile)";
+            this.drawswitchCheckbox.UseVisualStyleBackColor = true;
+            this.drawswitchCheckbox.CheckedChanged += new System.EventHandler(this.drawswitchCheckbox_CheckedChanged);
             // 
             // doorPanel
             // 
@@ -695,7 +789,7 @@ namespace GoofED
             this.doorPanel.Controls.Add(this.savelockeddoorCheckbox);
             this.doorPanel.Controls.Add(this.label23);
             this.doorPanel.Controls.Add(this.saveslotlockedDoor);
-            this.doorPanel.Location = new System.Drawing.Point(6, 548);
+            this.doorPanel.Location = new System.Drawing.Point(7, 457);
             this.doorPanel.Name = "doorPanel";
             this.doorPanel.Size = new System.Drawing.Size(512, 64);
             this.doorPanel.TabIndex = 32;
@@ -770,41 +864,6 @@ namespace GoofED
             this.saveslotlockedDoor.TabIndex = 4;
             this.saveslotlockedDoor.ValueChanged += new System.EventHandler(this.saveslotlockedDoor_ValueChanged);
             // 
-            // hookPanel
-            // 
-            this.hookPanel.Controls.Add(this.hooktypeCombobox);
-            this.hookPanel.Controls.Add(this.label14);
-            this.hookPanel.Location = new System.Drawing.Point(3, 421);
-            this.hookPanel.Name = "hookPanel";
-            this.hookPanel.Size = new System.Drawing.Size(512, 64);
-            this.hookPanel.TabIndex = 31;
-            this.hookPanel.Visible = false;
-            this.hookPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.hookPanel_Paint);
-            // 
-            // hooktypeCombobox
-            // 
-            this.hooktypeCombobox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.hooktypeCombobox.FormattingEnabled = true;
-            this.hooktypeCombobox.Items.AddRange(new object[] {
-            "0x00 ↔ 96 pixels",
-            "0x01 ↔ 128 pixels",
-            "0x02 ↕ 96 pixels",
-            "0x03 ↕ 128 pixels"});
-            this.hooktypeCombobox.Location = new System.Drawing.Point(97, 4);
-            this.hooktypeCombobox.Name = "hooktypeCombobox";
-            this.hooktypeCombobox.Size = new System.Drawing.Size(240, 21);
-            this.hooktypeCombobox.TabIndex = 3;
-            this.hooktypeCombobox.SelectedIndexChanged += new System.EventHandler(this.hooktypeCombobox_SelectedIndexChanged);
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(4, 7);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(82, 13);
-            this.label14.TabIndex = 9;
-            this.label14.Text = "Selected Type :";
-            // 
             // transitionPanel
             // 
             this.transitionPanel.Controls.Add(this.transitionyposLabel);
@@ -819,7 +878,7 @@ namespace GoofED
             this.transitionPanel.Controls.Add(this.label16);
             this.transitionPanel.Controls.Add(this.transitionDirCombobox);
             this.transitionPanel.Controls.Add(this.label15);
-            this.transitionPanel.Location = new System.Drawing.Point(3, 357);
+            this.transitionPanel.Location = new System.Drawing.Point(4, 266);
             this.transitionPanel.Name = "transitionPanel";
             this.transitionPanel.Size = new System.Drawing.Size(512, 64);
             this.transitionPanel.TabIndex = 30;
@@ -947,333 +1006,234 @@ namespace GoofED
             this.label15.TabIndex = 11;
             this.label15.Text = "Direction :";
             // 
-            // blockPanel
+            // hookPanel
             // 
-            this.blockPanel.Controls.Add(this.blockdoordirCombobox);
-            this.blockPanel.Controls.Add(this.label25);
-            this.blockPanel.Controls.Add(this.label22);
-            this.blockPanel.Controls.Add(this.label21);
-            this.blockPanel.Controls.Add(this.saveslotBlockDoor);
-            this.blockPanel.Controls.Add(this.savedoorCheckbox);
-            this.blockPanel.Controls.Add(this.drawswitchCheckbox);
-            this.blockPanel.Location = new System.Drawing.Point(4, 290);
-            this.blockPanel.Name = "blockPanel";
-            this.blockPanel.Size = new System.Drawing.Size(512, 64);
-            this.blockPanel.TabIndex = 29;
-            this.blockPanel.Visible = false;
+            this.hookPanel.Controls.Add(this.hooktypeCombobox);
+            this.hookPanel.Controls.Add(this.label14);
+            this.hookPanel.Location = new System.Drawing.Point(4, 330);
+            this.hookPanel.Name = "hookPanel";
+            this.hookPanel.Size = new System.Drawing.Size(512, 64);
+            this.hookPanel.TabIndex = 31;
+            this.hookPanel.Visible = false;
+            this.hookPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.hookPanel_Paint);
             // 
-            // blockdoordirCombobox
+            // hooktypeCombobox
             // 
-            this.blockdoordirCombobox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.blockdoordirCombobox.FormattingEnabled = true;
-            this.blockdoordirCombobox.Items.AddRange(new object[] {
-            "0x00 - 64x64",
-            "0x02 - 32x64",
-            "0x04 - 64x32",
-            "0x06 - ?? ??",
-            "0x08 - ?? ??"});
-            this.blockdoordirCombobox.Location = new System.Drawing.Point(403, 4);
-            this.blockdoordirCombobox.Name = "blockdoordirCombobox";
-            this.blockdoordirCombobox.Size = new System.Drawing.Size(104, 21);
-            this.blockdoordirCombobox.TabIndex = 14;
-            this.blockdoordirCombobox.SelectedIndexChanged += new System.EventHandler(this.blockdoordirCombobox_SelectedIndexChanged);
+            this.hooktypeCombobox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.hooktypeCombobox.FormattingEnabled = true;
+            this.hooktypeCombobox.Items.AddRange(new object[] {
+            "0x00 ↔ 96 pixels",
+            "0x01 ↔ 128 pixels",
+            "0x02 ↕ 96 pixels",
+            "0x03 ↕ 128 pixels"});
+            this.hooktypeCombobox.Location = new System.Drawing.Point(97, 4);
+            this.hooktypeCombobox.Name = "hooktypeCombobox";
+            this.hooktypeCombobox.Size = new System.Drawing.Size(240, 21);
+            this.hooktypeCombobox.TabIndex = 3;
+            this.hooktypeCombobox.SelectedIndexChanged += new System.EventHandler(this.hooktypeCombobox_SelectedIndexChanged);
             // 
-            // label25
+            // label14
             // 
-            this.label25.AutoSize = true;
-            this.label25.Location = new System.Drawing.Point(335, 7);
-            this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(62, 13);
-            this.label25.TabIndex = 13;
-            this.label25.Text = "Door Size : ";
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(4, 7);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(82, 13);
+            this.label14.TabIndex = 9;
+            this.label14.Text = "Selected Type :";
             // 
-            // label22
+            // toolStrip1
             // 
-            this.label22.AutoSize = true;
-            this.label22.Location = new System.Drawing.Point(115, 49);
-            this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(312, 13);
-            this.label22.TabIndex = 4;
-            this.label22.Text = "If you have same slot setted on another door both will be opened";
+            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.bg1TButton,
+            this.bg2TButton,
+            this.sprTButton,
+            this.itemTButton,
+            this.objectTButton,
+            this.blockTButton,
+            this.transitionsTButton,
+            this.hooksTButton,
+            this.doorTButton,
+            this.enemydoorTButton,
+            this.plankTButton,
+            this.palTButton,
+            this.toolStripSeparator1,
+            this.playtestTButton,
+            this.playdebugTbutton,
+            this.demorecorderTButton});
+            this.toolStrip1.Location = new System.Drawing.Point(3, 63);
+            this.toolStrip1.Name = "toolStrip1";
+            this.toolStrip1.Size = new System.Drawing.Size(529, 25);
+            this.toolStrip1.TabIndex = 26;
+            this.toolStrip1.Text = "toolStrip1";
             // 
-            // label21
+            // bg1TButton
             // 
-            this.label21.AutoSize = true;
-            this.label21.Location = new System.Drawing.Point(170, 28);
-            this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(185, 13);
-            this.label21.TabIndex = 3;
-            this.label21.Text = "you can save up to 24 doors per level";
+            this.bg1TButton.Checked = true;
+            this.bg1TButton.CheckOnClick = true;
+            this.bg1TButton.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.bg1TButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.bg1TButton.Image = ((System.Drawing.Image)(resources.GetObject("bg1TButton.Image")));
+            this.bg1TButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.bg1TButton.Name = "bg1TButton";
+            this.bg1TButton.Size = new System.Drawing.Size(23, 22);
+            this.bg1TButton.Text = "Back Layer";
+            this.bg1TButton.Click += new System.EventHandler(this.bg1TButton_Click);
             // 
-            // saveslotBlockDoor
+            // bg2TButton
             // 
-            this.saveslotBlockDoor.Location = new System.Drawing.Point(116, 26);
-            this.saveslotBlockDoor.Maximum = new decimal(new int[] {
-            23,
-            0,
-            0,
-            0});
-            this.saveslotBlockDoor.Name = "saveslotBlockDoor";
-            this.saveslotBlockDoor.Size = new System.Drawing.Size(48, 20);
-            this.saveslotBlockDoor.TabIndex = 2;
-            this.saveslotBlockDoor.ValueChanged += new System.EventHandler(this.saveslotBlockDoor_ValueChanged);
+            this.bg2TButton.CheckOnClick = true;
+            this.bg2TButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.bg2TButton.Image = ((System.Drawing.Image)(resources.GetObject("bg2TButton.Image")));
+            this.bg2TButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.bg2TButton.Name = "bg2TButton";
+            this.bg2TButton.Size = new System.Drawing.Size(23, 22);
+            this.bg2TButton.Text = "Front Layer";
+            this.bg2TButton.Click += new System.EventHandler(this.bg1TButton_Click);
             // 
-            // savedoorCheckbox
+            // sprTButton
             // 
-            this.savedoorCheckbox.AutoSize = true;
-            this.savedoorCheckbox.Location = new System.Drawing.Point(2, 27);
-            this.savedoorCheckbox.Name = "savedoorCheckbox";
-            this.savedoorCheckbox.Size = new System.Drawing.Size(108, 17);
-            this.savedoorCheckbox.TabIndex = 1;
-            this.savedoorCheckbox.Text = "Save door in slot ";
-            this.savedoorCheckbox.UseVisualStyleBackColor = true;
-            this.savedoorCheckbox.CheckedChanged += new System.EventHandler(this.drawswitchCheckbox_CheckedChanged);
+            this.sprTButton.CheckOnClick = true;
+            this.sprTButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.sprTButton.Image = ((System.Drawing.Image)(resources.GetObject("sprTButton.Image")));
+            this.sprTButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.sprTButton.Name = "sprTButton";
+            this.sprTButton.Size = new System.Drawing.Size(23, 22);
+            this.sprTButton.Text = "Sprite Mode";
+            this.sprTButton.Click += new System.EventHandler(this.bg1TButton_Click);
             // 
-            // drawswitchCheckbox
+            // itemTButton
             // 
-            this.drawswitchCheckbox.AutoSize = true;
-            this.drawswitchCheckbox.Location = new System.Drawing.Point(2, 4);
-            this.drawswitchCheckbox.Name = "drawswitchCheckbox";
-            this.drawswitchCheckbox.Size = new System.Drawing.Size(297, 17);
-            this.drawswitchCheckbox.TabIndex = 0;
-            this.drawswitchCheckbox.Text = "Draw switch (if unchecked will use the tile gfx eg. star tile)";
-            this.drawswitchCheckbox.UseVisualStyleBackColor = true;
-            this.drawswitchCheckbox.CheckedChanged += new System.EventHandler(this.drawswitchCheckbox_CheckedChanged);
+            this.itemTButton.CheckOnClick = true;
+            this.itemTButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.itemTButton.Image = ((System.Drawing.Image)(resources.GetObject("itemTButton.Image")));
+            this.itemTButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.itemTButton.Name = "itemTButton";
+            this.itemTButton.Size = new System.Drawing.Size(23, 22);
+            this.itemTButton.Text = "Item Mode";
+            this.itemTButton.Click += new System.EventHandler(this.bg1TButton_Click);
             // 
-            // spritePanel
+            // objectTButton
             // 
-            this.spritePanel.Controls.Add(this.label20);
-            this.spritePanel.Controls.Add(this.sprParamTextbox);
-            this.spritePanel.Controls.Add(this.label13);
-            this.spritePanel.Controls.Add(this.sprSubtypeTextbox);
-            this.spritePanel.Controls.Add(this.label12);
-            this.spritePanel.Controls.Add(this.label11);
-            this.spritePanel.Controls.Add(this.selectedSpriteCombobox);
-            this.spritePanel.Location = new System.Drawing.Point(3, 225);
-            this.spritePanel.Name = "spritePanel";
-            this.spritePanel.Size = new System.Drawing.Size(512, 64);
-            this.spritePanel.TabIndex = 28;
-            this.spritePanel.Visible = false;
+            this.objectTButton.CheckOnClick = true;
+            this.objectTButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.objectTButton.Image = ((System.Drawing.Image)(resources.GetObject("objectTButton.Image")));
+            this.objectTButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.objectTButton.Name = "objectTButton";
+            this.objectTButton.Size = new System.Drawing.Size(23, 22);
+            this.objectTButton.Text = "Object Mode";
+            this.objectTButton.Click += new System.EventHandler(this.bg1TButton_Click);
             // 
-            // label20
+            // blockTButton
             // 
-            this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(291, 34);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(94, 13);
-            this.label20.TabIndex = 10;
-            this.label20.Text = "(Not displayed yet)";
+            this.blockTButton.CheckOnClick = true;
+            this.blockTButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.blockTButton.Image = ((System.Drawing.Image)(resources.GetObject("blockTButton.Image")));
+            this.blockTButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.blockTButton.Name = "blockTButton";
+            this.blockTButton.Size = new System.Drawing.Size(23, 22);
+            this.blockTButton.Text = "Block Mode";
+            this.blockTButton.Click += new System.EventHandler(this.bg1TButton_Click);
             // 
-            // sprParamTextbox
+            // transitionsTButton
             // 
-            this.sprParamTextbox.Location = new System.Drawing.Point(259, 31);
-            this.sprParamTextbox.Name = "sprParamTextbox";
-            this.sprParamTextbox.Size = new System.Drawing.Size(26, 20);
-            this.sprParamTextbox.TabIndex = 8;
-            this.sprParamTextbox.TextChanged += new System.EventHandler(this.sprParamTextbox_TextChanged);
+            this.transitionsTButton.CheckOnClick = true;
+            this.transitionsTButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.transitionsTButton.Image = ((System.Drawing.Image)(resources.GetObject("transitionsTButton.Image")));
+            this.transitionsTButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.transitionsTButton.Name = "transitionsTButton";
+            this.transitionsTButton.Size = new System.Drawing.Size(23, 22);
+            this.transitionsTButton.Text = "Transition Mode";
+            this.transitionsTButton.Click += new System.EventHandler(this.bg1TButton_Click);
             // 
-            // label13
+            // hooksTButton
             // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(129, 34);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(124, 13);
-            this.label13.TabIndex = 7;
-            this.label13.Text = "Sprite Param (Direction) :";
+            this.hooksTButton.CheckOnClick = true;
+            this.hooksTButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.hooksTButton.Image = ((System.Drawing.Image)(resources.GetObject("hooksTButton.Image")));
+            this.hooksTButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.hooksTButton.Name = "hooksTButton";
+            this.hooksTButton.Size = new System.Drawing.Size(23, 22);
+            this.hooksTButton.Text = "Hooks Mode";
+            this.hooksTButton.Click += new System.EventHandler(this.bg1TButton_Click);
             // 
-            // sprSubtypeTextbox
+            // doorTButton
             // 
-            this.sprSubtypeTextbox.Location = new System.Drawing.Point(97, 31);
-            this.sprSubtypeTextbox.Name = "sprSubtypeTextbox";
-            this.sprSubtypeTextbox.Size = new System.Drawing.Size(26, 20);
-            this.sprSubtypeTextbox.TabIndex = 6;
-            this.sprSubtypeTextbox.TextChanged += new System.EventHandler(this.sprSubtypeTextbox_TextChanged);
+            this.doorTButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.doorTButton.Image = ((System.Drawing.Image)(resources.GetObject("doorTButton.Image")));
+            this.doorTButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.doorTButton.Name = "doorTButton";
+            this.doorTButton.Size = new System.Drawing.Size(23, 22);
+            this.doorTButton.Text = "Door Mode";
+            this.doorTButton.Click += new System.EventHandler(this.bg1TButton_Click);
             // 
-            // label12
+            // enemydoorTButton
             // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(3, 34);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(82, 13);
-            this.label12.TabIndex = 5;
-            this.label12.Text = "Sprite Subtype :";
+            this.enemydoorTButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.enemydoorTButton.Image = ((System.Drawing.Image)(resources.GetObject("enemydoorTButton.Image")));
+            this.enemydoorTButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.enemydoorTButton.Name = "enemydoorTButton";
+            this.enemydoorTButton.Size = new System.Drawing.Size(23, 22);
+            this.enemydoorTButton.Text = "Enemy Door Mode";
+            this.enemydoorTButton.Click += new System.EventHandler(this.bg1TButton_Click);
             // 
-            // label11
+            // plankTButton
             // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(2, 7);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(85, 13);
-            this.label11.TabIndex = 4;
-            this.label11.Text = "Selected Sprite :";
+            this.plankTButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.plankTButton.Image = ((System.Drawing.Image)(resources.GetObject("plankTButton.Image")));
+            this.plankTButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.plankTButton.Name = "plankTButton";
+            this.plankTButton.Size = new System.Drawing.Size(23, 22);
+            this.plankTButton.Text = "Plank Mode (Still need to be recoded limited to 3-4 planks)";
+            this.plankTButton.Click += new System.EventHandler(this.bg1TButton_Click);
             // 
-            // selectedSpriteCombobox
+            // palTButton
             // 
-            this.selectedSpriteCombobox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.selectedSpriteCombobox.FormattingEnabled = true;
-            this.selectedSpriteCombobox.Items.AddRange(new object[] {
-            "0x00 Edgehog",
-            "0x02 Bee",
-            "0x04 Floor Spikes (Collsion Only)",
-            "0x06 Snake",
-            "0x08 Ghost",
-            "0x0A Bat",
-            "0x0C Pirates type is defined by subtype",
-            "0x0E Islander message defined by subtype",
-            "0x10 Alive Armor",
-            "0x12 Small Cannon ball",
-            "0x14 Big cannon ball following a path in the room",
-            "0x16 Rolling pin spikes in level2",
-            "0x18 Moving spike up & down",
-            "0x1A Frog",
-            "0x1C Fireball ",
-            "0x1E Unused??? Wall spike or something",
-            "0x20 Small canon on last level",
-            "0x22 Canon",
-            "0x24 LEVEL 4 Boss",
-            "0x26 LEVEL 3 BOSS (subtype 00 for red, subtype 02 for blue)",
-            "0x28 Pirate Boss LEVEL1 Boss",
-            "0x2A Switches",
-            "0x2C Breakable Wall, Bridge",
-            "0x2E Boss LEVEL 2",
-            "0x30 Flamethrower projecile (red big pirate)",
-            "0x32 Switch triggering bridge on level3?",
-            "0x34 Wall Switch",
-            "0x36 pirates throwing barrels in BOSS LEVEL2",
-            "0x38 Moving rail platform",
-            "0x3A Final Boss PETE",
-            "0x3C Pete Intro",
-            "0x3E Pirate sword projectile",
-            "0x40 Bouncing Rocks",
-            "0x42 Order Switch",
-            "0x44 Timed Switch ",
-            "0x46 Moving wooden platform up & down",
-            "0x48 moving platform with 9 arrows",
-            "0x4A Destroyable tile",
-            "0x4C Minecart",
-            "0x4E Pete something?",
-            "0x50 Actual Fish",
-            "0x52 Rotating Canon with buttons",
-            "0x54 Pirate Flag!"});
-            this.selectedSpriteCombobox.Location = new System.Drawing.Point(97, 4);
-            this.selectedSpriteCombobox.Name = "selectedSpriteCombobox";
-            this.selectedSpriteCombobox.Size = new System.Drawing.Size(238, 21);
-            this.selectedSpriteCombobox.TabIndex = 3;
-            this.selectedSpriteCombobox.SelectedIndexChanged += new System.EventHandler(this.selectedSpriteCombobox_SelectedIndexChanged);
+            this.palTButton.CheckOnClick = true;
+            this.palTButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.palTButton.Enabled = false;
+            this.palTButton.Image = ((System.Drawing.Image)(resources.GetObject("palTButton.Image")));
+            this.palTButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.palTButton.Name = "palTButton";
+            this.palTButton.Size = new System.Drawing.Size(23, 22);
+            this.palTButton.Text = "Palette Mode";
+            this.palTButton.Visible = false;
+            this.palTButton.Click += new System.EventHandler(this.bg1TButton_Click);
             // 
-            // itemPanel
+            // toolStripSeparator1
             // 
-            this.itemPanel.Controls.Add(this.itemsubtypeTextbox);
-            this.itemPanel.Controls.Add(this.label37);
-            this.itemPanel.Controls.Add(this.selectedItemCombobox);
-            this.itemPanel.Controls.Add(this.label8);
-            this.itemPanel.Location = new System.Drawing.Point(3, 94);
-            this.itemPanel.Name = "itemPanel";
-            this.itemPanel.Size = new System.Drawing.Size(512, 64);
-            this.itemPanel.TabIndex = 27;
-            this.itemPanel.Visible = false;
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
             // 
-            // itemsubtypeTextbox
+            // playtestTButton
             // 
-            this.itemsubtypeTextbox.Enabled = false;
-            this.itemsubtypeTextbox.Location = new System.Drawing.Point(97, 27);
-            this.itemsubtypeTextbox.Name = "itemsubtypeTextbox";
-            this.itemsubtypeTextbox.Size = new System.Drawing.Size(26, 20);
-            this.itemsubtypeTextbox.TabIndex = 8;
-            this.itemsubtypeTextbox.TextChanged += new System.EventHandler(this.itemsubtypeTextbox_TextChanged);
+            this.playtestTButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.playtestTButton.Image = ((System.Drawing.Image)(resources.GetObject("playtestTButton.Image")));
+            this.playtestTButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.playtestTButton.Name = "playtestTButton";
+            this.playtestTButton.Size = new System.Drawing.Size(23, 22);
+            this.playtestTButton.Text = "Playtest";
+            this.playtestTButton.Click += new System.EventHandler(this.playtestTButton_Click);
             // 
-            // label37
+            // playdebugTbutton
             // 
-            this.label37.AutoSize = true;
-            this.label37.Location = new System.Drawing.Point(3, 30);
-            this.label37.Name = "label37";
-            this.label37.Size = new System.Drawing.Size(75, 13);
-            this.label37.TabIndex = 7;
-            this.label37.Text = "Item Subtype :";
+            this.playdebugTbutton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.playdebugTbutton.Image = ((System.Drawing.Image)(resources.GetObject("playdebugTbutton.Image")));
+            this.playdebugTbutton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.playdebugTbutton.Name = "playdebugTbutton";
+            this.playdebugTbutton.Size = new System.Drawing.Size(23, 22);
+            this.playdebugTbutton.Text = "Playtest Debug";
+            this.playdebugTbutton.Click += new System.EventHandler(this.playdebugTbutton_Click);
             // 
-            // selectedItemCombobox
+            // demorecorderTButton
             // 
-            this.selectedItemCombobox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.selectedItemCombobox.FormattingEnabled = true;
-            this.selectedItemCombobox.Items.AddRange(new object[] {
-            "0x08 Hookshot",
-            "0x09 Candle",
-            "0x0A Small Key",
-            "0x0B Big Key",
-            "0x0C Shovel",
-            "0x0D Bell",
-            "0x0E Plank",
-            "0x40 Cherry",
-            "0x42 Banana",
-            "0x44 Red Gem",
-            "0x46 Blue Gem",
-            "0x60 Canon Ball Shooter",
-            "0x62 Canon Ball Following Path",
-            "0x64 Bouncing Boulder",
-            "0x66 Jumping Fishes",
-            "0x68 Barrel Conveyor"});
-            this.selectedItemCombobox.Location = new System.Drawing.Point(97, 0);
-            this.selectedItemCombobox.Name = "selectedItemCombobox";
-            this.selectedItemCombobox.Size = new System.Drawing.Size(240, 21);
-            this.selectedItemCombobox.TabIndex = 1;
-            this.selectedItemCombobox.SelectedIndexChanged += new System.EventHandler(this.selectedItemCombobox_SelectedIndexChanged);
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(3, 3);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(81, 13);
-            this.label8.TabIndex = 0;
-            this.label8.Text = "Selected Item : ";
-            // 
-            // objectPanel
-            // 
-            this.objectPanel.Controls.Add(this.label9);
-            this.objectPanel.Controls.Add(this.selectedobjectCombobox);
-            this.objectPanel.Location = new System.Drawing.Point(3, 160);
-            this.objectPanel.Name = "objectPanel";
-            this.objectPanel.Size = new System.Drawing.Size(512, 64);
-            this.objectPanel.TabIndex = 27;
-            this.objectPanel.Visible = false;
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(0, 7);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(89, 13);
-            this.label9.TabIndex = 2;
-            this.label9.Text = "Selected Object :";
-            // 
-            // selectedobjectCombobox
-            // 
-            this.selectedobjectCombobox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.selectedobjectCombobox.FormattingEnabled = true;
-            this.selectedobjectCombobox.Items.AddRange(new object[] {
-            "0x00 Barrel",
-            "0x02 Pot",
-            "0x04 Egg",
-            "0x06 Sign",
-            "0x08 Plant",
-            "0x0A Bomb",
-            "0x0C Log",
-            "0x0E Fence",
-            "0x10 Ice",
-            "0x12 Shell",
-            "0x14 Plates",
-            "0x16 Rock",
-            "0x18 Nut",
-            "0x1A Star Block",
-            "0x1C Bomb Block Green",
-            "0x1E Bomb Block Yellow",
-            "0x20 Bomb Block Red",
-            "0x22 Bomb Block Black"});
-            this.selectedobjectCombobox.Location = new System.Drawing.Point(97, 3);
-            this.selectedobjectCombobox.Name = "selectedobjectCombobox";
-            this.selectedobjectCombobox.Size = new System.Drawing.Size(240, 21);
-            this.selectedobjectCombobox.TabIndex = 0;
-            this.selectedobjectCombobox.SelectedIndexChanged += new System.EventHandler(this.selectedobjectCombobox_SelectedIndexChanged);
+            this.demorecorderTButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.demorecorderTButton.Enabled = false;
+            this.demorecorderTButton.Image = ((System.Drawing.Image)(resources.GetObject("demorecorderTButton.Image")));
+            this.demorecorderTButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.demorecorderTButton.Name = "demorecorderTButton";
+            this.demorecorderTButton.Size = new System.Drawing.Size(23, 22);
+            this.demorecorderTButton.Text = "Record Demo Level";
+            this.demorecorderTButton.Click += new System.EventHandler(this.demorecorderTButton_Click);
             // 
             // mapPanel
             // 
@@ -1292,7 +1252,7 @@ namespace GoofED
             this.mapPanel.Dock = System.Windows.Forms.DockStyle.Top;
             this.mapPanel.Location = new System.Drawing.Point(3, 16);
             this.mapPanel.Name = "mapPanel";
-            this.mapPanel.Size = new System.Drawing.Size(520, 47);
+            this.mapPanel.Size = new System.Drawing.Size(529, 47);
             this.mapPanel.TabIndex = 25;
             // 
             // animatedpalTextbox
@@ -1409,19 +1369,120 @@ namespace GoofED
             this.spritesetLabel.TabIndex = 21;
             this.spritesetLabel.Text = "- 06 02 0A";
             // 
-            // mainPicturebox
+            // levelpropertyPanel
             // 
-            this.mainPicturebox.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.mainPicturebox.Location = new System.Drawing.Point(6, 94);
-            this.mainPicturebox.Name = "mainPicturebox";
-            this.mainPicturebox.Size = new System.Drawing.Size(512, 448);
-            this.mainPicturebox.TabIndex = 0;
-            this.mainPicturebox.TabStop = false;
-            this.mainPicturebox.Paint += new System.Windows.Forms.PaintEventHandler(this.mainPicturebox_Paint);
-            this.mainPicturebox.DoubleClick += new System.EventHandler(this.mainPicturebox_DoubleClick);
-            this.mainPicturebox.MouseDown += new System.Windows.Forms.MouseEventHandler(this.mainPicturebox_MouseDown);
-            this.mainPicturebox.MouseMove += new System.Windows.Forms.MouseEventHandler(this.mainPicturebox_MouseMove);
-            this.mainPicturebox.MouseUp += new System.Windows.Forms.MouseEventHandler(this.mainPicturebox_MouseUp);
+            this.levelpropertyPanel.Controls.Add(this.levelsongCombobox);
+            this.levelpropertyPanel.Controls.Add(this.label3);
+            this.levelpropertyPanel.Controls.Add(this.selectedMapTextbox);
+            this.levelpropertyPanel.Controls.Add(this.label5);
+            this.levelpropertyPanel.Controls.Add(this.label4);
+            this.levelpropertyPanel.Controls.Add(this.levelGfx1Textbox);
+            this.levelpropertyPanel.Controls.Add(this.levelGfx2Textbox);
+            this.levelpropertyPanel.Dock = System.Windows.Forms.DockStyle.Top;
+            this.levelpropertyPanel.Location = new System.Drawing.Point(3, 16);
+            this.levelpropertyPanel.Name = "levelpropertyPanel";
+            this.levelpropertyPanel.Size = new System.Drawing.Size(535, 33);
+            this.levelpropertyPanel.TabIndex = 12;
+            // 
+            // levelsongCombobox
+            // 
+            this.levelsongCombobox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.levelsongCombobox.FormattingEnabled = true;
+            this.levelsongCombobox.Items.AddRange(new object[] {
+            "0x00 Staff Roll",
+            "0x01 Staff Roll",
+            "0x02 Staff Roll",
+            "0x03 Staff Roll",
+            "0x04 Staff Roll",
+            "0x05 Staff Roll",
+            "0x06 Staff Roll",
+            "0x07 Staff Roll",
+            "0x08 Staff Roll",
+            "0x09 Staff Roll",
+            "0x0A Staff Roll",
+            "0x0B Staff Roll",
+            "0x0C Staff Roll",
+            "0x0D Staff Roll",
+            "0x0E Staff Roll",
+            "0x0F Staff Roll",
+            "0x10 Capcom",
+            "0x11 To the south",
+            "0x12 Illusion",
+            "0x13 Lose my way",
+            "0x14 Sea Robbber",
+            "0x15 Let\'s Start",
+            "0x16 Break",
+            "0x17 Map",
+            "0x18 Go On?",
+            "0x19 The End",
+            "0x1A Goofy or Max?",
+            "0x1B Fight Fight!",
+            "0x1C Satisfied!",
+            "0x1D Flashback",
+            "0x1E Hamlet",
+            "0x1F Fight a Battle",
+            "0x20 Staff Roll",
+            "0x21 Game Over",
+            "0x22 Rest"});
+            this.levelsongCombobox.Location = new System.Drawing.Point(395, 6);
+            this.levelsongCombobox.Name = "levelsongCombobox";
+            this.levelsongCombobox.Size = new System.Drawing.Size(135, 21);
+            this.levelsongCombobox.TabIndex = 13;
+            this.levelsongCombobox.SelectedIndexChanged += new System.EventHandler(this.levelGfx1Textbox_TextChanged);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(6, 10);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(82, 13);
+            this.label3.TabIndex = 1;
+            this.label3.Text = "Selected Map : ";
+            // 
+            // selectedMapTextbox
+            // 
+            this.selectedMapTextbox.Location = new System.Drawing.Point(94, 7);
+            this.selectedMapTextbox.Name = "selectedMapTextbox";
+            this.selectedMapTextbox.Size = new System.Drawing.Size(24, 20);
+            this.selectedMapTextbox.TabIndex = 12;
+            this.selectedMapTextbox.Text = "00";
+            this.selectedMapTextbox.TextChanged += new System.EventHandler(this.selectedMapTextbox_TextChanged);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(319, 9);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(70, 13);
+            this.label5.TabIndex = 16;
+            this.label5.Text = "Level Song : ";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(177, 9);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(76, 13);
+            this.label4.TabIndex = 13;
+            this.label4.Text = "Blockset Gfx : ";
+            // 
+            // levelGfx1Textbox
+            // 
+            this.levelGfx1Textbox.Location = new System.Drawing.Point(259, 7);
+            this.levelGfx1Textbox.Name = "levelGfx1Textbox";
+            this.levelGfx1Textbox.Size = new System.Drawing.Size(24, 20);
+            this.levelGfx1Textbox.TabIndex = 14;
+            this.levelGfx1Textbox.Text = "00";
+            this.levelGfx1Textbox.TextChanged += new System.EventHandler(this.levelGfx1Textbox_TextChanged);
+            // 
+            // levelGfx2Textbox
+            // 
+            this.levelGfx2Textbox.Location = new System.Drawing.Point(289, 7);
+            this.levelGfx2Textbox.Name = "levelGfx2Textbox";
+            this.levelGfx2Textbox.Size = new System.Drawing.Size(24, 20);
+            this.levelGfx2Textbox.TabIndex = 15;
+            this.levelGfx2Textbox.Text = "00";
+            this.levelGfx2Textbox.TextChanged += new System.EventHandler(this.levelGfx1Textbox_TextChanged);
             // 
             // levelCombobox
             // 
@@ -1434,7 +1495,7 @@ namespace GoofED
             "0x02 Castle",
             "0x03 Cavern",
             "0x04 Ship"});
-            this.levelCombobox.Location = new System.Drawing.Point(112, 30);
+            this.levelCombobox.Location = new System.Drawing.Point(97, 7);
             this.levelCombobox.Name = "levelCombobox";
             this.levelCombobox.Size = new System.Drawing.Size(135, 21);
             this.levelCombobox.TabIndex = 11;
@@ -1443,7 +1504,7 @@ namespace GoofED
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 33);
+            this.label2.Location = new System.Drawing.Point(4, 10);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(87, 13);
             this.label2.TabIndex = 12;
@@ -1457,14 +1518,14 @@ namespace GoofED
             this.tilePanel.Enabled = false;
             this.tilePanel.Location = new System.Drawing.Point(0, 15);
             this.tilePanel.Name = "tilePanel";
-            this.tilePanel.Size = new System.Drawing.Size(278, 713);
+            this.tilePanel.Size = new System.Drawing.Size(278, 902);
             this.tilePanel.TabIndex = 13;
             // 
             // tiles16Picturebox
             // 
             this.tiles16Picturebox.Location = new System.Drawing.Point(0, 1);
             this.tiles16Picturebox.Name = "tiles16Picturebox";
-            this.tiles16Picturebox.Size = new System.Drawing.Size(256, 12544);
+            this.tiles16Picturebox.Size = new System.Drawing.Size(256, 15360);
             this.tiles16Picturebox.TabIndex = 10;
             this.tiles16Picturebox.TabStop = false;
             this.tiles16Picturebox.Paint += new System.Windows.Forms.PaintEventHandler(this.tiles16Picturebox_Paint);
@@ -1478,7 +1539,7 @@ namespace GoofED
             // debugCheckbox
             // 
             this.debugCheckbox.AutoSize = true;
-            this.debugCheckbox.Location = new System.Drawing.Point(466, 45);
+            this.debugCheckbox.Location = new System.Drawing.Point(451, 22);
             this.debugCheckbox.Name = "debugCheckbox";
             this.debugCheckbox.Size = new System.Drawing.Size(88, 17);
             this.debugCheckbox.TabIndex = 15;
@@ -1498,7 +1559,7 @@ namespace GoofED
             this.aboutToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1409, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(1391, 24);
             this.menuStrip1.TabIndex = 16;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -1563,7 +1624,7 @@ namespace GoofED
             // 
             this.undoToolStripMenuItem.Name = "undoToolStripMenuItem";
             this.undoToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Z)));
-            this.undoToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
+            this.undoToolStripMenuItem.Size = new System.Drawing.Size(179, 22);
             this.undoToolStripMenuItem.Text = "Undo (Tiles)";
             this.undoToolStripMenuItem.Click += new System.EventHandler(this.undoToolStripMenuItem_Click);
             // 
@@ -1571,7 +1632,7 @@ namespace GoofED
             // 
             this.redoToolStripMenuItem.Name = "redoToolStripMenuItem";
             this.redoToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Y)));
-            this.redoToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
+            this.redoToolStripMenuItem.Size = new System.Drawing.Size(179, 22);
             this.redoToolStripMenuItem.Text = "Redo (Tiles)";
             this.redoToolStripMenuItem.Click += new System.EventHandler(this.redoToolStripMenuItem_Click);
             // 
@@ -1579,7 +1640,7 @@ namespace GoofED
             // 
             this.copyToolStripMenuItem.Name = "copyToolStripMenuItem";
             this.copyToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.C)));
-            this.copyToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
+            this.copyToolStripMenuItem.Size = new System.Drawing.Size(179, 22);
             this.copyToolStripMenuItem.Text = "Copy";
             this.copyToolStripMenuItem.Click += new System.EventHandler(this.copyToolStripMenuItem_Click);
             // 
@@ -1587,7 +1648,7 @@ namespace GoofED
             // 
             this.cutToolStripMenuItem.Name = "cutToolStripMenuItem";
             this.cutToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.X)));
-            this.cutToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
+            this.cutToolStripMenuItem.Size = new System.Drawing.Size(179, 22);
             this.cutToolStripMenuItem.Text = "Cut";
             this.cutToolStripMenuItem.Click += new System.EventHandler(this.cutToolStripMenuItem_Click);
             // 
@@ -1595,7 +1656,7 @@ namespace GoofED
             // 
             this.pasteToolStripMenuItem.Name = "pasteToolStripMenuItem";
             this.pasteToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.V)));
-            this.pasteToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
+            this.pasteToolStripMenuItem.Size = new System.Drawing.Size(179, 22);
             this.pasteToolStripMenuItem.Text = "Paste";
             this.pasteToolStripMenuItem.Click += new System.EventHandler(this.pasteToolStripMenuItem_Click);
             // 
@@ -1603,7 +1664,7 @@ namespace GoofED
             // 
             this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
             this.deleteToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.Delete;
-            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
+            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(179, 22);
             this.deleteToolStripMenuItem.Text = "Delete";
             this.deleteToolStripMenuItem.Click += new System.EventHandler(this.deleteToolStripMenuItem_Click);
             // 
@@ -1617,7 +1678,7 @@ namespace GoofED
             this.musicViewerToolStripMenuItem});
             this.toolsToolStripMenuItem.Enabled = false;
             this.toolsToolStripMenuItem.Name = "toolsToolStripMenuItem";
-            this.toolsToolStripMenuItem.Size = new System.Drawing.Size(46, 20);
+            this.toolsToolStripMenuItem.Size = new System.Drawing.Size(47, 20);
             this.toolsToolStripMenuItem.Text = "Tools";
             // 
             // textEditorToolStripMenuItem
@@ -1648,13 +1709,21 @@ namespace GoofED
             this.creditsEditorToolStripMenuItem.Text = "Credits Editor";
             this.creditsEditorToolStripMenuItem.Click += new System.EventHandler(this.creditsEditorToolStripMenuItem_Click);
             // 
+            // musicViewerToolStripMenuItem
+            // 
+            this.musicViewerToolStripMenuItem.Name = "musicViewerToolStripMenuItem";
+            this.musicViewerToolStripMenuItem.Size = new System.Drawing.Size(158, 22);
+            this.musicViewerToolStripMenuItem.Text = "Music Viewer";
+            this.musicViewerToolStripMenuItem.Click += new System.EventHandler(this.musicViewerToolStripMenuItem_Click);
+            // 
             // graphicsToolStripMenuItem
             // 
             this.graphicsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.exportAllToolStripMenuItem,
             this.importAllToolStripMenuItem,
             this.saveScratchpadToolStripMenuItem,
-            this.loadScratchpadToolStripMenuItem});
+            this.loadScratchpadToolStripMenuItem,
+            this.gfxEditornewToolStripMenuItem});
             this.graphicsToolStripMenuItem.Enabled = false;
             this.graphicsToolStripMenuItem.Name = "graphicsToolStripMenuItem";
             this.graphicsToolStripMenuItem.Size = new System.Drawing.Size(65, 20);
@@ -1687,6 +1756,14 @@ namespace GoofED
             this.loadScratchpadToolStripMenuItem.Size = new System.Drawing.Size(162, 22);
             this.loadScratchpadToolStripMenuItem.Text = "Load Scratchpad";
             this.loadScratchpadToolStripMenuItem.Click += new System.EventHandler(this.loadScratchpadToolStripMenuItem_Click);
+            // 
+            // gfxEditornewToolStripMenuItem
+            // 
+            this.gfxEditornewToolStripMenuItem.Name = "gfxEditornewToolStripMenuItem";
+            this.gfxEditornewToolStripMenuItem.Size = new System.Drawing.Size(162, 22);
+            this.gfxEditornewToolStripMenuItem.Text = "Gfx Editor (new)";
+            this.gfxEditornewToolStripMenuItem.Visible = false;
+            this.gfxEditornewToolStripMenuItem.Click += new System.EventHandler(this.gfxEditornewToolStripMenuItem_Click);
             // 
             // aSMToolStripMenuItem
             // 
@@ -1725,7 +1802,9 @@ namespace GoofED
             this.viewToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.darkThemeToolStripMenuItem,
             this.animatedPaletteToolStripMenuItem,
-            this.showScratchpadToolStripMenuItem});
+            this.showScratchpadToolStripMenuItem,
+            this.zoomIncreaseToolStripMenuItem,
+            this.zoomDecreaseToolStripMenuItem});
             this.viewToolStripMenuItem.Enabled = false;
             this.viewToolStripMenuItem.Name = "viewToolStripMenuItem";
             this.viewToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
@@ -1767,7 +1846,7 @@ namespace GoofED
             // lock8x8Checkbox
             // 
             this.lock8x8Checkbox.AutoSize = true;
-            this.lock8x8Checkbox.Location = new System.Drawing.Point(466, 27);
+            this.lock8x8Checkbox.Location = new System.Drawing.Point(451, 4);
             this.lock8x8Checkbox.Name = "lock8x8Checkbox";
             this.lock8x8Checkbox.Size = new System.Drawing.Size(66, 17);
             this.lock8x8Checkbox.TabIndex = 17;
@@ -1795,14 +1874,14 @@ namespace GoofED
             this.scratchpadPanel.Enabled = false;
             this.scratchpadPanel.Location = new System.Drawing.Point(278, 15);
             this.scratchpadPanel.Name = "scratchpadPanel";
-            this.scratchpadPanel.Size = new System.Drawing.Size(278, 713);
+            this.scratchpadPanel.Size = new System.Drawing.Size(278, 902);
             this.scratchpadPanel.TabIndex = 26;
             // 
             // scratchpadPicturebox
             // 
             this.scratchpadPicturebox.Location = new System.Drawing.Point(3, 3);
             this.scratchpadPicturebox.Name = "scratchpadPicturebox";
-            this.scratchpadPicturebox.Size = new System.Drawing.Size(256, 12554);
+            this.scratchpadPicturebox.Size = new System.Drawing.Size(256, 15360);
             this.scratchpadPicturebox.TabIndex = 11;
             this.scratchpadPicturebox.TabStop = false;
             this.scratchpadPicturebox.Paint += new System.Windows.Forms.PaintEventHandler(this.scratchpadPicturebox_Paint);
@@ -1952,7 +2031,7 @@ namespace GoofED
             // label32
             // 
             this.label32.AutoSize = true;
-            this.label32.Location = new System.Drawing.Point(6, 154);
+            this.label32.Location = new System.Drawing.Point(7, 141);
             this.label32.Name = "label32";
             this.label32.Size = new System.Drawing.Size(131, 39);
             this.label32.TabIndex = 40;
@@ -1960,15 +2039,14 @@ namespace GoofED
             // 
             // panel1
             // 
-            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
             this.panel1.Controls.Add(this.panel4);
             this.panel1.Controls.Add(this.scratchpadPanel);
             this.panel1.Controls.Add(this.tilePanel);
             this.panel1.Controls.Add(this.panel2);
-            this.panel1.Location = new System.Drawing.Point(560, 27);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel1.Location = new System.Drawing.Point(541, 24);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(849, 728);
+            this.panel1.Size = new System.Drawing.Size(850, 917);
             this.panel1.TabIndex = 41;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
@@ -1979,11 +2057,14 @@ namespace GoofED
             this.panel4.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel4.Location = new System.Drawing.Point(556, 15);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(281, 713);
+            this.panel4.Size = new System.Drawing.Size(281, 902);
             this.panel4.TabIndex = 42;
             // 
             // panel3
             // 
+            this.panel3.Controls.Add(this.numericUpDown1);
+            this.panel3.Controls.Add(this.label31);
+            this.panel3.Controls.Add(this.button2);
             this.panel3.Controls.Add(this.label28);
             this.panel3.Controls.Add(this.label32);
             this.panel3.Controls.Add(this.palettePicturebox);
@@ -1997,8 +2078,49 @@ namespace GoofED
             this.panel3.Controls.Add(this.editing16myCheckbox);
             this.panel3.Location = new System.Drawing.Point(3, 485);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(278, 215);
+            this.panel3.Size = new System.Drawing.Size(278, 254);
             this.panel3.TabIndex = 32;
+            // 
+            // numericUpDown1
+            // 
+            this.numericUpDown1.Location = new System.Drawing.Point(82, 206);
+            this.numericUpDown1.Maximum = new decimal(new int[] {
+            16,
+            0,
+            0,
+            0});
+            this.numericUpDown1.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numericUpDown1.Name = "numericUpDown1";
+            this.numericUpDown1.Size = new System.Drawing.Size(56, 20);
+            this.numericUpDown1.TabIndex = 43;
+            this.numericUpDown1.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
+            // label31
+            // 
+            this.label31.AutoSize = true;
+            this.label31.Location = new System.Drawing.Point(7, 209);
+            this.label31.Name = "label31";
+            this.label31.Size = new System.Drawing.Size(69, 13);
+            this.label31.TabIndex = 42;
+            this.label31.Text = "Nbr of tiles16";
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(6, 183);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(132, 23);
+            this.button2.TabIndex = 41;
+            this.button2.Text = "Copy tile8 to tile16";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // palettePicturebox
             // 
@@ -2030,7 +2152,7 @@ namespace GoofED
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(849, 15);
+            this.panel2.Size = new System.Drawing.Size(850, 15);
             this.panel2.TabIndex = 28;
             // 
             // transitionvisibleButton
@@ -2040,7 +2162,7 @@ namespace GoofED
             this.transitionvisibleButton.Checked = true;
             this.transitionvisibleButton.CheckState = System.Windows.Forms.CheckState.Checked;
             this.transitionvisibleButton.Image = global::GoofTroopEditor.Properties.Resources.trabtn;
-            this.transitionvisibleButton.Location = new System.Drawing.Point(374, 30);
+            this.transitionvisibleButton.Location = new System.Drawing.Point(359, 7);
             this.transitionvisibleButton.Name = "transitionvisibleButton";
             this.transitionvisibleButton.Size = new System.Drawing.Size(22, 22);
             this.transitionvisibleButton.TabIndex = 24;
@@ -2054,7 +2176,7 @@ namespace GoofED
             this.objvisibleButton.Checked = true;
             this.objvisibleButton.CheckState = System.Windows.Forms.CheckState.Checked;
             this.objvisibleButton.Image = global::GoofTroopEditor.Properties.Resources.objbtn;
-            this.objvisibleButton.Location = new System.Drawing.Point(350, 30);
+            this.objvisibleButton.Location = new System.Drawing.Point(335, 7);
             this.objvisibleButton.Name = "objvisibleButton";
             this.objvisibleButton.Size = new System.Drawing.Size(22, 22);
             this.objvisibleButton.TabIndex = 23;
@@ -2068,7 +2190,7 @@ namespace GoofED
             this.itemvisibleButton.Checked = true;
             this.itemvisibleButton.CheckState = System.Windows.Forms.CheckState.Checked;
             this.itemvisibleButton.Image = global::GoofTroopEditor.Properties.Resources.itmbtn;
-            this.itemvisibleButton.Location = new System.Drawing.Point(326, 30);
+            this.itemvisibleButton.Location = new System.Drawing.Point(311, 7);
             this.itemvisibleButton.Name = "itemvisibleButton";
             this.itemvisibleButton.Size = new System.Drawing.Size(22, 22);
             this.itemvisibleButton.TabIndex = 22;
@@ -2082,7 +2204,7 @@ namespace GoofED
             this.sprvisibleButton.Checked = true;
             this.sprvisibleButton.CheckState = System.Windows.Forms.CheckState.Checked;
             this.sprvisibleButton.Image = global::GoofTroopEditor.Properties.Resources.sprbtn;
-            this.sprvisibleButton.Location = new System.Drawing.Point(302, 30);
+            this.sprvisibleButton.Location = new System.Drawing.Point(287, 7);
             this.sprvisibleButton.Name = "sprvisibleButton";
             this.sprvisibleButton.Size = new System.Drawing.Size(22, 22);
             this.sprvisibleButton.TabIndex = 21;
@@ -2096,7 +2218,7 @@ namespace GoofED
             this.bg2visibleButton.Checked = true;
             this.bg2visibleButton.CheckState = System.Windows.Forms.CheckState.Checked;
             this.bg2visibleButton.Image = global::GoofTroopEditor.Properties.Resources.bg1;
-            this.bg2visibleButton.Location = new System.Drawing.Point(277, 30);
+            this.bg2visibleButton.Location = new System.Drawing.Point(262, 7);
             this.bg2visibleButton.Name = "bg2visibleButton";
             this.bg2visibleButton.Size = new System.Drawing.Size(22, 22);
             this.bg2visibleButton.TabIndex = 20;
@@ -2110,76 +2232,106 @@ namespace GoofED
             this.bg1visibleButton.Checked = true;
             this.bg1visibleButton.CheckState = System.Windows.Forms.CheckState.Checked;
             this.bg1visibleButton.Image = global::GoofTroopEditor.Properties.Resources.bg2;
-            this.bg1visibleButton.Location = new System.Drawing.Point(252, 30);
+            this.bg1visibleButton.Location = new System.Drawing.Point(237, 7);
             this.bg1visibleButton.Name = "bg1visibleButton";
             this.bg1visibleButton.Size = new System.Drawing.Size(22, 22);
             this.bg1visibleButton.TabIndex = 19;
             this.bg1visibleButton.UseVisualStyleBackColor = true;
             this.bg1visibleButton.Click += new System.EventHandler(this.transitionvisibleVutton_Click);
             // 
-            // musicViewerToolStripMenuItem
+            // mainPanel
             // 
-            this.musicViewerToolStripMenuItem.Name = "musicViewerToolStripMenuItem";
-            this.musicViewerToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.musicViewerToolStripMenuItem.Text = "Music Viewer";
-            this.musicViewerToolStripMenuItem.Click += new System.EventHandler(this.musicViewerToolStripMenuItem_Click);
+            this.mainPanel.Controls.Add(this.groupBox1);
+            this.mainPanel.Controls.Add(this.panel5);
+            this.mainPanel.Dock = System.Windows.Forms.DockStyle.Left;
+            this.mainPanel.Location = new System.Drawing.Point(0, 24);
+            this.mainPanel.Name = "mainPanel";
+            this.mainPanel.Size = new System.Drawing.Size(541, 917);
+            this.mainPanel.TabIndex = 42;
+            // 
+            // panel5
+            // 
+            this.panel5.Controls.Add(this.label2);
+            this.panel5.Controls.Add(this.levelCombobox);
+            this.panel5.Controls.Add(this.debugCheckbox);
+            this.panel5.Controls.Add(this.transitionvisibleButton);
+            this.panel5.Controls.Add(this.lock8x8Checkbox);
+            this.panel5.Controls.Add(this.objvisibleButton);
+            this.panel5.Controls.Add(this.bg1visibleButton);
+            this.panel5.Controls.Add(this.itemvisibleButton);
+            this.panel5.Controls.Add(this.bg2visibleButton);
+            this.panel5.Controls.Add(this.sprvisibleButton);
+            this.panel5.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel5.Location = new System.Drawing.Point(0, 0);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(541, 44);
+            this.panel5.TabIndex = 0;
+            // 
+            // zoomIncreaseToolStripMenuItem
+            // 
+            this.zoomIncreaseToolStripMenuItem.Name = "zoomIncreaseToolStripMenuItem";
+            this.zoomIncreaseToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Oemplus)));
+            this.zoomIncreaseToolStripMenuItem.Size = new System.Drawing.Size(249, 22);
+            this.zoomIncreaseToolStripMenuItem.Text = "Zoom Increase";
+            this.zoomIncreaseToolStripMenuItem.Click += new System.EventHandler(this.zoomIncreaseToolStripMenuItem_Click);
+            // 
+            // zoomDecreaseToolStripMenuItem
+            // 
+            this.zoomDecreaseToolStripMenuItem.Name = "zoomDecreaseToolStripMenuItem";
+            this.zoomDecreaseToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.OemMinus)));
+            this.zoomDecreaseToolStripMenuItem.Size = new System.Drawing.Size(249, 22);
+            this.zoomDecreaseToolStripMenuItem.Text = "Zoom Decrease";
+            this.zoomDecreaseToolStripMenuItem.Click += new System.EventHandler(this.zoomDecreaseToolStripMenuItem_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1409, 757);
+            this.ClientSize = new System.Drawing.Size(1391, 941);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.transitionvisibleButton);
-            this.Controls.Add(this.objvisibleButton);
-            this.Controls.Add(this.itemvisibleButton);
-            this.Controls.Add(this.sprvisibleButton);
-            this.Controls.Add(this.bg2visibleButton);
-            this.Controls.Add(this.bg1visibleButton);
-            this.Controls.Add(this.lock8x8Checkbox);
-            this.Controls.Add(this.debugCheckbox);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.levelCombobox);
-            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.mainPanel);
             this.Controls.Add(this.menuStrip1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Form1";
-            this.Text = "Goof Troop Editor 1.3";
+            this.Text = "Goof Troop Editor 1.4";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.Load += new System.EventHandler(this.Form1_Load);
             this.Shown += new System.EventHandler(this.Form1_Shown);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
             this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            this.panel6.ResumeLayout(false);
+            this.itemPanel.ResumeLayout(false);
+            this.itemPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.mainPicturebox)).EndInit();
+            this.objectPanel.ResumeLayout(false);
+            this.objectPanel.PerformLayout();
             this.enemyDoorPanel.ResumeLayout(false);
             this.enemyDoorPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.enemydoorpiratecountUpDown)).EndInit();
             this.enemydoorDIRPanel.ResumeLayout(false);
             this.enemydoorDIRPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.saveslotEnemyDoor)).EndInit();
-            this.toolStrip1.ResumeLayout(false);
-            this.toolStrip1.PerformLayout();
-            this.doorPanel.ResumeLayout(false);
-            this.doorPanel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.saveslotlockedDoor)).EndInit();
-            this.hookPanel.ResumeLayout(false);
-            this.hookPanel.PerformLayout();
-            this.transitionPanel.ResumeLayout(false);
-            this.transitionPanel.PerformLayout();
+            this.spritePanel.ResumeLayout(false);
+            this.spritePanel.PerformLayout();
             this.blockPanel.ResumeLayout(false);
             this.blockPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.saveslotBlockDoor)).EndInit();
-            this.spritePanel.ResumeLayout(false);
-            this.spritePanel.PerformLayout();
-            this.itemPanel.ResumeLayout(false);
-            this.itemPanel.PerformLayout();
-            this.objectPanel.ResumeLayout(false);
-            this.objectPanel.PerformLayout();
+            this.doorPanel.ResumeLayout(false);
+            this.doorPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.saveslotlockedDoor)).EndInit();
+            this.transitionPanel.ResumeLayout(false);
+            this.transitionPanel.PerformLayout();
+            this.hookPanel.ResumeLayout(false);
+            this.hookPanel.PerformLayout();
+            this.toolStrip1.ResumeLayout(false);
+            this.toolStrip1.PerformLayout();
             this.mapPanel.ResumeLayout(false);
             this.mapPanel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.mainPicturebox)).EndInit();
+            this.levelpropertyPanel.ResumeLayout(false);
+            this.levelpropertyPanel.PerformLayout();
             this.tilePanel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.tiles16Picturebox)).EndInit();
             this.menuStrip1.ResumeLayout(false);
@@ -2192,10 +2344,14 @@ namespace GoofED
             this.panel4.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.palettePicturebox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.editingtilePicturebox)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            this.mainPanel.ResumeLayout(false);
+            this.panel5.ResumeLayout(false);
+            this.panel5.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -2369,6 +2525,18 @@ namespace GoofED
         private System.Windows.Forms.ToolStripMenuItem projectToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem clearAllMapsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem musicViewerToolStripMenuItem;
+        private System.Windows.Forms.ToolStripButton palTButton;
+        private System.Windows.Forms.Panel palPanel;
+        private System.Windows.Forms.ToolStripMenuItem gfxEditornewToolStripMenuItem;
+        private System.Windows.Forms.NumericUpDown numericUpDown1;
+        private System.Windows.Forms.Label label31;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Panel mainPanel;
+        private System.Windows.Forms.Panel panel5;
+        private System.Windows.Forms.Panel levelpropertyPanel;
+        private System.Windows.Forms.Panel panel6;
+        private System.Windows.Forms.ToolStripMenuItem zoomIncreaseToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem zoomDecreaseToolStripMenuItem;
     }
 }
 

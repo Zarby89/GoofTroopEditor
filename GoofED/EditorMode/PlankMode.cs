@@ -26,14 +26,14 @@ namespace GoofED
         }
 
 
-        public void mouseDown(object sender, MouseEventArgs e)
+        public void mouseDown(object sender, MouseEventArgs e, int Zoom)
         {
 
             if (e.Button == MouseButtons.Right)
             {
 
-                xC = (ushort)(e.X / 2);
-                yC = (ushort)(e.Y / 2);
+                xC = (ushort)(e.X / Zoom);
+                yC = (ushort)(e.Y / Zoom);
                 ContextMenuStrip contextMenu = new ContextMenuStrip();
                 contextMenu.Items.Add("Add PlankHole");
                 contextMenu.Items[0].Click += HookMode_AddHook_Click;
@@ -42,9 +42,9 @@ namespace GoofED
             }
             foreach (Plank i in game.levels[game.selectedLevel].maps[game.selectedMap].planks)
             {
-                if (e.X >= ((i.x) * 2) && e.X <= ((i.x) * 2) + 32)
+                if (e.X >= ((i.x) * Zoom) && e.X <= ((i.x) * Zoom) + (16*Zoom))
                 {
-                    if (e.Y >= ((i.y) * 2) && e.Y <= ((i.y) * 2) + 32)
+                    if (e.Y >= ((i.y) * Zoom) && e.Y <= ((i.y) * Zoom) + (16*Zoom))
                     {
                         selectedObject = i;;
                         ismouseDown = true;
@@ -65,7 +65,7 @@ namespace GoofED
 
         }
 
-        public void mouseMove(MouseEventArgs e)
+        public void mouseMove(MouseEventArgs e, int Zoom)
         {
             if (ismouseDown == true)
             {
@@ -73,13 +73,13 @@ namespace GoofED
                 {
                         if (GlobalOptions.movementLock8x8)
                         {
-                            selectedObject.x = (byte)(((e.X / 2) / 8) * 8);
-                            selectedObject.y = (byte)(((e.Y / 2) / 8) * 8);
+                            selectedObject.x = (byte)(((e.X / Zoom) / 8) * 8);
+                            selectedObject.y = (byte)(((e.Y / Zoom) / 8) * 8);
                         }
                         else
                         {
-                            selectedObject.x = (byte)((e.X / 2));
-                            selectedObject.y = (byte)((e.Y / 2));
+                            selectedObject.x = (byte)((e.X / Zoom));
+                            selectedObject.y = (byte)((e.Y / Zoom));
                         }
                 }
             }

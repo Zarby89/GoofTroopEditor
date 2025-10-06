@@ -25,7 +25,7 @@ namespace GoofED
         }
 
 
-        public void mouseDown(object sender, MouseEventArgs e)
+        public void mouseDown(object sender, MouseEventArgs e, int Zoom)
         {
 
             if (e.Button == MouseButtons.Right)
@@ -51,12 +51,12 @@ namespace GoofED
             {
                 byte x = (byte)(((i.doorAddr & 0x1F)));
                 byte y = (byte)(((i.doorAddr & 0x3E0) >> 5));
-                if (e.X >= ((x) * 16) && e.X <= ((x) * 16) + 64)
+                if (e.X >= ((x) * (8 * Zoom)) && e.X <= ((x) * (8 * Zoom)) + (32 * Zoom))
                 {
-                    if (e.Y >= ((y) * 16) && e.Y <= ((y) * 16) + 64)
+                    if (e.Y >= ((y) * (8 * Zoom)) && e.Y <= ((y) * (8 * Zoom)) + (32 * Zoom))
                     {
-                        mxDown = e.X - (x * 16);
-                        myDown = e.Y - (y * 16);
+                        mxDown = e.X - (x * (8 * Zoom));
+                        myDown = e.Y - (y * (8 * Zoom));
                         selectedObject = i;
                         selectedIndex = 100; //100 is the door
                         ismouseDown = true;
@@ -68,12 +68,12 @@ namespace GoofED
                 {
                     byte x2 = (byte)(((i.addrAllBlocks[j] & 0x1F)));
                     byte y2 = (byte)(((i.addrAllBlocks[j] & 0x3E0) >> 5));
-                    if (e.X >= ((x2) * 16) && e.X <= ((x2) * 16) + 32)
+                    if (e.X >= ((x2) * (8 * Zoom)) && e.X <= ((x2) * (8 * Zoom)) + (16 * Zoom))
                     {
-                        if (e.Y >= ((y2) * 16) && e.Y <= ((y2) * 16) + 32)
+                        if (e.Y >= ((y2) * (8 * Zoom)) && e.Y <= ((y2) * (8 * Zoom)) + (16 * Zoom))
                         {
-                            mxDown = e.X - (x2 * 16);
-                            myDown = e.Y - (y2 * 16);
+                            mxDown = e.X - (x2 * (8 * Zoom));
+                            myDown = e.Y - (y2 * (8 * Zoom));
                             selectedObject = i;
                             selectedIndex = j; //100 is the door
                             ismouseDown = true;
@@ -105,7 +105,7 @@ namespace GoofED
 
         }
 
-        public void mouseMove(MouseEventArgs e)
+        public void mouseMove(MouseEventArgs e, int Zoom)
         {
             if (ismouseDown == true)
             {
@@ -113,11 +113,11 @@ namespace GoofED
                 {
                     if (selectedIndex == 100) //door
                     {
-                        selectedObject.doorAddr = (ushort)((((e.Y-myDown) / 16) * 32) + ((e.X-mxDown) / 16)); ;
+                        selectedObject.doorAddr = (ushort)((((e.Y-myDown) / (8* Zoom)) * 32) + ((e.X-mxDown) / (8*Zoom))); ;
                     }
                     else
                     {
-                        selectedObject.addrAllBlocks[selectedIndex] = (ushort)((((e.Y-myDown)/16)*32) + ((e.X-mxDown) / 16));
+                        selectedObject.addrAllBlocks[selectedIndex] = (ushort)((((e.Y-myDown)/ (8 * Zoom)) *32) + ((e.X-mxDown) / (8 * Zoom)));
                     }
                 }
             }

@@ -23,14 +23,14 @@ namespace GoofED
         }
 
 
-        public void mouseDown(object sender, MouseEventArgs e)
+        public void mouseDown(object sender, MouseEventArgs e, int Zoom)
         {
 
             if (e.Button == MouseButtons.Right)
             {
 
-                xC = (ushort)(e.X / 2);
-                yC = (ushort)(e.Y / 2);
+                xC = (ushort)(e.X / Zoom);
+                yC = (ushort)(e.Y / Zoom);
                 ContextMenuStrip contextMenu = new ContextMenuStrip();
                 contextMenu.Items.Add("Add Sprite");
                 contextMenu.Items[0].Click += SpriteMode_Addsprite_Click;
@@ -41,12 +41,12 @@ namespace GoofED
             foreach (Sprite spr in game.levels[game.selectedLevel].maps[game.selectedMap].sprites)
             {
 
-                if ((e.X/2) >= ((spr.x)) && (e.X/2) <= ((spr.x))+16)
+                if ((e.X/Zoom) >= ((spr.x)) && (e.X/Zoom) <= ((spr.x))+16)
                 {
-                    if ((e.Y/2) >= ((spr.y)) && (e.Y/2) <= ((spr.y)) + 16)
+                    if ((e.Y/Zoom) >= ((spr.y)) && (e.Y/Zoom) <= ((spr.y)) + 16)
                     {
-                        mxDown = (e.X) - (spr.x*2);
-                        myDown = (e.Y) - (spr.y*2);
+                        mxDown = (e.X) - (spr.x*Zoom);
+                        myDown = (e.Y) - (spr.y*Zoom);
                         selectedObject = spr;
                         ismouseDown = true;
                         break;
@@ -65,18 +65,18 @@ namespace GoofED
             ismouseDown = true;
         }
 
-        public void mouseMove(MouseEventArgs e)
+        public void mouseMove(MouseEventArgs e, int Zoom)
         {
             if (ismouseDown == true)
             {
                 if (selectedObject != null)
                 {
-                    byte x = (byte)((e.X - mxDown) / 2);
-                    byte y = (byte)((e.Y - myDown) / 2);
+                    byte x = (byte)((e.X - mxDown) / Zoom);
+                    byte y = (byte)((e.Y - myDown) / Zoom);
                     if (GlobalOptions.movementLock8x8)
                     {
-                        x = (byte)((((e.X - mxDown) / 2)/8)*8);
-                        y = (byte)((((e.Y - myDown) / 2)/8)*8);
+                        x = (byte)((((e.X - mxDown) / Zoom)/8)*8);
+                        y = (byte)((((e.Y - myDown) / Zoom)/8)*8);
                     }
 
                     selectedObject.x = x;

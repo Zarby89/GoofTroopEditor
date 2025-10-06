@@ -50,7 +50,7 @@ namespace GoofED
 
         public static Color[] palette = new Color[256];
 
-        public static ushort[] scratchpadTiles = new ushort[0x0C48];
+        public static ushort[] scratchpadTiles = new ushort[0x0F00];
 
         //SNES FORMAT TO PC 8BPP
         //Snes format is a tile format each 32 bytes = 1 tile of 8x8

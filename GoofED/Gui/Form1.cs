@@ -12,6 +12,7 @@ using System.Windows.Forms;
 using System.Drawing.Imaging;
 using AsarCLR;
 using System.Diagnostics;
+using GoofTroopEditor.Gui;
 
 namespace GoofED
 {
@@ -43,8 +44,10 @@ namespace GoofED
         BlockDoorMode blockDoorMode;
         LockedDoorMode lockedDoorMode;
         EnemyDoorMode enemyDoorMode;
+        GfxEditor gfxEditor;
         Bitmap editorBitmap = new Bitmap(512, 448);
         MusicViewer mv;
+        int Zoom = 2;
         List<ItemName> itemList = new List<ItemName>()
         {
             new ItemName(0x08,"Hookshot"),
@@ -93,8 +96,8 @@ namespace GoofED
             GFX.BG2Bitmap = new Bitmap(256, 256, 256, PixelFormat.Format8bppIndexed, GFX.BG2Buffer);
             GFX.BG2BitmapMask = new Bitmap(256, 256, 256, PixelFormat.Format8bppIndexed, GFX.BG2BufferMask);
             GFX.SprBitmap = new Bitmap(256, 256, 256, PixelFormat.Format8bppIndexed, GFX.SprBuffer);
-            GFX.tile16Bitmap = new Bitmap(128, 6272, 128, PixelFormat.Format8bppIndexed, GFX.tile16Buffer);
-            GFX.scratch16Bitmap = new Bitmap(128, 6272, 128, PixelFormat.Format8bppIndexed, GFX.scratch16Buffer);
+            GFX.tile16Bitmap = new Bitmap(128, 7680, 128, PixelFormat.Format8bppIndexed, GFX.tile16Buffer);
+            GFX.scratch16Bitmap = new Bitmap(128, 7680, 128, PixelFormat.Format8bppIndexed, GFX.scratch16Buffer);
             GFX.textBitmap = new Bitmap(256, 64, 256, PixelFormat.Format8bppIndexed, GFX.textBuffer);
             GFX.creditBitmap = new Bitmap(256, 256, 256, PixelFormat.Format8bppIndexed, GFX.creditBuffer);
             GFX.passwordBitmap = new Bitmap(256, 16, 256, PixelFormat.Format8bppIndexed, GFX.passwordBuffer);
@@ -106,7 +109,8 @@ namespace GoofED
 
             spritesetTextbox.MouseWheel += SpritesetTextbox_MouseWheel;
             sprpalTextbox.MouseWheel += SprpalTextbox_MouseWheel;
-
+            alternatepalTextbox.MouseWheel += AlternatepalTextbox_MouseWheel;
+            animatedpalTextbox.MouseWheel += AnimatedpalTextbox_MouseWheel;
 
             GFX.ClearBGs();
 
@@ -128,6 +132,12 @@ namespace GoofED
                 blockDoorMode = new BlockDoorMode(game);
                 lockedDoorMode = new LockedDoorMode(game);
                 enemyDoorMode = new EnemyDoorMode(game);
+
+                if (game.rom.data[Constants.EditorVersion] == 0x6C)
+                {
+                    // unmodified ROM or previous version used
+
+                }
 
                 vramPanel.Enabled = true;
                 tilePanel.Enabled = true;
@@ -156,7 +166,7 @@ namespace GoofED
                     }
 
                 }
-
+                
                 asmManager = new AsmManagerNew(filename);
                 mv = new MusicViewer(game);
                 saveROMAsToolStripMenuItem.Enabled = true;
@@ -183,25 +193,69 @@ namespace GoofED
                 game.selectedLevel = 0;
                 fromForm = false;
 
-                itemPanel.Location = new Point(6, 548);
-                objectPanel.Location = new Point(6, 548);
-                transitionPanel.Location = new Point(6, 548);
-                doorPanel.Location = new Point(6, 548);
-                spritePanel.Location = new Point(6, 548);
-                hookPanel.Location = new Point(6, 548);
-                plankPanel.Location = new Point(6, 548);
-                blockPanel.Location = new Point(6, 548);
-                enemyDoorPanel.Location = new Point(6, 548);
+                itemPanel.Location = new Point(6, 460);
+                objectPanel.Location = new Point(6, 460);
+                transitionPanel.Location = new Point(6, 460);
+                doorPanel.Location = new Point(6, 460);
+                spritePanel.Location = new Point(6, 460);
+                hookPanel.Location = new Point(6, 460);
+                plankPanel.Location = new Point(6, 460);
+                blockPanel.Location = new Point(6, 460);
+                enemyDoorPanel.Location = new Point(6, 460);
+                palPanel.Location = new Point(6, 460);
                 selectedItemCombobox.Items.Clear();
                 foreach (ItemName i in itemList)
                 {
                     selectedItemCombobox.Items.Add(i.id.ToString("X2") + " " + i.name);
                 }
 
-
-
+                gfxEditor = new GfxEditor();
+                gfxEditor.game = game;
                 mainPicturebox.Image = new Bitmap(512, 448);
             }
+        }
+
+        private void AnimatedpalTextbox_MouseWheel(object sender, MouseEventArgs e)
+        {
+            if (e.Delta <= -1)
+            {
+                if (game.levels[game.selectedLevel].maps[game.selectedMap].animatedPal > 0)
+                {
+                    game.levels[game.selectedLevel].maps[game.selectedMap].animatedPal--;
+                }
+            }
+            else if (e.Delta >= 1)
+            {
+                if (game.levels[game.selectedLevel].maps[game.selectedMap].animatedPal < 0x40)
+                {
+                    game.levels[game.selectedLevel].maps[game.selectedMap].animatedPal++;
+                }
+            }
+            UpdateMap();
+            UpdateGFX();
+            UpdatePalette();
+            mainPicturebox.Refresh();
+            vramPicturebox.Refresh();
+        }
+
+        private void AlternatepalTextbox_MouseWheel(object sender, MouseEventArgs e)
+        {
+            if (e.Delta <= -1)
+            {
+                if (game.levels[game.selectedLevel].maps[game.selectedMap].altPal > 0)
+                {
+                    game.levels[game.selectedLevel].maps[game.selectedMap].altPal--;
+                }
+            }
+            else if (e.Delta >= 1)
+            {
+                game.levels[game.selectedLevel].maps[game.selectedMap].altPal++;
+            }
+            UpdateMap();
+            UpdateGFX();
+            UpdatePalette();
+            mainPicturebox.Refresh();
+            vramPicturebox.Refresh();
         }
 
         private void SprpalTextbox_MouseWheel(object sender, MouseEventArgs e)
@@ -323,6 +377,8 @@ namespace GoofED
                 game.levels[game.selectedLevel].song = song;
 
                 UpdateGFX();
+                UpdateMap();
+                mainPicturebox.Invalidate();
             }
         }
 
@@ -823,66 +879,81 @@ namespace GoofED
 
         private void mainPicturebox_Paint(object sender, PaintEventArgs e)
         {
+            
+
 
             if (game != null)
             {
+                Bitmap b = new Bitmap(512, 512);
+                Graphics g = Graphics.FromImage(b);
+
+                g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.None;
+                g.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.NearestNeighbor;
+                g.Clear(Color.Black);
+                g.PixelOffsetMode = System.Drawing.Drawing2D.PixelOffsetMode.Half;
+
                 e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.None;
                 e.Graphics.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.NearestNeighbor;
                 e.Graphics.Clear(Color.Black);
                 e.Graphics.PixelOffsetMode = System.Drawing.Drawing2D.PixelOffsetMode.Half;
+
+
+
                 if (GlobalOptions.viewBg1)
                 {
-                    e.Graphics.DrawImage(GFX.BG1Bitmap, new Rectangle(0, 0, 512, 512), 0, 0, 256, 256, GraphicsUnit.Pixel);
+                    g.DrawImage(GFX.BG1Bitmap, new Rectangle(0, 0, 512, 512), 0, 0, 256, 256, GraphicsUnit.Pixel);
                 }
                 if (GlobalOptions.viewBg2)
                 {
-                    e.Graphics.DrawImage(GFX.BG2Bitmap, new Rectangle(0, 0, 512, 512), 0, 0, 256, 256, GraphicsUnit.Pixel);
+                    g.DrawImage(GFX.BG2Bitmap, new Rectangle(0, 0, 512, 512), 0, 0, 256, 256, GraphicsUnit.Pixel);
                 }
                 GFX.ClearBGSpr();
                 if (GlobalOptions.viewItem)
                 {
-                    DrawItems(e.Graphics);
+                    DrawItems(g);
                 }
 
                 if (GlobalOptions.viewTransition)
                 {
-                    DrawTransitions(e.Graphics);
+                    DrawTransitions(g);
                 }
 
                 if (GlobalOptions.viewObject)
                 {
-                    DrawObjects(e.Graphics);
+                    DrawObjects(g);
                 }
 
                 if (GlobalOptions.viewSprite)
                 {
-                    DrawSprites(e.Graphics);
+                    DrawSprites(g);
                 }
 
                 
 
-                DrawDoorsBlocks(e.Graphics);
+                DrawDoorsBlocks(g);
 
-                DrawLockedDoors(e.Graphics);
+                DrawLockedDoors(g);
 
-                DrawEnemiesDoors(e.Graphics);
+                DrawEnemiesDoors(g);
 
-                DrawPlanks(e.Graphics);
+                DrawPlanks(g);
 
 
-                DrawHooks(e.Graphics);
-                e.Graphics.DrawImage(GFX.SprBitmap, new Rectangle(0, 0, 512, 512), 0, 0, 256, 256, GraphicsUnit.Pixel);
+                DrawHooks(g);
+                g.DrawImage(GFX.SprBitmap, new Rectangle(0, 0, 512, 512), 0, 0, 256, 256, GraphicsUnit.Pixel);
                 if (GlobalOptions.viewBg2)
                 {
-                    e.Graphics.DrawImage(GFX.BG2BitmapMask, new Rectangle(0, 0, 512, 512), 0, 0, 256, 256, GraphicsUnit.Pixel);
+                   g.DrawImage(GFX.BG2BitmapMask, new Rectangle(0, 0, 512, 512), 0, 0, 256, 256, GraphicsUnit.Pixel);
                 }
 
                 if (bg1TButton.Checked || bg2TButton.Checked)
                 {
                     bgMode.Draw(gMain);
-                    e.Graphics.DrawImage(editorBitmap, 0, 0);
+                    g.DrawImage(editorBitmap, 0, 0);
                 }
-               
+                
+                e.Graphics.DrawImage(b, new Rectangle(0, 0, 256*Zoom, 256*Zoom));
+
             }
         }
 
@@ -1272,13 +1343,13 @@ namespace GoofED
             game.anyChange = true;
             if ((toolStrip1.Items[0] as ToolStripButton).Checked)
             {
-                bgMode.mouseDown(e, 0);
+                bgMode.mouseDown(e, 0, Zoom);
                 editingtilePicturebox.Refresh();
                 tiles16Picturebox.Refresh();
             }
             else if ((toolStrip1.Items[1] as ToolStripButton).Checked)
             {
-                bgMode.mouseDown(e, 1);
+                bgMode.mouseDown(e, 1, Zoom);
                 editingtilePicturebox.Refresh();
                 tiles16Picturebox.Refresh();
             }
@@ -1286,7 +1357,7 @@ namespace GoofED
             {
 
 
-                itemMode.mouseDown(sender, e);
+                itemMode.mouseDown(sender, e, Zoom);
                 if (itemMode.selectedObject != null)
                 {
                     itemPanel.Enabled = true;
@@ -1308,7 +1379,7 @@ namespace GoofED
             }
             else if (objectTButton.Checked)
             {
-                objMode.mouseDown(sender, e);
+                objMode.mouseDown(sender, e, Zoom);
                 if (objMode.selectedObject != null)
                 {
                     objectPanel.Enabled = true;
@@ -1322,7 +1393,7 @@ namespace GoofED
             else if (sprTButton.Checked)
             {
 
-                spriteMode.mouseDown(sender, e);
+                spriteMode.mouseDown(sender, e, Zoom);
                 if (spriteMode.selectedObject != null)
                 {
                     spritePanel.Enabled = true;
@@ -1337,7 +1408,8 @@ namespace GoofED
             }
             else if (hooksTButton.Checked)
             {
-                hookMode.mouseDown(sender, e);
+                
+                hookMode.mouseDown(sender, e, Zoom);
                 if (hookMode.selectedObject != null)
                 {
                     fromForm = true;
@@ -1348,11 +1420,11 @@ namespace GoofED
 
             else if (plankTButton.Checked)
             {
-                plankMode.mouseDown(sender, e);
+                plankMode.mouseDown(sender, e, Zoom);
             }
             else if (transitionsTButton.Checked)
             {
-                transitionMode.mouseDown(sender, e);
+                transitionMode.mouseDown(sender, e, Zoom);
                 if (transitionMode.selectedObject != null)
                 {
                     fromForm = true;
@@ -1382,7 +1454,7 @@ namespace GoofED
             }
             else if (blockTButton.Checked)
             {
-                blockDoorMode.mouseDown(sender, e);
+                blockDoorMode.mouseDown(sender, e, Zoom);
                 if (blockDoorMode.selectedObject != null)
                 {
                     blockPanel.Enabled = true;
@@ -1398,7 +1470,7 @@ namespace GoofED
             }
             else if (doorTButton.Checked)
             {
-                lockedDoorMode.mouseDown(sender, e);
+                lockedDoorMode.mouseDown(sender, e, Zoom);
                 if (lockedDoorMode.selectedObject != null)
                 {
                     fromForm = true;
@@ -1410,7 +1482,7 @@ namespace GoofED
             }
             else if (enemydoorTButton.Checked)
             {
-                enemyDoorMode.mouseDown(sender, e);
+                enemyDoorMode.mouseDown(sender, e, Zoom);
                 if (enemyDoorMode.selectedObject != null)
                 {
                     fromForm = true;
@@ -1467,39 +1539,39 @@ namespace GoofED
         Graphics gMain;
         private void mainPicturebox_MouseMove(object sender, MouseEventArgs e)
         {
-
+            
             if ((toolStrip1.Items[0] as ToolStripButton).Checked)
             {
-                bgMode.mouseMove(e, 0, gMain);
+                bgMode.mouseMove(e, 0, gMain, Zoom);
             }
             else if ((toolStrip1.Items[1] as ToolStripButton).Checked)
             {
-                bgMode.mouseMove(e, 1, gMain);
+                bgMode.mouseMove(e, 1, gMain, Zoom);
             }
             else if (itemTButton.Checked)
             {
-                itemMode.mouseMove(e);
+                itemMode.mouseMove(e, Zoom);
 
             }
             else if (objectTButton.Checked)
             {
-                objMode.mouseMove(e);
+                objMode.mouseMove(e, Zoom);
             }
             else if (sprTButton.Checked)
             {
-                spriteMode.mouseMove(e);
+                spriteMode.mouseMove(e, Zoom);
             }
             else if (hooksTButton.Checked)
             {
-                hookMode.mouseMove(e);
+                hookMode.mouseMove(e, Zoom);
             }
             else if (plankTButton.Checked)
             {
-                plankMode.mouseMove(e);
+                plankMode.mouseMove(e, Zoom);
             }
             else if (transitionsTButton.Checked)
             {
-                transitionMode.mouseMove(e);
+                transitionMode.mouseMove(e, Zoom);
                 if (transitionMode.selectedObject != null)
                 {
                     byte x = (byte)((transitionMode.selectedObject.position & 0x1F));
@@ -1510,15 +1582,15 @@ namespace GoofED
             }
             else if (blockTButton.Checked)
             {
-                blockDoorMode.mouseMove(e);
+                blockDoorMode.mouseMove(e, Zoom);
             }
             else if (doorTButton.Checked)
             {
-                lockedDoorMode.mouseMove(e);
+                lockedDoorMode.mouseMove(e, Zoom);
             }
             else if (enemydoorTButton.Checked)
             {
-                enemyDoorMode.mouseMove(e);
+                enemyDoorMode.mouseMove(e, Zoom);
             }
 
             mainPicturebox.Refresh();
@@ -1693,7 +1765,8 @@ namespace GoofED
         private bool SaveROM()
         {
             byte[] backupROM = (byte[])game.rom.data.Clone();
-            
+
+            game.rom.data[Constants.EditorVersion] = 0x01; // VERSION EDITOR! 01 = 1.4
            
             Asar.patch("ASM//required//darkice.asm", ref game.rom.data);
             Asar.patch("ASM//required//expandedtile32.asm", ref game.rom.data);
@@ -1728,12 +1801,12 @@ namespace GoofED
             }
 
 
-            for (int i = 0; i < 0xC48; i++)
+            for (int i = 0; i < 0xF00; i++)
             {
-                game.rom.WriteUShort(Constants.Tiles16Data + (i * 8), game.tiles16[i].tile0.toShort());
-                game.rom.WriteUShort(Constants.Tiles16Data + (i * 8) + 2, game.tiles16[i].tile1.toShort());
-                game.rom.WriteUShort(Constants.Tiles16Data + (i * 8) + 4, game.tiles16[i].tile2.toShort());
-                game.rom.WriteUShort(Constants.Tiles16Data + (i * 8) + 6, game.tiles16[i].tile3.toShort());
+                game.rom.WriteUShort(Constants.Tiles16DataExt + (i * 8), game.tiles16[i].tile0.toShort());
+                game.rom.WriteUShort(Constants.Tiles16DataExt + (i * 8) + 2, game.tiles16[i].tile1.toShort());
+                game.rom.WriteUShort(Constants.Tiles16DataExt + (i * 8) + 4, game.tiles16[i].tile2.toShort());
+                game.rom.WriteUShort(Constants.Tiles16DataExt + (i * 8) + 6, game.tiles16[i].tile3.toShort());
 
                 game.rom.WriteByte(Constants.Tile16CollisionMap + i, game.collisions[i]);
             }
@@ -2102,7 +2175,7 @@ namespace GoofED
                 e.Graphics.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.NearestNeighbor;
                 e.Graphics.PixelOffsetMode = System.Drawing.Drawing2D.PixelOffsetMode.Half;
                 e.Graphics.Clear(Color.Black);
-                e.Graphics.DrawImage(GFX.tile16Bitmap, new Rectangle(0, 0, 256, 12544));
+                e.Graphics.DrawImage(GFX.tile16Bitmap, new Rectangle(0, 0, 256, 15360));
                 if (bgMode.selectedTiles.Length == 1)
                 {
                     int tx = (bgMode.selectedTiles[0] % 8);
@@ -2144,6 +2217,7 @@ namespace GoofED
             transitionPanel.Visible = false;
             enemyDoorPanel.Visible = false;
             plankPanel.Visible = false;
+            palPanel.Visible = false;
             if (sender == itemTButton)
             {
                 itemPanel.Visible = true;
@@ -2183,6 +2257,10 @@ namespace GoofED
             else if (sender == enemydoorTButton)
             {
                 enemyDoorPanel.Visible = true;
+            }
+            else if (sender == palTButton)
+            {
+                palPanel.Visible = true;
             }
         }
 
@@ -2857,9 +2935,9 @@ namespace GoofED
             if (sf.ShowDialog() == DialogResult.OK)
             {
                 FileStream fs = new FileStream(sf.FileName, FileMode.OpenOrCreate, FileAccess.Write);
-                byte[] data = new byte[0xC48 * 2];
+                byte[] data = new byte[0xEFF * 2];
 
-                for (int i = 0; i < 0xC48; i++)
+                for (int i = 0; i < 0xEFF; i++)
                 {
                     data[(i * 2)] = (byte)(GFX.scratchpadTiles[i] & 0xFF);
                     data[(i * 2) + 1] = (byte)((GFX.scratchpadTiles[i] & 0xFF00) >> 8);
@@ -2876,10 +2954,10 @@ namespace GoofED
             if (of.ShowDialog() == DialogResult.OK)
             {
                 FileStream fs = new FileStream(of.FileName, FileMode.Open, FileAccess.Read);
-                byte[] data = new byte[0xC48 * 2];
+                byte[] data = new byte[0xEFF * 2];
                 fs.Read(data, 0, data.Length);
                 fs.Close();
-                for (int i = 0; i < 0xC48; i++)
+                for (int i = 0; i < 0xEFF; i++)
                 {
                     GFX.scratchpadTiles[i] = (ushort)(data[(i * 2)] + (data[(i * 2) + 1] << 8));
                 }
@@ -2963,13 +3041,8 @@ namespace GoofED
         private void importAllToolStripMenuItem_Click(object sender, EventArgs e)
         {
             OpenFileDialog of = new OpenFileDialog();
-            bool askExpand = false;
-            if (game.rom.data.Length == 0x80000)
-            {
-                askExpand = true;
-            }
 
-            int expandedPos = 0x80000;
+            int expandedPos = 0x0C0000;
             if (of.ShowDialog() == DialogResult.OK)
             {
                 string path = Path.GetDirectoryName(of.FileName);
@@ -2988,40 +3061,20 @@ namespace GoofED
                     byte[] data = new byte[fs.Length];
                     fs.Read(data, 0, (int)fs.Length);
                     fs.Close();
-
+                    
 
                     byte[] s = Compression.CompressGfx(data);
 
-                    if (s.Length > length)
+                    if (data.Length > length) // if new length > previous length then use expanded region
                     {
-                        if (askExpand == true)
-                        {
-                            if (MessageBox.Show("GFX " + i.ToString("X2") + " Is bigger than original do you want to expand the rom and use expanded space for gfx? If you select No this gfx will not be imported", "Warning", MessageBoxButtons.YesNo) == DialogResult.Yes)
-                            {
-                                byte[] temp = (byte[])game.rom.data.Clone();
-                                game.rom.data = new byte[0x100000];
-                                game.rom.WriteBytes(0, temp);
-                                askExpand = false;
-                                game.rom.WriteLong(gfxPtrPC, Utils.PcToSnes(expandedPos));
-                                game.rom.WriteShort(gfxPtrPC + 3, (short)s.Length);
-                                addr = expandedPos;
-                            }
-                            else
-                            {
-                                continue;
-                            }
-                        }
-                        else
-                        {
-                            game.rom.WriteLong(gfxPtrPC, Utils.PcToSnes(expandedPos));
-                            game.rom.WriteShort(gfxPtrPC + 3, (short)s.Length);
-                            addr = expandedPos;
-                        }
+                        game.rom.WriteLong(gfxPtrPC, Utils.PcToSnes(expandedPos));
+                        game.rom.WriteShort(gfxPtrPC + 3, (short)data.Length);
+                        addr = expandedPos;
                     }
                     game.rom.WriteBytes(addr, s);
-                    if (addr >= 0x80000)
+                    if (addr >= 0x0C0000)
                     {
-                        expandedPos += s.Length;
+                        expandedPos += data.Length;
                     }
 
                 }
@@ -3077,42 +3130,29 @@ namespace GoofED
 
 
                     byte[] s = Compression.CompressGfx(data);
-
-                    if (s.Length > length)
+                    //Console.WriteLine("GFX LENGTH FOR SHEET " + i.ToString("X2") + " = " + s.Length.ToString("X4"));
+                    if (data.Length > length)
                     {
-                        if (askExpand == true)
-                        {
-                            if (MessageBox.Show("SPR GFX " + i.ToString("X2") + " Is bigger than original do you want to expand the rom and use expanded space for gfx? If you select No this gfx will not be imported", "Warning", MessageBoxButtons.YesNo) == DialogResult.Yes)
-                            {
-                                byte[] temp = (byte[])game.rom.data.Clone();
-                                game.rom.data = new byte[0x100000];
-                                game.rom.WriteBytes(0, temp);
-                                askExpand = false;
                                 game.rom.WriteLong(gfxPtrPC, Utils.PcToSnes(expandedPos));
-                                game.rom.WriteShort(gfxPtrPC + 3, (short)s.Length);
+                                game.rom.WriteShort(gfxPtrPC + 3, (short)data.Length);
                                 addr = expandedPos;
-                            }
-                            else
-                            {
-                                continue;
-                            }
-                        }
-                        else
-                        {
-                            game.rom.WriteLong(gfxPtrPC, Utils.PcToSnes(expandedPos));
-                            game.rom.WriteShort(gfxPtrPC + 3, (short)s.Length);
-                            addr = expandedPos;
-                        }
                     }
                     game.rom.WriteBytes(addr, s);
-                    if (addr >= 0x80000)
+                    if (addr >= 0x0C0000)
                     {
-                        expandedPos += s.Length;
+                        expandedPos += data.Length;
                     }
 
                 }
 
-
+                UpdateGFX();
+                bgMode.redrawTiles8();
+                vramPicturebox.Refresh();
+                palettePicturebox.Refresh();
+                mainPicturebox.Refresh();
+                editingtilePicturebox.Refresh();
+                tiles16Picturebox.Refresh();
+                scratchpadPicturebox.Refresh();
             }
 
         }
@@ -3121,6 +3161,15 @@ namespace GoofED
         {
             PaletteEditor pe = new PaletteEditor(game);
             pe.ShowDialog();
+            
+            
+
+            UpdateGFX(); // write new palettes
+            UpdatePalette(); // update the palettes on screen
+            
+            vramPicturebox.Refresh();
+            palettePicturebox.Refresh();
+            mainPicturebox.Refresh();
 
         }
 
@@ -4005,6 +4054,126 @@ namespace GoofED
         private void musicViewerToolStripMenuItem_Click(object sender, EventArgs e)
         {
             mv.ShowDialog();
+        }
+
+        private void gfxEditornewToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            gfxEditor.ShowDialog();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+
+            for (int i = 0; i < numericUpDown1.Value; i++)
+            {
+                game.tiles16[bgMode.selectedTiles[0] + i].tile0.id = (ushort)(selectedTile8 + (i *2)) ;
+                game.tiles16[bgMode.selectedTiles[0] + i].tile0.palette = selectedPal8;
+                game.tiles16[bgMode.selectedTiles[0] + i].tile0.h = (ushort)selectedMx8;
+                game.tiles16[bgMode.selectedTiles[0] + i].tile0.v = (ushort)selectedMy8;
+                game.tiles16[bgMode.selectedTiles[0] + i].tile0.o = (ushort)selectedPrior8;
+
+                game.tiles16[bgMode.selectedTiles[0] + i].tile1.id = (ushort)(selectedTile8 + 1 + (i * 2));
+                game.tiles16[bgMode.selectedTiles[0] + i].tile1.palette = selectedPal8;
+                game.tiles16[bgMode.selectedTiles[0] + i].tile1.h = (ushort)selectedMx8;
+                game.tiles16[bgMode.selectedTiles[0] + i].tile1.v = (ushort)selectedMy8;
+                game.tiles16[bgMode.selectedTiles[0] + i].tile1.o = (ushort)selectedPrior8;
+
+                game.tiles16[bgMode.selectedTiles[0] + i].tile2.id = (ushort)(selectedTile8 + 16 + (i * 2));
+                game.tiles16[bgMode.selectedTiles[0] + i].tile2.palette = selectedPal8;
+                game.tiles16[bgMode.selectedTiles[0] + i].tile2.h = (ushort)selectedMx8;
+                game.tiles16[bgMode.selectedTiles[0] + i].tile2.v = (ushort)selectedMy8;
+                game.tiles16[bgMode.selectedTiles[0] + i].tile2.o = (ushort)selectedPrior8;
+
+                game.tiles16[bgMode.selectedTiles[0] + i].tile3.id = (ushort)(selectedTile8 + 17 + (i * 2));
+                game.tiles16[bgMode.selectedTiles[0] + i].tile3.palette = selectedPal8;
+                game.tiles16[bgMode.selectedTiles[0] + i].tile3.h = (ushort)selectedMx8;
+                game.tiles16[bgMode.selectedTiles[0] + i].tile3.v = (ushort)selectedMy8;
+                game.tiles16[bgMode.selectedTiles[0] + i].tile3.o = (ushort)selectedPrior8;
+            }
+
+
+            UpdateMap();
+            UpdateGFX();
+            UpdatePalette();
+
+            //GFX.DrawTiles16(game.tiles16.ToArray());
+            bgMode.redrawTiles8();
+            vramPicturebox.Refresh();
+            palettePicturebox.Refresh();
+            mainPicturebox.Refresh();
+            editingtilePicturebox.Refresh();
+            tiles16Picturebox.Refresh();
+            scratchpadPicturebox.Refresh();
+
+        }
+
+        private void x4ViewToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+
+
+
+        }
+
+        private void Form1_KeyDown(object sender, KeyEventArgs e)
+        {
+
+
+
+
+
+        }
+
+        private void zoomIncreaseToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Zoom += 1;
+            if (Zoom >= 4)
+            {
+                Zoom = 4;
+            }
+
+            mainPanel.Width = (256 * Zoom) + 24;
+            mainPicturebox.Width = 256 * Zoom;
+            mainPicturebox.Height = 224 * Zoom;
+
+            itemPanel.Location = new Point(6, (224 * Zoom) + 16);
+            objectPanel.Location = new Point(6, (224 * Zoom) + 16);
+            transitionPanel.Location = new Point(6, (224 * Zoom) + 16);
+            doorPanel.Location = new Point(6, (224 * Zoom) + 16);
+            spritePanel.Location = new Point(6, (224 * Zoom) + 16);
+            hookPanel.Location = new Point(6, (224 * Zoom) + 16);
+            plankPanel.Location = new Point(6, (224 * Zoom) + 16);
+            blockPanel.Location = new Point(6, (224 * Zoom) + 16);
+            enemyDoorPanel.Location = new Point(6, (224 * Zoom) + 16);
+            palPanel.Location = new Point(6, (224 * Zoom) + 16);
+
+            mainPicturebox.Invalidate();
+        }
+
+        private void zoomDecreaseToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Zoom -= 1;
+            if (Zoom == 1)
+            {
+                Zoom = 2;
+            }
+
+            mainPanel.Width = (256 * Zoom) + 24;
+            mainPicturebox.Width = 256 * Zoom;
+            mainPicturebox.Height = 224 * Zoom;
+
+            itemPanel.Location = new Point(6, (224 * Zoom) + 16);
+            objectPanel.Location = new Point(6, (224 * Zoom) + 16);
+            transitionPanel.Location = new Point(6, (224 * Zoom) + 16);
+            doorPanel.Location = new Point(6, (224 * Zoom) + 16);
+            spritePanel.Location = new Point(6, (224 * Zoom) + 16);
+            hookPanel.Location = new Point(6, (224 * Zoom) + 16);
+            plankPanel.Location = new Point(6, (224 * Zoom) + 16);
+            blockPanel.Location = new Point(6, (224 * Zoom) + 16);
+            enemyDoorPanel.Location = new Point(6, (224 * Zoom) + 16);
+            palPanel.Location = new Point(6, (224 * Zoom) + 16);
+
+            mainPicturebox.Invalidate();
         }
     }
 

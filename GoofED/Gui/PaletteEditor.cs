@@ -21,6 +21,7 @@ namespace GoofED
         Color[] displayColor;
         List<Color[]> palgroup0 = new List<Color[]>();
         List<Color[]> animgroup = new List<Color[]>();
+        List<Color[]> sprgroup = new List<Color[]>();
         ColorDialog cd = new ColorDialog();
         private void PaletteEditor_Shown(object sender, EventArgs e)
         {
@@ -85,6 +86,25 @@ namespace GoofED
                 k++;
             }
 
+
+
+            for (int i = 0; i < 0x40; i++) //sprites
+            {
+
+                Color[] colors = new Color[16];
+                for (int j = 0; j < 16; j++)
+                {
+                    colors[j] = game.rom.ReadColor(Constants.staticSprPalette + (i * 0x20) + (j * 2));
+                }
+                sprgroup.Add(colors);
+            }
+            k = 0;
+            foreach (Color[] c in sprgroup)
+            {
+                treeView1.Nodes[2].Nodes.Add("Palette " + k.ToString("X2"));
+                k++;
+            }
+
         }
 
         private void treeView1_AfterSelect(object sender, TreeViewEventArgs e)
@@ -97,6 +117,11 @@ namespace GoofED
             else if (treeView1.SelectedNode.Parent == treeView1.Nodes[1]) //animgroup
             {
                 displayColor = animgroup[treeView1.SelectedNode.Index];
+                pictureBox1.Refresh();
+            }
+            else if (treeView1.SelectedNode.Parent == treeView1.Nodes[2]) //animgroup
+            {
+                displayColor = sprgroup[treeView1.SelectedNode.Index];
                 pictureBox1.Refresh();
             }
         }
@@ -169,6 +194,19 @@ namespace GoofED
                         game.rom.WriteColor(bAddr + src + (j * 2), animgroup[i][j+(n*16)]);
                     }
                 }
+            }
+
+            for (int i = 0; i < 0x40; i++) //sprites
+            {
+
+
+                Color[] colors = new Color[16];
+                for (int j = 0; j < 16; j++)
+                {
+                    game.rom.WriteColor((Constants.staticSprPalette + (i * 0x20) + (j * 2)), sprgroup[i][j]);
+                }
+
+
             }
         }
 

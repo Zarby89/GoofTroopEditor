@@ -24,7 +24,7 @@ namespace GoofED
         }
 
 
-        public void mouseDown(object sender, MouseEventArgs e)
+        public void mouseDown(object sender, MouseEventArgs e, int Zoom)
         {
             
             if (e.Button == MouseButtons.Right)
@@ -43,12 +43,12 @@ namespace GoofED
                 byte x = (byte)((i.position & 0x1F));
                 byte y = (byte)((i.position >> 5 & 0x1F));
 
-                if (e.X >= ((x) * 16) && e.X <= ((x) * 16) + 64)
+                if (e.X >= ((x) * (8*Zoom)) && e.X <= ((x) * (8 * Zoom)) + (32*Zoom))
                 {
-                    if (e.Y >= ((y) * 16) && e.Y <= ((y) * 16) + 64)
+                    if (e.Y >= ((y) * (8 * Zoom)) && e.Y <= ((y) * (8 * Zoom)) + (32*Zoom))
                     {
-                        mxDown = e.X - (x*16);
-                        myDown = e.Y - (y*16);
+                        mxDown = e.X - (x* (8 * Zoom));
+                        myDown = e.Y - (y* (8 * Zoom));
                         selectedObject = i;
                         ismouseDown = true;
                         break;
@@ -68,14 +68,14 @@ namespace GoofED
 
         }
 
-        public void mouseMove(MouseEventArgs e)
+        public void mouseMove(MouseEventArgs e, int Zoom)
         {
             if (ismouseDown == true)
             {
                 if (selectedObject != null)
                 {
-                    ushort x = (ushort)((e.X - mxDown) / 16);
-                    ushort y = (ushort)((e.Y - myDown) / 16);
+                    ushort x = (ushort)((e.X - mxDown) / (8*Zoom));
+                    ushort y = (ushort)((e.Y - myDown) / (8*Zoom));
                     if (x > 250)
                     {
                         x = 0;

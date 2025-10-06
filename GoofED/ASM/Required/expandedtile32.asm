@@ -27,10 +27,10 @@ JML ReturnTileLoad
 NewTile32Load2:
 STA $16
 LDA $B6 : AND #$00FF : CMP #$0003 : BCS +
-PEA $8B8A
+PEA $948A
 JML NewTile32Load2Return
 +
-PEA $8B92
+PEA $9492
 JML NewTile32Load2Return
 
 warnpc $8AFFFF

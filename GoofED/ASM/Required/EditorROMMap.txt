@@ -1,0 +1,12 @@
+﻿bank 90 is used for new ASM codes by default
+bank 92 is used for expanded map tile32 data
+$938000 to $939000 = code for expanded data
+$948000 expanded tile16
+$988000 to ??? = for gfx
+
+80FFAF = Editor Version Used 1.4 will be using 1 here
+
+
+bank83
+
+$83F303-$83F9C2(orig)-$83FA53(expanded);

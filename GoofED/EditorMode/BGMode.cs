@@ -27,7 +27,7 @@ namespace GoofED
             this.game = game;
         }
 
-        public void mouseDown(MouseEventArgs e, int bg)
+        public void mouseDown(MouseEventArgs e, int bg, int Zoom)
         {
 
 
@@ -48,8 +48,8 @@ namespace GoofED
                     return;
                 }
             }
-            int tx = (e.X / 32);
-            int ty = (e.Y / 32);
+            int tx = (e.X / (16*Zoom));
+            int ty = (e.Y / (16*Zoom));
 
             if (e.Button == MouseButtons.Right)
             {
@@ -129,10 +129,11 @@ namespace GoofED
             ismouseDown = true;
         }
 
-        public void mouseMove(MouseEventArgs e, int bg, Graphics g)
+        public void mouseMove(MouseEventArgs e, int bg, Graphics g, int Zoom)
         {
-            int tx = (e.X / 32);
-            int ty = (e.Y / 32);
+            
+            int tx = (e.X / (16*Zoom));
+            int ty = (e.Y / (16*Zoom));
             if (tx < 0) { tx = 0; }
             if (ty < 0) { ty = 0; }
             if (tx > 15) { tx = 15; }

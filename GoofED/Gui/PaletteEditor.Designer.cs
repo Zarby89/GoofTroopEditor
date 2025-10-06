@@ -31,6 +31,7 @@ namespace GoofED
         {
             System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("Palette Group 00");
             System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("Animated Palette");
+            System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("Sprite Palette");
             this.treeView1 = new System.Windows.Forms.TreeView();
             this.acceptButton = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
@@ -46,9 +47,12 @@ namespace GoofED
             treeNode1.Text = "Palette Group 00";
             treeNode2.Name = "animPal";
             treeNode2.Text = "Animated Palette";
+            treeNode3.Name = "sprPal";
+            treeNode3.Text = "Sprite Palette";
             this.treeView1.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
             treeNode1,
-            treeNode2});
+            treeNode2,
+            treeNode3});
             this.treeView1.Size = new System.Drawing.Size(200, 256);
             this.treeView1.TabIndex = 0;
             this.treeView1.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView1_AfterSelect);

@@ -19,13 +19,13 @@ namespace GoofED
         }
 
         ushort posContext = 0;
-        public void mouseDown(object sender, MouseEventArgs e)
+        public void mouseDown(object sender, MouseEventArgs e, int Zoom)
         {
             
             if (e.Button == MouseButtons.Right)
             {
-                ushort x = (ushort)(e.X / 16);
-                ushort y = (ushort)(e.Y / 16);
+                ushort x = (ushort)(e.X / (8*Zoom));
+                ushort y = (ushort)(e.Y / (8 * Zoom));
                 posContext = (ushort)((x << 1) | y << 6);
                 ContextMenuStrip contextMenu = new ContextMenuStrip();
                 contextMenu.Items.Add("Add Object");
@@ -39,9 +39,9 @@ namespace GoofED
                 byte x = (byte)(((obj.position & 0x3F) >> 1));
                 byte y = (byte)(((obj.position & 0x3FC0) >> 6));
 
-                if (e.X >= ((x)*16) && e.X <= ((x)*16)+32)
+                if (e.X >= ((x)* (8 * Zoom)) && e.X <= ((x)* (8 * Zoom)) +(Zoom*16))
                 {
-                    if (e.Y >= ((y) * 16) && e.Y <= ((y) * 16) + 32)
+                    if (e.Y >= ((y) * (8 * Zoom)) && e.Y <= ((y) * (8 * Zoom)) + (Zoom * 16))
                     {
                         selectedObject = obj;
                         ismouseDown = true;
@@ -62,14 +62,14 @@ namespace GoofED
 
         }
 
-        public void mouseMove(MouseEventArgs e)
+        public void mouseMove(MouseEventArgs e, int Zoom)
         {
             if (ismouseDown == true)
             {
                 if (selectedObject != null)
                 {
-                    ushort x = (ushort)(e.X / 16);
-                    ushort y = (ushort)(e.Y / 16);
+                    ushort x = (ushort)(e.X / (8 * Zoom));
+                    ushort y = (ushort)(e.Y / (8 * Zoom));
                     ushort pos = (ushort)((x << 1) | y << 6);
                     selectedObject.position = pos;
                 }

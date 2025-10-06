@@ -200,9 +200,11 @@ namespace GoofED
         public static int Tiles32Data2 = 0x90000;
         public static int Tiles32Ext2 = 0x94000;
 
+        public static int EditorVersion = 0x007FAF;
 
         //This contains all tiles16 in order from tile8 (upleft,upright,botleft,botright)
         public static int Tiles16Data = 0x058000; //3327
+        public static int Tiles16DataExt = 0x0A0000; //4096
 
         public static int Tile16CollisionMap = 0x04F100;
 

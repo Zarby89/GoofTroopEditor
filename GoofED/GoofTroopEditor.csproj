@@ -5,7 +5,7 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{458F8675-3BAA-4CA0-8B57-5580FC39BD4A}</ProjectGuid>
-    <OutputType>WinExe</OutputType>
+    <OutputType>Exe</OutputType>
     <RootNamespace>GoofTroopEditor</RootNamespace>
     <AssemblyName>GoofTroopEditor</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
@@ -132,6 +132,12 @@
     <Compile Include="Gui\GetPluginName.Designer.cs">
       <DependentUpon>GetPluginName.cs</DependentUpon>
     </Compile>
+    <Compile Include="Gui\GfxEditor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Gui\GfxEditor.Designer.cs">
+      <DependentUpon>GfxEditor.cs</DependentUpon>
+    </Compile>
     <Compile Include="Gui\MusicViewer.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -159,6 +165,7 @@
     <Compile Include="Level.cs" />
     <Compile Include="ItemName.cs" />
     <Compile Include="Map.cs" />
+    <Compile Include="PointeredImage.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ROM.cs" />
@@ -183,6 +190,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Gui\GetPluginName.resx">
       <DependentUpon>GetPluginName.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Gui\GfxEditor.resx">
+      <DependentUpon>GfxEditor.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Gui\MusicViewer.resx">
       <DependentUpon>MusicViewer.cs</DependentUpon>
@@ -265,6 +275,7 @@
     <Content Include="ASM\Required\demorecorder.asm">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="ASM\Required\EditorROMMap.txt" />
     <Content Include="ASM\Required\expandedtile32.asm">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
