@@ -3251,6 +3251,10 @@ namespace GoofED
             {
                 hbyte = 0xF0;
             }
+            else if (collisionCombobox.SelectedIndex == 8)
+            {
+                hbyte = 0x10;
+            }
 
             if (ModifierKeys == Keys.Shift)
             {
@@ -3355,7 +3359,10 @@ namespace GoofED
                     editor16priorityCheckbox.Checked = false;
                 }
 
-
+                if ((selectedCollision & 0xF0) == 0x10)//Damage
+                {
+                    collisionCombobox.SelectedIndex = 8;
+                }
                 if ((selectedCollision & 0xF0) == 0xF0)//Water
                 {
                     collisionCombobox.SelectedIndex = 7;
@@ -3468,6 +3475,10 @@ namespace GoofED
                 if (bgMode.selectedTiles.Length >= 1)
                 {
                     byte selectedCollision = game.collisions[bgMode.selectedTiles[0]];
+                    if ((selectedCollision & 0xF0) == 0x10)//Damage
+                    {
+                        collisionCombobox.SelectedIndex = 8;
+                    }
                     if ((selectedCollision & 0xF0) == 0xF0)//Water
                     {
                         collisionCombobox.SelectedIndex = 7;
@@ -3506,6 +3517,10 @@ namespace GoofED
                     GFX.DrawEditing16(game.tiles16.ToArray(), bgMode.selectedTiles[0]);
 
                     string c = "O";
+                    if ((selectedCollision & 0xF0) == 0x10)//Damage
+                    {
+                        c = "D";
+                    }
                     if ((selectedCollision & 0xF0) == 0xF0)//Water
                     {
                         c = "W";
@@ -3640,6 +3655,10 @@ namespace GoofED
                 else if (collisionCombobox.SelectedIndex == 7)
                 {
                     hbyte = 0xF0;
+                }
+                else if (collisionCombobox.SelectedIndex == 8)
+                {
+                    hbyte = 0x10;
                 }
 
                 byte lowCollision = (byte)(selectedCollision & 0x0F);

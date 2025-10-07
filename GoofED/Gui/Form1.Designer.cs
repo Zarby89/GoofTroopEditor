@@ -2011,7 +2011,8 @@ namespace GoofED
             "0x09 Text(not working)",
             "0x0C Solid2",
             "0x0E Solid3",
-            "0x0F Water"});
+            "0x0F Water",
+            "0x10 Damage"});
             this.collisionCombobox.Location = new System.Drawing.Point(6, 107);
             this.collisionCombobox.Name = "collisionCombobox";
             this.collisionCombobox.Size = new System.Drawing.Size(132, 21);
