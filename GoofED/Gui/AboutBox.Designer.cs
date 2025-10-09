@@ -57,7 +57,7 @@ namespace GoofED
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(91, 52);
             this.label1.TabIndex = 1;
-            this.label1.Text = "Goof Troop Editor\r\n\r\nVersion : 1.4 \r\nAuthor : Zarby89";
+            this.label1.Text = "Goof Troop Editor\r\n\r\nVersion : 1.4.1\r\nAuthor : Zarby89";
             // 
             // button1
             // 

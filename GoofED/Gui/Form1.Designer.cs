@@ -172,6 +172,8 @@ namespace GoofED
             this.darkThemeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.animatedPaletteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.showScratchpadToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.zoomIncreaseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.zoomDecreaseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.lock8x8Checkbox = new System.Windows.Forms.CheckBox();
             this.label26 = new System.Windows.Forms.Label();
@@ -207,8 +209,7 @@ namespace GoofED
             this.bg1visibleButton = new System.Windows.Forms.CheckBox();
             this.mainPanel = new System.Windows.Forms.Panel();
             this.panel5 = new System.Windows.Forms.Panel();
-            this.zoomIncreaseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.zoomDecreaseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.discordToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.panel6.SuspendLayout();
@@ -1556,7 +1557,8 @@ namespace GoofED
             this.aSMToolStripMenuItem,
             this.projectToolStripMenuItem,
             this.viewToolStripMenuItem,
-            this.aboutToolStripMenuItem});
+            this.aboutToolStripMenuItem,
+            this.discordToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(1391, 24);
@@ -1732,35 +1734,35 @@ namespace GoofED
             // exportAllToolStripMenuItem
             // 
             this.exportAllToolStripMenuItem.Name = "exportAllToolStripMenuItem";
-            this.exportAllToolStripMenuItem.Size = new System.Drawing.Size(162, 22);
+            this.exportAllToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.exportAllToolStripMenuItem.Text = "Export Gfx";
             this.exportAllToolStripMenuItem.Click += new System.EventHandler(this.exportAllToolStripMenuItem_Click);
             // 
             // importAllToolStripMenuItem
             // 
             this.importAllToolStripMenuItem.Name = "importAllToolStripMenuItem";
-            this.importAllToolStripMenuItem.Size = new System.Drawing.Size(162, 22);
+            this.importAllToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.importAllToolStripMenuItem.Text = "Import Gfx";
             this.importAllToolStripMenuItem.Click += new System.EventHandler(this.importAllToolStripMenuItem_Click);
             // 
             // saveScratchpadToolStripMenuItem
             // 
             this.saveScratchpadToolStripMenuItem.Name = "saveScratchpadToolStripMenuItem";
-            this.saveScratchpadToolStripMenuItem.Size = new System.Drawing.Size(162, 22);
+            this.saveScratchpadToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.saveScratchpadToolStripMenuItem.Text = "Save Scratchpad";
             this.saveScratchpadToolStripMenuItem.Click += new System.EventHandler(this.saveScratchpadToolStripMenuItem_Click);
             // 
             // loadScratchpadToolStripMenuItem
             // 
             this.loadScratchpadToolStripMenuItem.Name = "loadScratchpadToolStripMenuItem";
-            this.loadScratchpadToolStripMenuItem.Size = new System.Drawing.Size(162, 22);
+            this.loadScratchpadToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.loadScratchpadToolStripMenuItem.Text = "Load Scratchpad";
             this.loadScratchpadToolStripMenuItem.Click += new System.EventHandler(this.loadScratchpadToolStripMenuItem_Click);
             // 
             // gfxEditornewToolStripMenuItem
             // 
             this.gfxEditornewToolStripMenuItem.Name = "gfxEditornewToolStripMenuItem";
-            this.gfxEditornewToolStripMenuItem.Size = new System.Drawing.Size(162, 22);
+            this.gfxEditornewToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.gfxEditornewToolStripMenuItem.Text = "Gfx Editor (new)";
             this.gfxEditornewToolStripMenuItem.Visible = false;
             this.gfxEditornewToolStripMenuItem.Click += new System.EventHandler(this.gfxEditornewToolStripMenuItem_Click);
@@ -1777,7 +1779,7 @@ namespace GoofED
             // manageASMToolStripMenuItem
             // 
             this.manageASMToolStripMenuItem.Name = "manageASMToolStripMenuItem";
-            this.manageASMToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
+            this.manageASMToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.manageASMToolStripMenuItem.Text = "Manage ASM";
             this.manageASMToolStripMenuItem.Click += new System.EventHandler(this.manageASMToolStripMenuItem_Click);
             // 
@@ -1793,7 +1795,7 @@ namespace GoofED
             // clearAllMapsToolStripMenuItem
             // 
             this.clearAllMapsToolStripMenuItem.Name = "clearAllMapsToolStripMenuItem";
-            this.clearAllMapsToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
+            this.clearAllMapsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.clearAllMapsToolStripMenuItem.Text = "Clear all maps";
             this.clearAllMapsToolStripMenuItem.Click += new System.EventHandler(this.clearAllMapsToolStripMenuItem_Click);
             // 
@@ -1814,7 +1816,7 @@ namespace GoofED
             // 
             this.darkThemeToolStripMenuItem.Enabled = false;
             this.darkThemeToolStripMenuItem.Name = "darkThemeToolStripMenuItem";
-            this.darkThemeToolStripMenuItem.Size = new System.Drawing.Size(165, 22);
+            this.darkThemeToolStripMenuItem.Size = new System.Drawing.Size(249, 22);
             this.darkThemeToolStripMenuItem.Text = "Dark Theme";
             this.darkThemeToolStripMenuItem.Click += new System.EventHandler(this.darkThemeToolStripMenuItem_Click);
             // 
@@ -1822,7 +1824,7 @@ namespace GoofED
             // 
             this.animatedPaletteToolStripMenuItem.CheckOnClick = true;
             this.animatedPaletteToolStripMenuItem.Name = "animatedPaletteToolStripMenuItem";
-            this.animatedPaletteToolStripMenuItem.Size = new System.Drawing.Size(165, 22);
+            this.animatedPaletteToolStripMenuItem.Size = new System.Drawing.Size(249, 22);
             this.animatedPaletteToolStripMenuItem.Text = "Animated Palette";
             this.animatedPaletteToolStripMenuItem.CheckedChanged += new System.EventHandler(this.animatedPaletteToolStripMenuItem_CheckedChanged);
             // 
@@ -1832,9 +1834,25 @@ namespace GoofED
             this.showScratchpadToolStripMenuItem.CheckOnClick = true;
             this.showScratchpadToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
             this.showScratchpadToolStripMenuItem.Name = "showScratchpadToolStripMenuItem";
-            this.showScratchpadToolStripMenuItem.Size = new System.Drawing.Size(165, 22);
+            this.showScratchpadToolStripMenuItem.Size = new System.Drawing.Size(249, 22);
             this.showScratchpadToolStripMenuItem.Text = "Show Scratchpad";
             this.showScratchpadToolStripMenuItem.Click += new System.EventHandler(this.showScratchpadToolStripMenuItem_Click);
+            // 
+            // zoomIncreaseToolStripMenuItem
+            // 
+            this.zoomIncreaseToolStripMenuItem.Name = "zoomIncreaseToolStripMenuItem";
+            this.zoomIncreaseToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Oemplus)));
+            this.zoomIncreaseToolStripMenuItem.Size = new System.Drawing.Size(249, 22);
+            this.zoomIncreaseToolStripMenuItem.Text = "Zoom Increase";
+            this.zoomIncreaseToolStripMenuItem.Click += new System.EventHandler(this.zoomIncreaseToolStripMenuItem_Click);
+            // 
+            // zoomDecreaseToolStripMenuItem
+            // 
+            this.zoomDecreaseToolStripMenuItem.Name = "zoomDecreaseToolStripMenuItem";
+            this.zoomDecreaseToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.OemMinus)));
+            this.zoomDecreaseToolStripMenuItem.Size = new System.Drawing.Size(249, 22);
+            this.zoomDecreaseToolStripMenuItem.Text = "Zoom Decrease";
+            this.zoomDecreaseToolStripMenuItem.Click += new System.EventHandler(this.zoomDecreaseToolStripMenuItem_Click);
             // 
             // aboutToolStripMenuItem
             // 
@@ -2268,21 +2286,12 @@ namespace GoofED
             this.panel5.Size = new System.Drawing.Size(541, 44);
             this.panel5.TabIndex = 0;
             // 
-            // zoomIncreaseToolStripMenuItem
+            // discordToolStripMenuItem
             // 
-            this.zoomIncreaseToolStripMenuItem.Name = "zoomIncreaseToolStripMenuItem";
-            this.zoomIncreaseToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Oemplus)));
-            this.zoomIncreaseToolStripMenuItem.Size = new System.Drawing.Size(249, 22);
-            this.zoomIncreaseToolStripMenuItem.Text = "Zoom Increase";
-            this.zoomIncreaseToolStripMenuItem.Click += new System.EventHandler(this.zoomIncreaseToolStripMenuItem_Click);
-            // 
-            // zoomDecreaseToolStripMenuItem
-            // 
-            this.zoomDecreaseToolStripMenuItem.Name = "zoomDecreaseToolStripMenuItem";
-            this.zoomDecreaseToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.OemMinus)));
-            this.zoomDecreaseToolStripMenuItem.Size = new System.Drawing.Size(249, 22);
-            this.zoomDecreaseToolStripMenuItem.Text = "Zoom Decrease";
-            this.zoomDecreaseToolStripMenuItem.Click += new System.EventHandler(this.zoomDecreaseToolStripMenuItem_Click);
+            this.discordToolStripMenuItem.Name = "discordToolStripMenuItem";
+            this.discordToolStripMenuItem.Size = new System.Drawing.Size(59, 20);
+            this.discordToolStripMenuItem.Text = "Discord";
+            this.discordToolStripMenuItem.Click += new System.EventHandler(this.discordToolStripMenuItem_Click);
             // 
             // Form1
             // 
@@ -2295,7 +2304,7 @@ namespace GoofED
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Form1";
-            this.Text = "Goof Troop Editor 1.4";
+            this.Text = "Goof Troop Editor 1.4.1";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.Load += new System.EventHandler(this.Form1_Load);
             this.Shown += new System.EventHandler(this.Form1_Shown);
@@ -2538,6 +2547,7 @@ namespace GoofED
         private System.Windows.Forms.Panel panel6;
         private System.Windows.Forms.ToolStripMenuItem zoomIncreaseToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem zoomDecreaseToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem discordToolStripMenuItem;
     }
 }
 

@@ -2822,7 +2822,7 @@ namespace GoofED
                 e.Graphics.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.NearestNeighbor;
                 e.Graphics.PixelOffsetMode = System.Drawing.Drawing2D.PixelOffsetMode.Half;
                 e.Graphics.Clear(Color.Black);
-                e.Graphics.DrawImage(GFX.scratch16Bitmap, new Rectangle(0, 0, 256, 12544));
+                e.Graphics.DrawImage(GFX.scratch16Bitmap, new Rectangle(0, 0, 256, 15360));
                 /*int tx = (bgMode.selectedTile % 8);
                 int ty = (bgMode.selectedTile / 8);
                 e.Graphics.DrawRectangle(Pens.White, new Rectangle(tx * 32, ty * 32, 32, 32));*/
@@ -4193,6 +4193,11 @@ namespace GoofED
             palPanel.Location = new Point(6, (224 * Zoom) + 16);
 
             mainPicturebox.Invalidate();
+        }
+
+        private void discordToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Process.Start("https://discord.gg/GgeE9q7wyJ");
         }
     }
 
