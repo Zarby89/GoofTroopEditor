@@ -544,7 +544,10 @@ namespace GoofED
             DecompressBGGfx(game.levels[game.selectedLevel].gfx1);
             DecompressBGGfx(game.levels[game.selectedLevel].gfx2);
 
-            byte[] s = Compression.DecompressGFX(game.rom.data, 0x6C55C, 0x1000);
+
+            int snesaddr = 0x018CC9;
+            int pcaddress = Utils.SnesToPc(game.rom.ReadLong(snesaddr));
+            byte[] s = Compression.DecompressGFX(game.rom.data, pcaddress, 0x1000);
             byte[] data = GFX.snesbpp4Tobpp8(s, 16);
             int dest = 0xE000;
 
@@ -636,9 +639,10 @@ namespace GoofED
                 }
             }
 
-            addr = 0x06C55C;
+            snesaddr = 0x018CC9;
+            pcaddress = Utils.SnesToPc(game.rom.ReadLong(snesaddr));
             length = 0x4000;
-            s = Compression.DecompressGFX(game.rom.data, addr, length);
+            s = Compression.DecompressGFX(game.rom.data, pcaddress, length);
             data = GFX.snesbpp4Tobpp8TileAt(s, 161);
             DrawVRAMTile(data, 0x1C000);
             data = GFX.snesbpp4Tobpp8TileAt(s, 162);
@@ -3067,23 +3071,36 @@ namespace GoofED
                     //Create a folder containing all BG Gfx
                 }
 
+                int addrItem = Utils.SnesToPc(game.rom.ReadLong(0x18CBD));
+                ushort addrItemLength = game.rom.ReadShort(0x18CC0);
 
-                byte[] sItem = Compression.DecompressGFX(game.rom.data, 0x060000, 0x01D00);
+                int addrItem2 = Utils.SnesToPc(game.rom.ReadLong(0x18CC9)); // item2
+                ushort addrItem2Length = game.rom.ReadShort(0x018CCC); // item2
+
+                int addrItem3 = Utils.SnesToPc(game.rom.ReadLong(0x18CC3)); // item2
+                ushort addrItem3Length = game.rom.ReadShort(0x018CC6); // item2
+
+                byte[] sItem = Compression.DecompressGFX(game.rom.data, addrItem, addrItemLength);
                 FileStream fss = new FileStream(path + "\\" + "Items" + ".bin", FileMode.OpenOrCreate, FileAccess.Write);
                 fss.Write(sItem, 0, sItem.Length);
                 fss.Close();
 
-                sItem = Compression.DecompressGFX(game.rom.data, 0x06C55C, 0x60C0);
+                sItem = Compression.DecompressGFX(game.rom.data, addrItem2, addrItem2Length);
                 fss = new FileStream(path + "\\" + "Items2" + ".bin", FileMode.OpenOrCreate, FileAccess.Write);
                 fss.Write(sItem, 0, sItem.Length);
                 fss.Close();
 
-
-                sItem = Compression.DecompressGFX(game.rom.data, 0x061574, 0xD200);
-
+                sItem = Compression.DecompressGFX(game.rom.data, addrItem3, addrItem3Length);
                 fss = new FileStream(path + "\\" + "MaxGoofy" + ".bin", FileMode.OpenOrCreate, FileAccess.Write);
                 fss.Write(sItem, 0, sItem.Length);
                 fss.Close();
+
+
+                /*sItem = Compression.DecompressGFX(game.rom.data, 0x061574, 0xD200);
+
+                fss = new FileStream(path + "\\" + "MaxGoofy" + ".bin", FileMode.OpenOrCreate, FileAccess.Write);
+                fss.Write(sItem, 0, sItem.Length);
+                fss.Close();*/
 
             }
 
@@ -3105,24 +3122,36 @@ namespace GoofED
                     int gfxdestPtrSnes = 0x830000 + game.rom.ReadShort(Constants.BGGfxValuesAddrDest_1) + (i * 2);
                     int dest = game.rom.ReadByte((Utils.SnesToPc(gfxdestPtrSnes)) + 1) << 10;
                     int gfxPtrSnes = game.rom.ReadLong(Constants.BGGfxValuesPtr_1) + (i * 5);
+                    int gfxPtrSnesNext = game.rom.ReadLong(Constants.BGGfxValuesPtr_1) + ((i+1) * 5);
                     int gfxPtrPC = Utils.SnesToPc(gfxPtrSnes);
+                    int gfxPtrPCNext = Utils.SnesToPc(gfxPtrSnesNext);
+
 
                     int addr = Utils.SnesToPc(game.rom.ReadLong(gfxPtrPC));
+                    int addrNext = Utils.SnesToPc(game.rom.ReadLong(gfxPtrPCNext));
                     int length = game.rom.ReadShort(gfxPtrPC + 3);
 
 
                     FileStream fs = new FileStream(path + "\\" + "BG" + i.ToString("X2") + ".bin", FileMode.Open, FileAccess.Read);
+                    
                     byte[] data = new byte[fs.Length];
                     fs.Read(data, 0, (int)fs.Length);
                     fs.Close();
-                    
-
+                    game.rom.WriteShort(gfxPtrPC + 3, (short)data.Length);
                     byte[] s = Compression.CompressGfx(data);
-
-                    if (data.Length > length) // if new length > previous length then use expanded region
+                    if (gfxPtrPC >= 0xC0000) // already expanded 
                     {
                         game.rom.WriteLong(gfxPtrPC, Utils.PcToSnes(expandedPos));
-                        game.rom.WriteShort(gfxPtrPC + 3, (short)data.Length);
+                        
+                        addr = expandedPos;
+                        game.rom.WriteBytes(addr, s);
+                        expandedPos += data.Length;
+                        continue;
+                    }
+
+                    if (addr+s.Length > addrNext) // if compressed length >= original space available
+                    {
+                        game.rom.WriteLong(gfxPtrPC, Utils.PcToSnes(expandedPos));
                         addr = expandedPos;
                     }
                     game.rom.WriteBytes(addr, s);
@@ -3132,22 +3161,22 @@ namespace GoofED
                     }
 
                 }
-
+                 
                 FileStream fss = new FileStream(path + "\\" + "Items" + ".bin", FileMode.Open, FileAccess.Read);
                 byte[] dataItem = new byte[fss.Length];
                 fss.Read(dataItem, 0, (int)fss.Length);
                 fss.Close();
 
-                byte[] sItem = Compression.CompressGfx(dataItem);
-                if (sItem.Length > 0x1D00)
-                {
-                    MessageBox.Show("Not enough space to import Items.bin this file will be ignored");
 
-                }
-                else
-                {
-                    game.rom.WriteBytes(0x060000, sItem);
-                }
+
+                int itemExpGfx = 0x0B0000;
+                byte[] sItem = Compression.CompressGfx(dataItem);
+
+                //int addrItem = Utils.SnesToPc(game.rom.ReadLong(0x18CBD)); // use a new address bank96 968000
+                game.rom.WriteLong(0x18CBD, Utils.PcToSnes(itemExpGfx));
+                game.rom.WriteBytes(itemExpGfx, sItem);
+                itemExpGfx += sItem.Length;
+
 
 
                 fss = new FileStream(path + "\\" + "Items2" + ".bin", FileMode.Open, FileAccess.Read);
@@ -3156,16 +3185,11 @@ namespace GoofED
                 fss.Close();
 
                 sItem = Compression.CompressGfx(dataItem);
-                if (sItem.Length > 0x6000)
-                {
-                    MessageBox.Show("Not enough space to import Items.bin this file will be ignored");
+                game.rom.WriteLong(0x18CC9, Utils.PcToSnes(itemExpGfx));
+                game.rom.WriteBytes(itemExpGfx, sItem);
+                itemExpGfx += sItem.Length;
 
-                }
-                else
-                {
-                    game.rom.WriteBytes(0x6C55C, sItem);
-                }
-
+                int addrItem2 = Utils.SnesToPc(game.rom.ReadLong(0x18CC3)); // max & goofy
 
                 fss = new FileStream(path + "\\" + "MaxGoofy" + ".bin", FileMode.Open, FileAccess.Read);
                 dataItem = new byte[fss.Length];
@@ -3173,15 +3197,8 @@ namespace GoofED
                 fss.Close();
 
                 sItem = Compression.CompressGfx(dataItem);
-                if (sItem.Length > 0xD200)
-                {
-                    MessageBox.Show("Not enough space to import MaxGoofy.bin this file will be ignored");
 
-                }
-                else
-                {
-                    game.rom.WriteBytes(0x61574, sItem);
-                }
+                game.rom.WriteBytes(addrItem2, sItem); // write it in original pos
 
 
                 for (int i = 0; i < 35; i++)
@@ -3189,9 +3206,12 @@ namespace GoofED
                     int gfxdestPtrSnes = 0x830000 + game.rom.ReadShort(Constants.SpritesGfx_Address) + (i * 2);
                     int dest = game.rom.ReadByte((Utils.SnesToPc(gfxdestPtrSnes)) + 1) << 10;
                     int gfxPtrSnes = game.rom.ReadLong(Constants.SpritesGfx_Address) + (i * 5);
+                    int gfxPtrSnesNext = game.rom.ReadLong(Constants.SpritesGfx_Address) + ((i+1) * 5);
                     int gfxPtrPC = Utils.SnesToPc(gfxPtrSnes);
+                    int gfxPtrPCNext = Utils.SnesToPc(gfxPtrSnesNext);
 
                     int addr = Utils.SnesToPc(game.rom.ReadLong(gfxPtrPC));
+                    int addrNext = Utils.SnesToPc(game.rom.ReadLong(gfxPtrPCNext));
                     int length = game.rom.ReadShort(gfxPtrPC + 3);
 
 
@@ -3200,14 +3220,21 @@ namespace GoofED
                     fs.Read(data, 0, (int)fs.Length);
                     fs.Close();
 
-
+                    game.rom.WriteShort(gfxPtrPC + 3, (short)data.Length);
                     byte[] s = Compression.CompressGfx(data);
-                    //Console.WriteLine("GFX LENGTH FOR SHEET " + i.ToString("X2") + " = " + s.Length.ToString("X4"));
-                    if (data.Length > length)
+                    if (gfxPtrPC >= 0xC0000)// already expanded
                     {
-                                game.rom.WriteLong(gfxPtrPC, Utils.PcToSnes(expandedPos));
-                                game.rom.WriteShort(gfxPtrPC + 3, (short)data.Length);
-                                addr = expandedPos;
+                        game.rom.WriteLong(gfxPtrPC, Utils.PcToSnes(expandedPos));
+
+                        addr = expandedPos;
+                        game.rom.WriteBytes(addr, s);
+                        expandedPos += data.Length;
+                        continue;
+                    }
+                    if (addr + s.Length > addrNext) // if compressed length >= original space available
+                    {
+                        game.rom.WriteLong(gfxPtrPC, Utils.PcToSnes(expandedPos));
+                        addr = expandedPos;
                     }
                     game.rom.WriteBytes(addr, s);
                     if (addr >= 0x0C0000)

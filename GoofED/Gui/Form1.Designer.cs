@@ -1706,49 +1706,49 @@ namespace GoofED
             // textEditorToolStripMenuItem
             // 
             this.textEditorToolStripMenuItem.Name = "textEditorToolStripMenuItem";
-            this.textEditorToolStripMenuItem.Size = new System.Drawing.Size(158, 22);
+            this.textEditorToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.textEditorToolStripMenuItem.Text = "Text Editor";
             this.textEditorToolStripMenuItem.Click += new System.EventHandler(this.textEditorToolStripMenuItem_Click);
             // 
             // passwordEditorToolStripMenuItem
             // 
             this.passwordEditorToolStripMenuItem.Name = "passwordEditorToolStripMenuItem";
-            this.passwordEditorToolStripMenuItem.Size = new System.Drawing.Size(158, 22);
+            this.passwordEditorToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.passwordEditorToolStripMenuItem.Text = "Password Editor";
             this.passwordEditorToolStripMenuItem.Click += new System.EventHandler(this.passwordEditorToolStripMenuItem_Click);
             // 
             // paletteEditorToolStripMenuItem
             // 
             this.paletteEditorToolStripMenuItem.Name = "paletteEditorToolStripMenuItem";
-            this.paletteEditorToolStripMenuItem.Size = new System.Drawing.Size(158, 22);
+            this.paletteEditorToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.paletteEditorToolStripMenuItem.Text = "Palette Editor";
             this.paletteEditorToolStripMenuItem.Click += new System.EventHandler(this.paletteEditorToolStripMenuItem_Click);
             // 
             // creditsEditorToolStripMenuItem
             // 
             this.creditsEditorToolStripMenuItem.Name = "creditsEditorToolStripMenuItem";
-            this.creditsEditorToolStripMenuItem.Size = new System.Drawing.Size(158, 22);
+            this.creditsEditorToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.creditsEditorToolStripMenuItem.Text = "Credits Editor";
             this.creditsEditorToolStripMenuItem.Click += new System.EventHandler(this.creditsEditorToolStripMenuItem_Click);
             // 
             // musicViewerToolStripMenuItem
             // 
             this.musicViewerToolStripMenuItem.Name = "musicViewerToolStripMenuItem";
-            this.musicViewerToolStripMenuItem.Size = new System.Drawing.Size(158, 22);
+            this.musicViewerToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.musicViewerToolStripMenuItem.Text = "Music Viewer";
             this.musicViewerToolStripMenuItem.Click += new System.EventHandler(this.musicViewerToolStripMenuItem_Click);
             // 
             // introEditorToolStripMenuItem
             // 
             this.introEditorToolStripMenuItem.Name = "introEditorToolStripMenuItem";
-            this.introEditorToolStripMenuItem.Size = new System.Drawing.Size(158, 22);
+            this.introEditorToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.introEditorToolStripMenuItem.Text = "Intro Editor";
             this.introEditorToolStripMenuItem.Click += new System.EventHandler(this.introEditorToolStripMenuItem_Click);
             // 
             // tIlemapEditorToolStripMenuItem
             // 
             this.tIlemapEditorToolStripMenuItem.Name = "tIlemapEditorToolStripMenuItem";
-            this.tIlemapEditorToolStripMenuItem.Size = new System.Drawing.Size(158, 22);
+            this.tIlemapEditorToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.tIlemapEditorToolStripMenuItem.Text = "Tilemap Editor";
             this.tIlemapEditorToolStripMenuItem.Click += new System.EventHandler(this.tIlemapEditorToolStripMenuItem_Click);
             // 
@@ -1768,35 +1768,35 @@ namespace GoofED
             // exportAllToolStripMenuItem
             // 
             this.exportAllToolStripMenuItem.Name = "exportAllToolStripMenuItem";
-            this.exportAllToolStripMenuItem.Size = new System.Drawing.Size(162, 22);
+            this.exportAllToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.exportAllToolStripMenuItem.Text = "Export Gfx";
             this.exportAllToolStripMenuItem.Click += new System.EventHandler(this.exportAllToolStripMenuItem_Click);
             // 
             // importAllToolStripMenuItem
             // 
             this.importAllToolStripMenuItem.Name = "importAllToolStripMenuItem";
-            this.importAllToolStripMenuItem.Size = new System.Drawing.Size(162, 22);
+            this.importAllToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.importAllToolStripMenuItem.Text = "Import Gfx";
             this.importAllToolStripMenuItem.Click += new System.EventHandler(this.importAllToolStripMenuItem_Click);
             // 
             // saveScratchpadToolStripMenuItem
             // 
             this.saveScratchpadToolStripMenuItem.Name = "saveScratchpadToolStripMenuItem";
-            this.saveScratchpadToolStripMenuItem.Size = new System.Drawing.Size(162, 22);
+            this.saveScratchpadToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.saveScratchpadToolStripMenuItem.Text = "Save Scratchpad";
             this.saveScratchpadToolStripMenuItem.Click += new System.EventHandler(this.saveScratchpadToolStripMenuItem_Click);
             // 
             // loadScratchpadToolStripMenuItem
             // 
             this.loadScratchpadToolStripMenuItem.Name = "loadScratchpadToolStripMenuItem";
-            this.loadScratchpadToolStripMenuItem.Size = new System.Drawing.Size(162, 22);
+            this.loadScratchpadToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.loadScratchpadToolStripMenuItem.Text = "Load Scratchpad";
             this.loadScratchpadToolStripMenuItem.Click += new System.EventHandler(this.loadScratchpadToolStripMenuItem_Click);
             // 
             // gfxEditornewToolStripMenuItem
             // 
             this.gfxEditornewToolStripMenuItem.Name = "gfxEditornewToolStripMenuItem";
-            this.gfxEditornewToolStripMenuItem.Size = new System.Drawing.Size(162, 22);
+            this.gfxEditornewToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.gfxEditornewToolStripMenuItem.Text = "Gfx Viewer (new)";
             this.gfxEditornewToolStripMenuItem.Click += new System.EventHandler(this.gfxEditornewToolStripMenuItem_Click);
             // 
