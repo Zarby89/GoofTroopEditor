@@ -44,7 +44,7 @@ namespace GoofTroopEditor.Gui
         }
         PointeredImage ptrImageVram = new PointeredImage(128, 512);
         PointeredImage mainImage = new PointeredImage(256, 256);
-
+        PointeredImage ptrImageVram2 = new PointeredImage(128, 512);
         private void IntroEditor_Load(object sender, EventArgs e)
         {
             BGs = new List<ushort[]>();
@@ -121,14 +121,13 @@ namespace GoofTroopEditor.Gui
                 vramRaw[i + 0x400] = data[i];
             }
 
-            
+            ptrImageVram2.Draw8bppTiles(0, 0, vramRaw, 16, 0, 0);
             ptrImageVram.Draw8bppTiles(0, 0, vramRaw, 16, 0, 0);
             vramPicturebox.Invalidate();
 
 
             for (int i = 0; i < 9; i++)
             {
-                if (i == 5 || i == 6 || i == 7) { continue; }
                 int addr2 = game.rom.ReadLong(0x7FEA0 + (i * 5));
                 int length2 = game.rom.ReadShort(0x7FEA0 + 3 + (i * 5));
                 byte[] s = Compression.DecompressGFX(game.rom.data, Utils.SnesToPc(addr2), length2);
@@ -143,7 +142,7 @@ namespace GoofTroopEditor.Gui
             }
 
 
-            mainImage.DrawTilemap(BGs[(int)numericUpDown2.Value], 32, ptrImageVram, 0);
+            mainImage.DrawTilemap(BGs[(int)numericUpDown2.Value], 32, ptrImageVram2, 0);
             mainPicturebox.Invalidate();
 
 
@@ -186,6 +185,10 @@ namespace GoofTroopEditor.Gui
                 }
             }
 
+
+
+
+
             int gfxdestPtrSnes = 0x830000 + game.rom.ReadShort(Constants.BGGfxValuesAddrDest_1) + (BGGfxIndex[(int)numericUpDown2.Value] * 2);
             int dest = game.rom.ReadByte((Utils.SnesToPc(gfxdestPtrSnes)) + 1) << 10;
             int gfxPtrSnes = game.rom.ReadLong(Constants.BGGfxValuesPtr_1) + (BGGfxIndex[(int)numericUpDown2.Value] * 5);
@@ -203,11 +206,22 @@ namespace GoofTroopEditor.Gui
             }
 
 
+            gfxdestPtrSnes = 0x830000 + game.rom.ReadShort(Constants.BGGfxValuesAddrDest_1) + (0x0B * 2);
+            dest = game.rom.ReadByte((Utils.SnesToPc(gfxdestPtrSnes)) + 1) << 10;
+            gfxPtrSnes = game.rom.ReadLong(Constants.BGGfxValuesPtr_1) + (0x0B * 5);
+            gfxPtrPC = Utils.SnesToPc(gfxPtrSnes);
+
+            addr = Utils.SnesToPc(game.rom.ReadLong(gfxPtrPC));
+            length = game.rom.ReadShort(gfxPtrPC + 3);
+            frameGfx = Compression.DecompressGFX(game.rom.data, addr, length);
+
+            byte[] dataframe = Utils.SnesTilesToPc8bppTiles(frameGfx, length / 0x20, 4);
+            paletteUpDown.Enabled = false;
             for (int i = 0; i < 256; i++)
             {
                 pal[i] = Color.FromArgb(255, (i % 16) * 16, (i % 16) * 16, (i % 16) * 16);
             }
-            if ((int)numericUpDown2.Value == 0 || (int)numericUpDown2.Value == 5)
+            if ((int)numericUpDown2.Value == 0 || (int)numericUpDown2.Value == 8)
             {
                 Color[] colors2 = new Color[48];
                 for (int i = 0; i < 48; i++)
@@ -250,18 +264,49 @@ namespace GoofTroopEditor.Gui
                     pal[i + 16] = palgroup0[0x06][i];
                 }
             }
+            else if ((int)numericUpDown2.Value == 5 || (int)numericUpDown2.Value == 6 || (int)numericUpDown2.Value == 7)
+            {
+
+                for (int i = 0; i < palgroup0[0x0E].Length; i++)
+                {
+                    pal[i + 32] = palgroup0[0x0E][i];
+                }
+
+                for (int i = 0; i < palgroup0[0x10].Length; i++)
+                {
+                    pal[i + 32] = palgroup0[0x10][i];
+                }
+
+                for (int i = 0; i < palgroup0[0x0D].Length; i++)
+                {
+                    pal[i + 32] = palgroup0[0x0D][i];
+                }
+
+                for (int i = 0; i < dataframe.Length; i++)
+                {
+                    vramRaw[i + 0x400] = dataframe[i];
+                }
+
+                for (int i = 0; i < data.Length; i++)
+                {
+                    vramRaw[i + 0x1400] = data[i];
+                }
+                paletteUpDown.Enabled = true;
+
+            }
+
 
             mainImage.UpdatePalettes(pal);
-
-                ptrImageVram.Draw8bppTiles(0, 0, vramRaw, 16, 0, 0);
+            ptrImageVram2.Draw8bppTiles(0, 0, vramRaw, 16, 0, 0);
+            ptrImageVram.Draw8bppTiles(0, 0, vramRaw, 16, 0, 0);
             vramPicturebox.Invalidate();
 
             mainImage.ClearBitmap(0);
-            mainImage.DrawTilemap(BGs[(int)numericUpDown2.Value], 32, ptrImageVram, 0);
+            mainImage.DrawTilemap(BGs[(int)numericUpDown2.Value], 32, ptrImageVram2, 0);
             mainPicturebox.Invalidate();
         }
 
-        byte[] BGGfxIndex = new byte[6] {07, 08, 08, 09, 09, 07 };
+        byte[] BGGfxIndex = new byte[9] {07, 08, 08, 09, 09, 0x0C, 0x0C, 0x0D, 07 };
 
         private void mainPicturebox_MouseMove(object sender, MouseEventArgs e)
         {
@@ -279,7 +324,7 @@ namespace GoofTroopEditor.Gui
                 }
 
                 mainImage.ClearBitmap(0);
-                mainImage.DrawTilemap(BGs[(int)numericUpDown2.Value], 32, ptrImageVram, 0);
+                mainImage.DrawTilemap(BGs[(int)numericUpDown2.Value], 32, ptrImageVram2, 0);
                 mainPicturebox.Invalidate();
             }
 
@@ -328,7 +373,7 @@ namespace GoofTroopEditor.Gui
                     BGs[(int)numericUpDown2.Value][mx + (my * 32)] = BuildTileData();
                 }
                 mainImage.ClearBitmap(0);
-                mainImage.DrawTilemap(BGs[(int)numericUpDown2.Value], 32, ptrImageVram, 0);
+                mainImage.DrawTilemap(BGs[(int)numericUpDown2.Value], 32, ptrImageVram2, 0);
                 mainPicturebox.Invalidate();
             }
             else
@@ -390,6 +435,7 @@ namespace GoofTroopEditor.Gui
             }
 
             ptrImageVram.UpdatePalettes(tempPal);
+            ptrImageVram2.Draw8bppTiles(0, 0, vramRaw, 16, 0, 0);
             ptrImageVram.Draw8bppTiles(0, 0, vramRaw, 16, mirrorX, mirrorY);
             vramPicturebox.Invalidate();
         }
@@ -436,18 +482,18 @@ namespace GoofTroopEditor.Gui
 
         private void button1_Click(object sender, EventArgs e)
         {
-            bool useExpanded = false;
+            bool useExpanded = true;
             int expPos = 0x958000;
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < 9; i++)
             {
                 byte[] data = new byte[BGs[i].Length * 2];
                 for (int j = 0; j < BGs[i].Length; j++)
                 {
                     data[(j * 2)] = (byte)BGs[i][j];
-                    data[(j * 2) + 1] = (byte)(BGs[i][j]>>8);
+                    data[(j * 2) + 1] = (byte)(BGs[i][j] >> 8);
                 }
                 int addr2 = game.rom.ReadLong(0x7FEA0 + (i * 5));
-                int addrNext = game.rom.ReadLong(0x7FEA0 + ((i+1) * 5));
+                int addrNext = game.rom.ReadLong(0x7FEA0 + ((i + 1) * 5));
 
                 int length2 = game.rom.ReadShort(0x7FEA0 + 3 + (i * 5));
                 byte[] datac = Compression.CompressGfx(data);
@@ -458,53 +504,24 @@ namespace GoofTroopEditor.Gui
                     game.rom.WriteBytes(Utils.SnesToPc(expPos), datac);
                     expPos += datac.Length;
                 }
-                else
-                {
-                    if (datac.Length > addrNext - addr2)
-                    {
-                        MessageBox.Show("Tilemap" + i.ToString() + " is bigger than original space, Expanded space will be used for the tilemaps\r\n(This message is NOT an error) everything is fine!");
-                        useExpanded = true;
-                        i = 0;
-                        continue;
-                    }
-                    game.rom.WriteBytes(Utils.SnesToPc(addr2), datac);
-                }
+            }
 
                
-
-                //BGs.Add(us);
-            }
-
-            if (useExpanded)
-            {
-                byte[] data2 = new byte[BGs[5].Length * 2];
-                for (int j = 0; j < BGs[5].Length; j++)
-                {
-                    data2[(j * 2)] = (byte)BGs[5][j];
-                    data2[(j * 2) + 1] = (byte)(BGs[5][j] >> 8);
-                }
-                game.rom.WriteLong(0x7FEA0 + (8 * 5), expPos);
-                byte[] datac = Compression.CompressGfx(data2);
-                game.rom.WriteBytes(Utils.SnesToPc(expPos),datac );
-                expPos += datac.Length; ;
-            }
-            else
-            {
-                byte[] data2 = new byte[BGs[5].Length * 2];
-                for (int j = 0; j < BGs[5].Length; j++)
-                {
-                    data2[(j * 2)] = (byte)BGs[5][j];
-                    data2[(j * 2) + 1] = (byte)(BGs[5][j] >> 8);
-                }
-                int addr = game.rom.ReadLong(0x7FEA0 + (8 * 5));
-                int length = game.rom.ReadShort(0x7FEA0 + 3 + (8 * 5));
-                game.rom.WriteBytes(Utils.SnesToPc(addr), Compression.CompressGfx(data2));
-            }
             this.Close();
         }
 
         private void zoomUpDown_ValueChanged(object sender, EventArgs e)
         {
+            mainPicturebox.Invalidate();
+        }
+
+        private void paletteUpDown_ValueChanged(object sender, EventArgs e)
+        {
+            for (int i = 0; i < palgroup0[(int)paletteUpDown.Value].Length; i++)
+            {
+                pal[i + 32] = palgroup0[(int)paletteUpDown.Value][i];
+            }
+            mainImage.UpdatePalettes(pal);
             mainPicturebox.Invalidate();
         }
     }

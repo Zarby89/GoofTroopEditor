@@ -1740,6 +1740,7 @@ namespace GoofED
             // 
             // introEditorToolStripMenuItem
             // 
+            this.introEditorToolStripMenuItem.Enabled = false;
             this.introEditorToolStripMenuItem.Name = "introEditorToolStripMenuItem";
             this.introEditorToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.introEditorToolStripMenuItem.Text = "Intro Editor";

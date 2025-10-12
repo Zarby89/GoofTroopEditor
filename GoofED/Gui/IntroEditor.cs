@@ -134,9 +134,10 @@ namespace GoofTroopEditor.Gui
             ptrImageVram.Draw8bppTiles(0, 0, vramRaw, 16, 0, 0);
             vramPicturebox.Invalidate();
 
-            
 
-            byte[] s = Compression.DecompressGFX(game.rom.data, 0x04E2CD, 0x480);
+            int snesPtrAddr = 0x7FEB9;
+            int pcAddr = Utils.SnesToPc(game.rom.ReadLong(snesPtrAddr));
+            byte[] s = Compression.DecompressGFX(game.rom.data, pcAddr, 0x480);
 
             ushort[] bg = new ushort[0x6C];
             ushort[] bg2 = new ushort[0x6C];
@@ -174,6 +175,8 @@ namespace GoofTroopEditor.Gui
             BGs.Add(bg);
             BGs.Add(bg2);
 
+            snesPtrAddr = 0x7FEBE;
+            pcAddr = Utils.SnesToPc(game.rom.ReadLong(snesPtrAddr));
             s = Compression.DecompressGFX(game.rom.data, 0x04E5C9, 0x480);
 
             bg = new ushort[0x6C];
@@ -442,6 +445,7 @@ namespace GoofTroopEditor.Gui
 
         private void button1_Click(object sender, EventArgs e)
         {
+
             byte[] data = new byte[0x480];
             for (int i = 0; i < 0x480; i++)
             {
@@ -513,9 +517,16 @@ namespace GoofTroopEditor.Gui
             }
 
             byte[] s = Compression.CompressGfx(data);
+
+            int snesPtrAddr = 0x7FEB9;
+            int snesAddr = 0x95D000;
+            game.rom.WriteLong(snesPtrAddr, snesAddr);
+
+
+
             for (int i = 0; i < s.Length; i++)
             {
-                game.rom.data[i + 0x04E2CD] = s[i];
+                game.rom.data[i + Utils.SnesToPc(snesAddr)] = s[i];
             }
 
 
@@ -594,11 +605,17 @@ namespace GoofTroopEditor.Gui
                 }
             }
 
+            snesAddr = 0x95E000;
+            snesPtrAddr = 0x7FEBE;
             s = Compression.CompressGfx(data);
+            
+            game.rom.WriteLong(snesPtrAddr, snesAddr);
+
             for (int i = 0; i < s.Length; i++)
             {
-                game.rom.data[i + 0x04E5C9] = s[i];
+                game.rom.data[i + Utils.SnesToPc(snesAddr)] = s[i];
             }
+
 
             this.Close();
         }

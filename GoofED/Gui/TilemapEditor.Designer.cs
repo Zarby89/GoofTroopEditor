@@ -47,6 +47,8 @@
             this.button1 = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
+            this.label4 = new System.Windows.Forms.Label();
+            this.paletteUpDown = new System.Windows.Forms.NumericUpDown();
             this.vramPanel.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.vramPicturebox)).BeginInit();
@@ -59,6 +61,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.palettePicturebox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.paletteUpDown)).BeginInit();
             this.SuspendLayout();
             // 
             // vramPanel
@@ -125,6 +128,8 @@
             // 
             // panel3
             // 
+            this.panel3.Controls.Add(this.paletteUpDown);
+            this.panel3.Controls.Add(this.label4);
             this.panel3.Controls.Add(this.zoomUpDown);
             this.panel3.Controls.Add(this.label3);
             this.panel3.Controls.Add(this.tilepropGroupbox);
@@ -275,7 +280,7 @@
             this.numericUpDown2.Hexadecimal = true;
             this.numericUpDown2.Location = new System.Drawing.Point(91, 7);
             this.numericUpDown2.Maximum = new decimal(new int[] {
-            5,
+            8,
             0,
             0,
             0});
@@ -283,6 +288,34 @@
             this.numericUpDown2.Size = new System.Drawing.Size(90, 20);
             this.numericUpDown2.TabIndex = 6;
             this.numericUpDown2.ValueChanged += new System.EventHandler(this.numericUpDown2_ValueChanged);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(187, 9);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(69, 13);
+            this.label4.TabIndex = 10;
+            this.label4.Text = "Palette Index";
+            // 
+            // paletteUpDown
+            // 
+            this.paletteUpDown.Hexadecimal = true;
+            this.paletteUpDown.Location = new System.Drawing.Point(262, 7);
+            this.paletteUpDown.Maximum = new decimal(new int[] {
+            32,
+            0,
+            0,
+            0});
+            this.paletteUpDown.Name = "paletteUpDown";
+            this.paletteUpDown.Size = new System.Drawing.Size(90, 20);
+            this.paletteUpDown.TabIndex = 11;
+            this.paletteUpDown.Value = new decimal(new int[] {
+            13,
+            0,
+            0,
+            0});
+            this.paletteUpDown.ValueChanged += new System.EventHandler(this.paletteUpDown_ValueChanged);
             // 
             // TilemapEditor
             // 
@@ -308,6 +341,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.palettePicturebox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.paletteUpDown)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -333,5 +367,7 @@
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.NumericUpDown zoomUpDown;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.NumericUpDown paletteUpDown;
+        private System.Windows.Forms.Label label4;
     }
 }
