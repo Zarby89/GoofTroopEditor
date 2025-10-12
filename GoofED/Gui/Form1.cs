@@ -13,6 +13,7 @@ using System.Drawing.Imaging;
 using AsarCLR;
 using System.Diagnostics;
 using GoofTroopEditor.Gui;
+using System.Security.Cryptography.X509Certificates;
 
 namespace GoofED
 {
@@ -85,7 +86,7 @@ namespace GoofED
         public Form1()
         {
             InitializeComponent();
-
+            
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -114,12 +115,35 @@ namespace GoofED
 
             GFX.ClearBGs();
 
-        }
 
+            //DEBUG CODE
+            #if DEBUG
+            File.Delete("GTEdit.sfc");
+            File.Copy("C:\\Users\\adamo\\Desktop\\Goof Troop (USA).sfc", "GTEdit.sfc");
+            filename = "GTEdit.sfc";
+            LoadGame(filename);
+            #endif
+
+        }
+        string backupPath = "";
+        int backupTimer = 0;
+        int backupCount = 0;
+        bool backupEnable = false;
         public void LoadGame(string fn)
         {
             if (fn != "")
             {
+                
+                backupPath = (string)GoofTroopEditor.Properties.Settings.Default["backupPath"];
+                backupEnable = (bool)GoofTroopEditor.Properties.Settings.Default["backupEnable"];
+                backupTimer = (int)GoofTroopEditor.Properties.Settings.Default["backupTimer"];
+                backupCount = (int)GoofTroopEditor.Properties.Settings.Default["backupCount"];
+
+                autoSaveTimer.Enabled = backupEnable;
+                autoSaveTimer.Interval = backupTimer * 60000;
+                
+
+
                 game = new Game(fn);
                 gMain = Graphics.FromImage(editorBitmap);
                 bgMode = new BGMode(game);
@@ -1443,6 +1467,16 @@ namespace GoofED
                     {
                         transitiontypeCombobox.SelectedIndex = 2;
                     }
+
+                    if ((transitionMode.selectedObject.dir & 0x80) == 0x80)
+                    {
+                        layerCheckbox.Checked = true;
+                    }
+                    else
+                    {
+                        layerCheckbox.Checked = false;
+                    }
+
                     byte x = (byte)((transitionMode.selectedObject.position & 0x1F));
                     byte y = (byte)((transitionMode.selectedObject.position >> 5 & 0x1F));
                     transitionxposLabel.Text = "Xpos : " + (x * 8).ToString("X2");
@@ -1823,6 +1857,16 @@ namespace GoofED
 
         }
 
+        private byte[] SaveBackupROM()
+        {
+            byte[] backupROM = (byte[])game.rom.data.Clone();
+            SaveROM();
+            byte[] data = (byte[])game.rom.data.Clone();
+            game.rom.data = (byte[])backupROM.Clone();
+
+            return data;
+
+        }
 
         private void vramPicturebox_MouseDown(object sender, MouseEventArgs e)
         {
@@ -3035,7 +3079,17 @@ namespace GoofED
                 fss.Close();
 
 
+                sItem = Compression.DecompressGFX(game.rom.data, 0x061574, 0xD200);
+
+                fss = new FileStream(path + "\\" + "MaxGoofy" + ".bin", FileMode.OpenOrCreate, FileAccess.Write);
+                fss.Write(sItem, 0, sItem.Length);
+                fss.Close();
+
             }
+
+
+
+
         }
 
         private void importAllToolStripMenuItem_Click(object sender, EventArgs e)
@@ -3111,6 +3165,24 @@ namespace GoofED
                 {
                     game.rom.WriteBytes(0x6C55C, sItem);
                 }
+
+
+                fss = new FileStream(path + "\\" + "MaxGoofy" + ".bin", FileMode.Open, FileAccess.Read);
+                dataItem = new byte[fss.Length];
+                fss.Read(dataItem, 0, (int)fss.Length);
+                fss.Close();
+
+                sItem = Compression.CompressGfx(dataItem);
+                if (sItem.Length > 0xD200)
+                {
+                    MessageBox.Show("Not enough space to import MaxGoofy.bin this file will be ignored");
+
+                }
+                else
+                {
+                    game.rom.WriteBytes(0x61574, sItem);
+                }
+
 
                 for (int i = 0; i < 35; i++)
                 {
@@ -4198,6 +4270,80 @@ namespace GoofED
         private void discordToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Process.Start("https://discord.gg/GgeE9q7wyJ");
+        }
+
+        private void introEditorToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            IntroEditor ie = new IntroEditor();
+            ie.game = game;
+            ie.ShowDialog();
+        }
+
+        private void tIlemapEditorToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            TilemapEditor te = new TilemapEditor();
+            te.game = game;
+            te.ShowDialog();
+        }
+
+        private void autoBackupToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+            BackupForm bf = new BackupForm();
+            if (bf.ShowDialog() == DialogResult.OK)
+            {
+
+                backupPath = (string)GoofTroopEditor.Properties.Settings.Default["backupPath"];
+                backupEnable = (bool)GoofTroopEditor.Properties.Settings.Default["backupEnable"];
+                backupTimer = (int)GoofTroopEditor.Properties.Settings.Default["backupTimer"];
+                backupCount = (int)GoofTroopEditor.Properties.Settings.Default["backupCount"];
+
+                autoSaveTimer.Enabled = backupEnable;
+                autoSaveTimer.Interval = backupTimer * 60000;
+
+            }
+            
+
+
+        }
+
+        private void autoSaveTimer_Tick(object sender, EventArgs e)
+        {
+            game.anyChange = false;
+            byte[] backupROM = SaveBackupROM();
+
+            if (backupPath == "")
+            {
+                backupPath = filename.Substring(0, filename.Length - 4) + "_Backups";
+            }
+            if (!Directory.Exists(backupPath))
+            {
+                Directory.CreateDirectory(backupPath);
+            }
+            if (Directory.EnumerateFiles(backupPath).ToArray().Length >= backupCount)
+            {
+                FileSystemInfo[] fileInfo = new DirectoryInfo(backupPath).GetFileSystemInfos("*.sfc");
+                if (fileInfo.Length > 0)
+                {
+                    File.Delete(fileInfo.OrderBy(fi => fi.CreationTime).First().FullName);
+                }
+
+            }
+
+            File.WriteAllBytes(backupPath + "\\" + DateTime.Now.ToString().Replace(':','_') + ".sfc", backupROM);
+
+
+        }
+
+        private void layerCheckbox_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!fromForm)
+            {
+                if (transitionMode.selectedObject != null)
+                {
+                    transitionMode.selectedObject.BottomLayer = layerCheckbox.Checked;
+                }
+            }
         }
     }
 

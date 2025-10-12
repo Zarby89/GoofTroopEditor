@@ -236,5 +236,9 @@ namespace GoofED
 
         public static int enemyDoor2DataStartCD = 0x01C2BF;
         public static int enemyDoor2DataStartAddrType = 0x01C2CB;
+
+
+        public static int compressedPtrs = 0x07FEA0;
+
     }
 }

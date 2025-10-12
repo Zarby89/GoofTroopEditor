@@ -34,6 +34,20 @@ namespace GoofED
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.panel6 = new System.Windows.Forms.Panel();
+            this.transitionPanel = new System.Windows.Forms.Panel();
+            this.layerCheckbox = new System.Windows.Forms.CheckBox();
+            this.transitionyposLabel = new System.Windows.Forms.Label();
+            this.transitionxposLabel = new System.Windows.Forms.Label();
+            this.transitiondestyTextbox = new System.Windows.Forms.TextBox();
+            this.transitiondestxTextbox = new System.Windows.Forms.TextBox();
+            this.label19 = new System.Windows.Forms.Label();
+            this.label18 = new System.Windows.Forms.Label();
+            this.transitiondestmapTextbox = new System.Windows.Forms.TextBox();
+            this.label17 = new System.Windows.Forms.Label();
+            this.transitiontypeCombobox = new System.Windows.Forms.ComboBox();
+            this.label16 = new System.Windows.Forms.Label();
+            this.transitionDirCombobox = new System.Windows.Forms.ComboBox();
+            this.label15 = new System.Windows.Forms.Label();
             this.itemPanel = new System.Windows.Forms.Panel();
             this.itemsubtypeTextbox = new System.Windows.Forms.TextBox();
             this.label37 = new System.Windows.Forms.Label();
@@ -79,19 +93,6 @@ namespace GoofED
             this.savelockeddoorCheckbox = new System.Windows.Forms.CheckBox();
             this.label23 = new System.Windows.Forms.Label();
             this.saveslotlockedDoor = new System.Windows.Forms.NumericUpDown();
-            this.transitionPanel = new System.Windows.Forms.Panel();
-            this.transitionyposLabel = new System.Windows.Forms.Label();
-            this.transitionxposLabel = new System.Windows.Forms.Label();
-            this.transitiondestyTextbox = new System.Windows.Forms.TextBox();
-            this.transitiondestxTextbox = new System.Windows.Forms.TextBox();
-            this.label19 = new System.Windows.Forms.Label();
-            this.label18 = new System.Windows.Forms.Label();
-            this.transitiondestmapTextbox = new System.Windows.Forms.TextBox();
-            this.label17 = new System.Windows.Forms.Label();
-            this.transitiontypeCombobox = new System.Windows.Forms.ComboBox();
-            this.label16 = new System.Windows.Forms.Label();
-            this.transitionDirCombobox = new System.Windows.Forms.ComboBox();
-            this.label15 = new System.Windows.Forms.Label();
             this.hookPanel = new System.Windows.Forms.Panel();
             this.hooktypeCombobox = new System.Windows.Forms.ComboBox();
             this.label14 = new System.Windows.Forms.Label();
@@ -158,6 +159,8 @@ namespace GoofED
             this.paletteEditorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.creditsEditorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.musicViewerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.introEditorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tIlemapEditorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.graphicsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exportAllToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.importAllToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -168,6 +171,7 @@ namespace GoofED
             this.manageASMToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.projectToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.clearAllMapsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.autoBackupToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.viewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.darkThemeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.animatedPaletteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -175,6 +179,8 @@ namespace GoofED
             this.zoomIncreaseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.zoomDecreaseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.discordToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.lock8x8Checkbox = new System.Windows.Forms.CheckBox();
             this.label26 = new System.Windows.Forms.Label();
             this.scratchpadPanel = new System.Windows.Forms.Panel();
@@ -201,18 +207,19 @@ namespace GoofED
             this.palettePicturebox = new System.Windows.Forms.PictureBox();
             this.editingtilePicturebox = new System.Windows.Forms.PictureBox();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.transitionvisibleButton = new System.Windows.Forms.CheckBox();
-            this.objvisibleButton = new System.Windows.Forms.CheckBox();
-            this.itemvisibleButton = new System.Windows.Forms.CheckBox();
-            this.sprvisibleButton = new System.Windows.Forms.CheckBox();
-            this.bg2visibleButton = new System.Windows.Forms.CheckBox();
-            this.bg1visibleButton = new System.Windows.Forms.CheckBox();
             this.mainPanel = new System.Windows.Forms.Panel();
             this.panel5 = new System.Windows.Forms.Panel();
-            this.discordToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.transitionvisibleButton = new System.Windows.Forms.CheckBox();
+            this.objvisibleButton = new System.Windows.Forms.CheckBox();
+            this.bg1visibleButton = new System.Windows.Forms.CheckBox();
+            this.itemvisibleButton = new System.Windows.Forms.CheckBox();
+            this.bg2visibleButton = new System.Windows.Forms.CheckBox();
+            this.sprvisibleButton = new System.Windows.Forms.CheckBox();
+            this.autoSaveTimer = new System.Windows.Forms.Timer(this.components);
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.panel6.SuspendLayout();
+            this.transitionPanel.SuspendLayout();
             this.itemPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.mainPicturebox)).BeginInit();
             this.objectPanel.SuspendLayout();
@@ -225,7 +232,6 @@ namespace GoofED
             ((System.ComponentModel.ISupportInitialize)(this.saveslotBlockDoor)).BeginInit();
             this.doorPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.saveslotlockedDoor)).BeginInit();
-            this.transitionPanel.SuspendLayout();
             this.hookPanel.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.mapPanel.SuspendLayout();
@@ -277,6 +283,7 @@ namespace GoofED
             // panel6
             // 
             this.panel6.AutoScroll = true;
+            this.panel6.Controls.Add(this.transitionPanel);
             this.panel6.Controls.Add(this.itemPanel);
             this.panel6.Controls.Add(this.palPanel);
             this.panel6.Controls.Add(this.mainPicturebox);
@@ -286,13 +293,166 @@ namespace GoofED
             this.panel6.Controls.Add(this.spritePanel);
             this.panel6.Controls.Add(this.blockPanel);
             this.panel6.Controls.Add(this.doorPanel);
-            this.panel6.Controls.Add(this.transitionPanel);
             this.panel6.Controls.Add(this.hookPanel);
             this.panel6.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel6.Location = new System.Drawing.Point(3, 88);
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(529, 730);
             this.panel6.TabIndex = 36;
+            // 
+            // transitionPanel
+            // 
+            this.transitionPanel.Controls.Add(this.layerCheckbox);
+            this.transitionPanel.Controls.Add(this.transitionyposLabel);
+            this.transitionPanel.Controls.Add(this.transitionxposLabel);
+            this.transitionPanel.Controls.Add(this.transitiondestyTextbox);
+            this.transitionPanel.Controls.Add(this.transitiondestxTextbox);
+            this.transitionPanel.Controls.Add(this.label19);
+            this.transitionPanel.Controls.Add(this.label18);
+            this.transitionPanel.Controls.Add(this.transitiondestmapTextbox);
+            this.transitionPanel.Controls.Add(this.label17);
+            this.transitionPanel.Controls.Add(this.transitiontypeCombobox);
+            this.transitionPanel.Controls.Add(this.label16);
+            this.transitionPanel.Controls.Add(this.transitionDirCombobox);
+            this.transitionPanel.Controls.Add(this.label15);
+            this.transitionPanel.Location = new System.Drawing.Point(4, 266);
+            this.transitionPanel.Name = "transitionPanel";
+            this.transitionPanel.Size = new System.Drawing.Size(512, 84);
+            this.transitionPanel.TabIndex = 30;
+            this.transitionPanel.Visible = false;
+            // 
+            // layerCheckbox
+            // 
+            this.layerCheckbox.AutoSize = true;
+            this.layerCheckbox.Location = new System.Drawing.Point(8, 56);
+            this.layerCheckbox.Name = "layerCheckbox";
+            this.layerCheckbox.Size = new System.Drawing.Size(88, 17);
+            this.layerCheckbox.TabIndex = 21;
+            this.layerCheckbox.Text = "Bottom Layer";
+            this.layerCheckbox.UseVisualStyleBackColor = true;
+            this.layerCheckbox.CheckedChanged += new System.EventHandler(this.layerCheckbox_CheckedChanged);
+            // 
+            // transitionyposLabel
+            // 
+            this.transitionyposLabel.AutoSize = true;
+            this.transitionyposLabel.Enabled = false;
+            this.transitionyposLabel.Location = new System.Drawing.Point(424, 33);
+            this.transitionyposLabel.Name = "transitionyposLabel";
+            this.transitionyposLabel.Size = new System.Drawing.Size(41, 13);
+            this.transitionyposLabel.TabIndex = 20;
+            this.transitionyposLabel.Text = "Y Pos :";
+            // 
+            // transitionxposLabel
+            // 
+            this.transitionxposLabel.AutoSize = true;
+            this.transitionxposLabel.Enabled = false;
+            this.transitionxposLabel.Location = new System.Drawing.Point(424, 7);
+            this.transitionxposLabel.Name = "transitionxposLabel";
+            this.transitionxposLabel.Size = new System.Drawing.Size(41, 13);
+            this.transitionxposLabel.TabIndex = 19;
+            this.transitionxposLabel.Text = "X Pos :";
+            // 
+            // transitiondestyTextbox
+            // 
+            this.transitiondestyTextbox.Location = new System.Drawing.Point(392, 30);
+            this.transitiondestyTextbox.Name = "transitiondestyTextbox";
+            this.transitiondestyTextbox.Size = new System.Drawing.Size(26, 20);
+            this.transitiondestyTextbox.TabIndex = 18;
+            this.transitiondestyTextbox.TextChanged += new System.EventHandler(this.transitiondestyTextbox_TextChanged);
+            // 
+            // transitiondestxTextbox
+            // 
+            this.transitiondestxTextbox.Location = new System.Drawing.Point(392, 4);
+            this.transitiondestxTextbox.Name = "transitiondestxTextbox";
+            this.transitiondestxTextbox.Size = new System.Drawing.Size(26, 20);
+            this.transitiondestxTextbox.TabIndex = 17;
+            this.transitiondestxTextbox.TextChanged += new System.EventHandler(this.transitiondestxTextbox_TextChanged);
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Location = new System.Drawing.Point(343, 33);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(48, 13);
+            this.label19.TabIndex = 16;
+            this.label19.Text = "Dest. Y :";
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(343, 7);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(48, 13);
+            this.label18.TabIndex = 15;
+            this.label18.Text = "Dest. X :";
+            // 
+            // transitiondestmapTextbox
+            // 
+            this.transitiondestmapTextbox.Location = new System.Drawing.Point(311, 4);
+            this.transitiondestmapTextbox.Name = "transitiondestmapTextbox";
+            this.transitiondestmapTextbox.Size = new System.Drawing.Size(26, 20);
+            this.transitiondestmapTextbox.TabIndex = 14;
+            this.transitiondestmapTextbox.TextChanged += new System.EventHandler(this.transitiondestmapTextbox_TextChanged);
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(215, 7);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(90, 13);
+            this.label17.TabIndex = 9;
+            this.label17.Text = "Destination Map :";
+            // 
+            // transitiontypeCombobox
+            // 
+            this.transitiontypeCombobox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.transitiontypeCombobox.FormattingEnabled = true;
+            this.transitiontypeCombobox.Items.AddRange(new object[] {
+            "0x20 Rectangle",
+            "0x40 Rectangle Alt",
+            "0xF0 Square"});
+            this.transitiontypeCombobox.Location = new System.Drawing.Point(97, 30);
+            this.transitiontypeCombobox.Name = "transitiontypeCombobox";
+            this.transitiontypeCombobox.Size = new System.Drawing.Size(240, 21);
+            this.transitiontypeCombobox.TabIndex = 13;
+            this.transitiontypeCombobox.SelectedIndexChanged += new System.EventHandler(this.transitiontypeCombobox_SelectedIndexChanged);
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(4, 33);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(37, 13);
+            this.label16.TabIndex = 12;
+            this.label16.Text = "Type :";
+            // 
+            // transitionDirCombobox
+            // 
+            this.transitionDirCombobox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.transitionDirCombobox.FormattingEnabled = true;
+            this.transitionDirCombobox.Items.AddRange(new object[] {
+            "0x00 Up",
+            "0x01 Up Alt",
+            "0x02 Right",
+            "0x03 Right Alt",
+            "0x04 Down",
+            "0x05 Down Alt",
+            "0x06 Left",
+            "0x07 Left Alt"});
+            this.transitionDirCombobox.Location = new System.Drawing.Point(97, 3);
+            this.transitionDirCombobox.Name = "transitionDirCombobox";
+            this.transitionDirCombobox.Size = new System.Drawing.Size(104, 21);
+            this.transitionDirCombobox.TabIndex = 10;
+            this.transitionDirCombobox.SelectedIndexChanged += new System.EventHandler(this.transitionDirCombobox_SelectedIndexChanged);
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(5, 7);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(55, 13);
+            this.label15.TabIndex = 11;
+            this.label15.Text = "Direction :";
             // 
             // itemPanel
             // 
@@ -864,148 +1024,6 @@ namespace GoofED
             this.saveslotlockedDoor.Size = new System.Drawing.Size(48, 20);
             this.saveslotlockedDoor.TabIndex = 4;
             this.saveslotlockedDoor.ValueChanged += new System.EventHandler(this.saveslotlockedDoor_ValueChanged);
-            // 
-            // transitionPanel
-            // 
-            this.transitionPanel.Controls.Add(this.transitionyposLabel);
-            this.transitionPanel.Controls.Add(this.transitionxposLabel);
-            this.transitionPanel.Controls.Add(this.transitiondestyTextbox);
-            this.transitionPanel.Controls.Add(this.transitiondestxTextbox);
-            this.transitionPanel.Controls.Add(this.label19);
-            this.transitionPanel.Controls.Add(this.label18);
-            this.transitionPanel.Controls.Add(this.transitiondestmapTextbox);
-            this.transitionPanel.Controls.Add(this.label17);
-            this.transitionPanel.Controls.Add(this.transitiontypeCombobox);
-            this.transitionPanel.Controls.Add(this.label16);
-            this.transitionPanel.Controls.Add(this.transitionDirCombobox);
-            this.transitionPanel.Controls.Add(this.label15);
-            this.transitionPanel.Location = new System.Drawing.Point(4, 266);
-            this.transitionPanel.Name = "transitionPanel";
-            this.transitionPanel.Size = new System.Drawing.Size(512, 64);
-            this.transitionPanel.TabIndex = 30;
-            this.transitionPanel.Visible = false;
-            // 
-            // transitionyposLabel
-            // 
-            this.transitionyposLabel.AutoSize = true;
-            this.transitionyposLabel.Enabled = false;
-            this.transitionyposLabel.Location = new System.Drawing.Point(424, 33);
-            this.transitionyposLabel.Name = "transitionyposLabel";
-            this.transitionyposLabel.Size = new System.Drawing.Size(41, 13);
-            this.transitionyposLabel.TabIndex = 20;
-            this.transitionyposLabel.Text = "Y Pos :";
-            // 
-            // transitionxposLabel
-            // 
-            this.transitionxposLabel.AutoSize = true;
-            this.transitionxposLabel.Enabled = false;
-            this.transitionxposLabel.Location = new System.Drawing.Point(424, 7);
-            this.transitionxposLabel.Name = "transitionxposLabel";
-            this.transitionxposLabel.Size = new System.Drawing.Size(41, 13);
-            this.transitionxposLabel.TabIndex = 19;
-            this.transitionxposLabel.Text = "X Pos :";
-            // 
-            // transitiondestyTextbox
-            // 
-            this.transitiondestyTextbox.Location = new System.Drawing.Point(392, 30);
-            this.transitiondestyTextbox.Name = "transitiondestyTextbox";
-            this.transitiondestyTextbox.Size = new System.Drawing.Size(26, 20);
-            this.transitiondestyTextbox.TabIndex = 18;
-            this.transitiondestyTextbox.TextChanged += new System.EventHandler(this.transitiondestyTextbox_TextChanged);
-            // 
-            // transitiondestxTextbox
-            // 
-            this.transitiondestxTextbox.Location = new System.Drawing.Point(392, 4);
-            this.transitiondestxTextbox.Name = "transitiondestxTextbox";
-            this.transitiondestxTextbox.Size = new System.Drawing.Size(26, 20);
-            this.transitiondestxTextbox.TabIndex = 17;
-            this.transitiondestxTextbox.TextChanged += new System.EventHandler(this.transitiondestxTextbox_TextChanged);
-            // 
-            // label19
-            // 
-            this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(343, 33);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(48, 13);
-            this.label19.TabIndex = 16;
-            this.label19.Text = "Dest. Y :";
-            // 
-            // label18
-            // 
-            this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(343, 7);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(48, 13);
-            this.label18.TabIndex = 15;
-            this.label18.Text = "Dest. X :";
-            // 
-            // transitiondestmapTextbox
-            // 
-            this.transitiondestmapTextbox.Location = new System.Drawing.Point(311, 4);
-            this.transitiondestmapTextbox.Name = "transitiondestmapTextbox";
-            this.transitiondestmapTextbox.Size = new System.Drawing.Size(26, 20);
-            this.transitiondestmapTextbox.TabIndex = 14;
-            this.transitiondestmapTextbox.TextChanged += new System.EventHandler(this.transitiondestmapTextbox_TextChanged);
-            // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(215, 7);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(90, 13);
-            this.label17.TabIndex = 9;
-            this.label17.Text = "Destination Map :";
-            // 
-            // transitiontypeCombobox
-            // 
-            this.transitiontypeCombobox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.transitiontypeCombobox.FormattingEnabled = true;
-            this.transitiontypeCombobox.Items.AddRange(new object[] {
-            "0x20 Rectangle",
-            "0x40 Rectangle Alt",
-            "0xF0 Square"});
-            this.transitiontypeCombobox.Location = new System.Drawing.Point(97, 30);
-            this.transitiontypeCombobox.Name = "transitiontypeCombobox";
-            this.transitiontypeCombobox.Size = new System.Drawing.Size(240, 21);
-            this.transitiontypeCombobox.TabIndex = 13;
-            this.transitiontypeCombobox.SelectedIndexChanged += new System.EventHandler(this.transitiontypeCombobox_SelectedIndexChanged);
-            // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(4, 33);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(37, 13);
-            this.label16.TabIndex = 12;
-            this.label16.Text = "Type :";
-            // 
-            // transitionDirCombobox
-            // 
-            this.transitionDirCombobox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.transitionDirCombobox.FormattingEnabled = true;
-            this.transitionDirCombobox.Items.AddRange(new object[] {
-            "0x00 Up",
-            "0x01 Up Alt",
-            "0x02 Right",
-            "0x03 Right Alt",
-            "0x04 Down",
-            "0x05 Down Alt",
-            "0x06 Left",
-            "0x07 Left Alt"});
-            this.transitionDirCombobox.Location = new System.Drawing.Point(97, 3);
-            this.transitionDirCombobox.Name = "transitionDirCombobox";
-            this.transitionDirCombobox.Size = new System.Drawing.Size(104, 21);
-            this.transitionDirCombobox.TabIndex = 10;
-            this.transitionDirCombobox.SelectedIndexChanged += new System.EventHandler(this.transitionDirCombobox_SelectedIndexChanged);
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(5, 7);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(55, 13);
-            this.label15.TabIndex = 11;
-            this.label15.Text = "Direction :";
             // 
             // hookPanel
             // 
@@ -1677,7 +1695,9 @@ namespace GoofED
             this.passwordEditorToolStripMenuItem,
             this.paletteEditorToolStripMenuItem,
             this.creditsEditorToolStripMenuItem,
-            this.musicViewerToolStripMenuItem});
+            this.musicViewerToolStripMenuItem,
+            this.introEditorToolStripMenuItem,
+            this.tIlemapEditorToolStripMenuItem});
             this.toolsToolStripMenuItem.Enabled = false;
             this.toolsToolStripMenuItem.Name = "toolsToolStripMenuItem";
             this.toolsToolStripMenuItem.Size = new System.Drawing.Size(47, 20);
@@ -1718,6 +1738,20 @@ namespace GoofED
             this.musicViewerToolStripMenuItem.Text = "Music Viewer";
             this.musicViewerToolStripMenuItem.Click += new System.EventHandler(this.musicViewerToolStripMenuItem_Click);
             // 
+            // introEditorToolStripMenuItem
+            // 
+            this.introEditorToolStripMenuItem.Name = "introEditorToolStripMenuItem";
+            this.introEditorToolStripMenuItem.Size = new System.Drawing.Size(158, 22);
+            this.introEditorToolStripMenuItem.Text = "Intro Editor";
+            this.introEditorToolStripMenuItem.Click += new System.EventHandler(this.introEditorToolStripMenuItem_Click);
+            // 
+            // tIlemapEditorToolStripMenuItem
+            // 
+            this.tIlemapEditorToolStripMenuItem.Name = "tIlemapEditorToolStripMenuItem";
+            this.tIlemapEditorToolStripMenuItem.Size = new System.Drawing.Size(158, 22);
+            this.tIlemapEditorToolStripMenuItem.Text = "Tilemap Editor";
+            this.tIlemapEditorToolStripMenuItem.Click += new System.EventHandler(this.tIlemapEditorToolStripMenuItem_Click);
+            // 
             // graphicsToolStripMenuItem
             // 
             this.graphicsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -1734,37 +1768,36 @@ namespace GoofED
             // exportAllToolStripMenuItem
             // 
             this.exportAllToolStripMenuItem.Name = "exportAllToolStripMenuItem";
-            this.exportAllToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.exportAllToolStripMenuItem.Size = new System.Drawing.Size(162, 22);
             this.exportAllToolStripMenuItem.Text = "Export Gfx";
             this.exportAllToolStripMenuItem.Click += new System.EventHandler(this.exportAllToolStripMenuItem_Click);
             // 
             // importAllToolStripMenuItem
             // 
             this.importAllToolStripMenuItem.Name = "importAllToolStripMenuItem";
-            this.importAllToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.importAllToolStripMenuItem.Size = new System.Drawing.Size(162, 22);
             this.importAllToolStripMenuItem.Text = "Import Gfx";
             this.importAllToolStripMenuItem.Click += new System.EventHandler(this.importAllToolStripMenuItem_Click);
             // 
             // saveScratchpadToolStripMenuItem
             // 
             this.saveScratchpadToolStripMenuItem.Name = "saveScratchpadToolStripMenuItem";
-            this.saveScratchpadToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.saveScratchpadToolStripMenuItem.Size = new System.Drawing.Size(162, 22);
             this.saveScratchpadToolStripMenuItem.Text = "Save Scratchpad";
             this.saveScratchpadToolStripMenuItem.Click += new System.EventHandler(this.saveScratchpadToolStripMenuItem_Click);
             // 
             // loadScratchpadToolStripMenuItem
             // 
             this.loadScratchpadToolStripMenuItem.Name = "loadScratchpadToolStripMenuItem";
-            this.loadScratchpadToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.loadScratchpadToolStripMenuItem.Size = new System.Drawing.Size(162, 22);
             this.loadScratchpadToolStripMenuItem.Text = "Load Scratchpad";
             this.loadScratchpadToolStripMenuItem.Click += new System.EventHandler(this.loadScratchpadToolStripMenuItem_Click);
             // 
             // gfxEditornewToolStripMenuItem
             // 
             this.gfxEditornewToolStripMenuItem.Name = "gfxEditornewToolStripMenuItem";
-            this.gfxEditornewToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.gfxEditornewToolStripMenuItem.Text = "Gfx Editor (new)";
-            this.gfxEditornewToolStripMenuItem.Visible = false;
+            this.gfxEditornewToolStripMenuItem.Size = new System.Drawing.Size(162, 22);
+            this.gfxEditornewToolStripMenuItem.Text = "Gfx Viewer (new)";
             this.gfxEditornewToolStripMenuItem.Click += new System.EventHandler(this.gfxEditornewToolStripMenuItem_Click);
             // 
             // aSMToolStripMenuItem
@@ -1779,14 +1812,15 @@ namespace GoofED
             // manageASMToolStripMenuItem
             // 
             this.manageASMToolStripMenuItem.Name = "manageASMToolStripMenuItem";
-            this.manageASMToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.manageASMToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
             this.manageASMToolStripMenuItem.Text = "Manage ASM";
             this.manageASMToolStripMenuItem.Click += new System.EventHandler(this.manageASMToolStripMenuItem_Click);
             // 
             // projectToolStripMenuItem
             // 
             this.projectToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.clearAllMapsToolStripMenuItem});
+            this.clearAllMapsToolStripMenuItem,
+            this.autoBackupToolStripMenuItem});
             this.projectToolStripMenuItem.Enabled = false;
             this.projectToolStripMenuItem.Name = "projectToolStripMenuItem";
             this.projectToolStripMenuItem.Size = new System.Drawing.Size(56, 20);
@@ -1795,9 +1829,16 @@ namespace GoofED
             // clearAllMapsToolStripMenuItem
             // 
             this.clearAllMapsToolStripMenuItem.Name = "clearAllMapsToolStripMenuItem";
-            this.clearAllMapsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.clearAllMapsToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
             this.clearAllMapsToolStripMenuItem.Text = "Clear all maps";
             this.clearAllMapsToolStripMenuItem.Click += new System.EventHandler(this.clearAllMapsToolStripMenuItem_Click);
+            // 
+            // autoBackupToolStripMenuItem
+            // 
+            this.autoBackupToolStripMenuItem.Name = "autoBackupToolStripMenuItem";
+            this.autoBackupToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
+            this.autoBackupToolStripMenuItem.Text = "Auto-Backup";
+            this.autoBackupToolStripMenuItem.Click += new System.EventHandler(this.autoBackupToolStripMenuItem_Click);
             // 
             // viewToolStripMenuItem
             // 
@@ -1860,6 +1901,18 @@ namespace GoofED
             this.aboutToolStripMenuItem.Size = new System.Drawing.Size(52, 20);
             this.aboutToolStripMenuItem.Text = "About";
             this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
+            // 
+            // discordToolStripMenuItem
+            // 
+            this.discordToolStripMenuItem.Name = "discordToolStripMenuItem";
+            this.discordToolStripMenuItem.Size = new System.Drawing.Size(59, 20);
+            this.discordToolStripMenuItem.Text = "Discord";
+            this.discordToolStripMenuItem.Click += new System.EventHandler(this.discordToolStripMenuItem_Click);
+            // 
+            // toolStripMenuItem1
+            // 
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
             // 
             // lock8x8Checkbox
             // 
@@ -2174,90 +2227,6 @@ namespace GoofED
             this.panel2.Size = new System.Drawing.Size(850, 15);
             this.panel2.TabIndex = 28;
             // 
-            // transitionvisibleButton
-            // 
-            this.transitionvisibleButton.Appearance = System.Windows.Forms.Appearance.Button;
-            this.transitionvisibleButton.AutoSize = true;
-            this.transitionvisibleButton.Checked = true;
-            this.transitionvisibleButton.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.transitionvisibleButton.Image = global::GoofTroopEditor.Properties.Resources.trabtn;
-            this.transitionvisibleButton.Location = new System.Drawing.Point(359, 7);
-            this.transitionvisibleButton.Name = "transitionvisibleButton";
-            this.transitionvisibleButton.Size = new System.Drawing.Size(22, 22);
-            this.transitionvisibleButton.TabIndex = 24;
-            this.transitionvisibleButton.UseVisualStyleBackColor = true;
-            this.transitionvisibleButton.Click += new System.EventHandler(this.transitionvisibleVutton_Click);
-            // 
-            // objvisibleButton
-            // 
-            this.objvisibleButton.Appearance = System.Windows.Forms.Appearance.Button;
-            this.objvisibleButton.AutoSize = true;
-            this.objvisibleButton.Checked = true;
-            this.objvisibleButton.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.objvisibleButton.Image = global::GoofTroopEditor.Properties.Resources.objbtn;
-            this.objvisibleButton.Location = new System.Drawing.Point(335, 7);
-            this.objvisibleButton.Name = "objvisibleButton";
-            this.objvisibleButton.Size = new System.Drawing.Size(22, 22);
-            this.objvisibleButton.TabIndex = 23;
-            this.objvisibleButton.UseVisualStyleBackColor = true;
-            this.objvisibleButton.Click += new System.EventHandler(this.transitionvisibleVutton_Click);
-            // 
-            // itemvisibleButton
-            // 
-            this.itemvisibleButton.Appearance = System.Windows.Forms.Appearance.Button;
-            this.itemvisibleButton.AutoSize = true;
-            this.itemvisibleButton.Checked = true;
-            this.itemvisibleButton.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.itemvisibleButton.Image = global::GoofTroopEditor.Properties.Resources.itmbtn;
-            this.itemvisibleButton.Location = new System.Drawing.Point(311, 7);
-            this.itemvisibleButton.Name = "itemvisibleButton";
-            this.itemvisibleButton.Size = new System.Drawing.Size(22, 22);
-            this.itemvisibleButton.TabIndex = 22;
-            this.itemvisibleButton.UseVisualStyleBackColor = true;
-            this.itemvisibleButton.Click += new System.EventHandler(this.transitionvisibleVutton_Click);
-            // 
-            // sprvisibleButton
-            // 
-            this.sprvisibleButton.Appearance = System.Windows.Forms.Appearance.Button;
-            this.sprvisibleButton.AutoSize = true;
-            this.sprvisibleButton.Checked = true;
-            this.sprvisibleButton.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.sprvisibleButton.Image = global::GoofTroopEditor.Properties.Resources.sprbtn;
-            this.sprvisibleButton.Location = new System.Drawing.Point(287, 7);
-            this.sprvisibleButton.Name = "sprvisibleButton";
-            this.sprvisibleButton.Size = new System.Drawing.Size(22, 22);
-            this.sprvisibleButton.TabIndex = 21;
-            this.sprvisibleButton.UseVisualStyleBackColor = true;
-            this.sprvisibleButton.Click += new System.EventHandler(this.transitionvisibleVutton_Click);
-            // 
-            // bg2visibleButton
-            // 
-            this.bg2visibleButton.Appearance = System.Windows.Forms.Appearance.Button;
-            this.bg2visibleButton.AutoSize = true;
-            this.bg2visibleButton.Checked = true;
-            this.bg2visibleButton.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.bg2visibleButton.Image = global::GoofTroopEditor.Properties.Resources.bg1;
-            this.bg2visibleButton.Location = new System.Drawing.Point(262, 7);
-            this.bg2visibleButton.Name = "bg2visibleButton";
-            this.bg2visibleButton.Size = new System.Drawing.Size(22, 22);
-            this.bg2visibleButton.TabIndex = 20;
-            this.bg2visibleButton.UseVisualStyleBackColor = true;
-            this.bg2visibleButton.Click += new System.EventHandler(this.transitionvisibleVutton_Click);
-            // 
-            // bg1visibleButton
-            // 
-            this.bg1visibleButton.Appearance = System.Windows.Forms.Appearance.Button;
-            this.bg1visibleButton.AutoSize = true;
-            this.bg1visibleButton.Checked = true;
-            this.bg1visibleButton.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.bg1visibleButton.Image = global::GoofTroopEditor.Properties.Resources.bg2;
-            this.bg1visibleButton.Location = new System.Drawing.Point(237, 7);
-            this.bg1visibleButton.Name = "bg1visibleButton";
-            this.bg1visibleButton.Size = new System.Drawing.Size(22, 22);
-            this.bg1visibleButton.TabIndex = 19;
-            this.bg1visibleButton.UseVisualStyleBackColor = true;
-            this.bg1visibleButton.Click += new System.EventHandler(this.transitionvisibleVutton_Click);
-            // 
             // mainPanel
             // 
             this.mainPanel.Controls.Add(this.groupBox1);
@@ -2286,12 +2255,94 @@ namespace GoofED
             this.panel5.Size = new System.Drawing.Size(541, 44);
             this.panel5.TabIndex = 0;
             // 
-            // discordToolStripMenuItem
+            // transitionvisibleButton
             // 
-            this.discordToolStripMenuItem.Name = "discordToolStripMenuItem";
-            this.discordToolStripMenuItem.Size = new System.Drawing.Size(59, 20);
-            this.discordToolStripMenuItem.Text = "Discord";
-            this.discordToolStripMenuItem.Click += new System.EventHandler(this.discordToolStripMenuItem_Click);
+            this.transitionvisibleButton.Appearance = System.Windows.Forms.Appearance.Button;
+            this.transitionvisibleButton.AutoSize = true;
+            this.transitionvisibleButton.Checked = true;
+            this.transitionvisibleButton.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.transitionvisibleButton.Image = global::GoofTroopEditor.Properties.Resources.trabtn;
+            this.transitionvisibleButton.Location = new System.Drawing.Point(359, 7);
+            this.transitionvisibleButton.Name = "transitionvisibleButton";
+            this.transitionvisibleButton.Size = new System.Drawing.Size(22, 22);
+            this.transitionvisibleButton.TabIndex = 24;
+            this.transitionvisibleButton.UseVisualStyleBackColor = true;
+            this.transitionvisibleButton.Click += new System.EventHandler(this.transitionvisibleVutton_Click);
+            // 
+            // objvisibleButton
+            // 
+            this.objvisibleButton.Appearance = System.Windows.Forms.Appearance.Button;
+            this.objvisibleButton.AutoSize = true;
+            this.objvisibleButton.Checked = true;
+            this.objvisibleButton.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.objvisibleButton.Image = global::GoofTroopEditor.Properties.Resources.objbtn;
+            this.objvisibleButton.Location = new System.Drawing.Point(335, 7);
+            this.objvisibleButton.Name = "objvisibleButton";
+            this.objvisibleButton.Size = new System.Drawing.Size(22, 22);
+            this.objvisibleButton.TabIndex = 23;
+            this.objvisibleButton.UseVisualStyleBackColor = true;
+            this.objvisibleButton.Click += new System.EventHandler(this.transitionvisibleVutton_Click);
+            // 
+            // bg1visibleButton
+            // 
+            this.bg1visibleButton.Appearance = System.Windows.Forms.Appearance.Button;
+            this.bg1visibleButton.AutoSize = true;
+            this.bg1visibleButton.Checked = true;
+            this.bg1visibleButton.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.bg1visibleButton.Image = global::GoofTroopEditor.Properties.Resources.bg2;
+            this.bg1visibleButton.Location = new System.Drawing.Point(237, 7);
+            this.bg1visibleButton.Name = "bg1visibleButton";
+            this.bg1visibleButton.Size = new System.Drawing.Size(22, 22);
+            this.bg1visibleButton.TabIndex = 19;
+            this.bg1visibleButton.UseVisualStyleBackColor = true;
+            this.bg1visibleButton.Click += new System.EventHandler(this.transitionvisibleVutton_Click);
+            // 
+            // itemvisibleButton
+            // 
+            this.itemvisibleButton.Appearance = System.Windows.Forms.Appearance.Button;
+            this.itemvisibleButton.AutoSize = true;
+            this.itemvisibleButton.Checked = true;
+            this.itemvisibleButton.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.itemvisibleButton.Image = global::GoofTroopEditor.Properties.Resources.itmbtn;
+            this.itemvisibleButton.Location = new System.Drawing.Point(311, 7);
+            this.itemvisibleButton.Name = "itemvisibleButton";
+            this.itemvisibleButton.Size = new System.Drawing.Size(22, 22);
+            this.itemvisibleButton.TabIndex = 22;
+            this.itemvisibleButton.UseVisualStyleBackColor = true;
+            this.itemvisibleButton.Click += new System.EventHandler(this.transitionvisibleVutton_Click);
+            // 
+            // bg2visibleButton
+            // 
+            this.bg2visibleButton.Appearance = System.Windows.Forms.Appearance.Button;
+            this.bg2visibleButton.AutoSize = true;
+            this.bg2visibleButton.Checked = true;
+            this.bg2visibleButton.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.bg2visibleButton.Image = global::GoofTroopEditor.Properties.Resources.bg1;
+            this.bg2visibleButton.Location = new System.Drawing.Point(262, 7);
+            this.bg2visibleButton.Name = "bg2visibleButton";
+            this.bg2visibleButton.Size = new System.Drawing.Size(22, 22);
+            this.bg2visibleButton.TabIndex = 20;
+            this.bg2visibleButton.UseVisualStyleBackColor = true;
+            this.bg2visibleButton.Click += new System.EventHandler(this.transitionvisibleVutton_Click);
+            // 
+            // sprvisibleButton
+            // 
+            this.sprvisibleButton.Appearance = System.Windows.Forms.Appearance.Button;
+            this.sprvisibleButton.AutoSize = true;
+            this.sprvisibleButton.Checked = true;
+            this.sprvisibleButton.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.sprvisibleButton.Image = global::GoofTroopEditor.Properties.Resources.sprbtn;
+            this.sprvisibleButton.Location = new System.Drawing.Point(287, 7);
+            this.sprvisibleButton.Name = "sprvisibleButton";
+            this.sprvisibleButton.Size = new System.Drawing.Size(22, 22);
+            this.sprvisibleButton.TabIndex = 21;
+            this.sprvisibleButton.UseVisualStyleBackColor = true;
+            this.sprvisibleButton.Click += new System.EventHandler(this.transitionvisibleVutton_Click);
+            // 
+            // autoSaveTimer
+            // 
+            this.autoSaveTimer.Interval = 60000;
+            this.autoSaveTimer.Tick += new System.EventHandler(this.autoSaveTimer_Tick);
             // 
             // Form1
             // 
@@ -2304,7 +2355,7 @@ namespace GoofED
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Form1";
-            this.Text = "Goof Troop Editor 1.4.1";
+            this.Text = "Goof Troop Editor 1.4.2";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.Load += new System.EventHandler(this.Form1_Load);
             this.Shown += new System.EventHandler(this.Form1_Shown);
@@ -2313,6 +2364,8 @@ namespace GoofED
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.panel6.ResumeLayout(false);
+            this.transitionPanel.ResumeLayout(false);
+            this.transitionPanel.PerformLayout();
             this.itemPanel.ResumeLayout(false);
             this.itemPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.mainPicturebox)).EndInit();
@@ -2332,8 +2385,6 @@ namespace GoofED
             this.doorPanel.ResumeLayout(false);
             this.doorPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.saveslotlockedDoor)).EndInit();
-            this.transitionPanel.ResumeLayout(false);
-            this.transitionPanel.PerformLayout();
             this.hookPanel.ResumeLayout(false);
             this.hookPanel.PerformLayout();
             this.toolStrip1.ResumeLayout(false);
@@ -2431,7 +2482,6 @@ namespace GoofED
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.ComboBox selectedobjectCombobox;
         private System.Windows.Forms.ToolStripMenuItem toolsToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem textEditorToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem passwordEditorToolStripMenuItem;
         private System.Windows.Forms.TextBox animatedpalTextbox;
         private System.Windows.Forms.Label label10;
@@ -2548,6 +2598,13 @@ namespace GoofED
         private System.Windows.Forms.ToolStripMenuItem zoomIncreaseToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem zoomDecreaseToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem discordToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem introEditorToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem textEditorToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem tIlemapEditorToolStripMenuItem;
+        private System.Windows.Forms.Timer autoSaveTimer;
+        private System.Windows.Forms.ToolStripMenuItem autoBackupToolStripMenuItem;
+        private System.Windows.Forms.CheckBox layerCheckbox;
     }
 }
 

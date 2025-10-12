@@ -62,7 +62,7 @@ namespace GoofED
 
         private void TransitionMode_AddTransition_Click(object sender, EventArgs e)
         {
-            selectedObject = new Transition(0,0, 0x0F, 0,0);
+            selectedObject = new Transition(0,0, 0x0F, 0,0, false);
             game.levels[game.selectedLevel].maps[game.selectedMap].transitions.Add(selectedObject);
             ismouseDown = true;
 
@@ -111,17 +111,17 @@ namespace GoofED
 
         public void Cut()
         {
-            clipboardObject = new Transition(selectedObject.tomap,selectedObject.position,selectedObject.dir,selectedObject.xDest,selectedObject.yDest);
+            clipboardObject = new Transition(selectedObject.tomap,selectedObject.position,selectedObject.dir,selectedObject.xDest,selectedObject.yDest, selectedObject.BottomLayer);
             Delete();
         }
         public void Copy()
         {
-            clipboardObject = new Transition(selectedObject.tomap, selectedObject.position, selectedObject.dir, selectedObject.xDest, selectedObject.yDest);
+            clipboardObject = new Transition(selectedObject.tomap, selectedObject.position, selectedObject.dir, selectedObject.xDest, selectedObject.yDest, selectedObject.BottomLayer);
         }
 
         public void Paste()
         {
-            Transition c = new Transition(clipboardObject.tomap, clipboardObject.position, clipboardObject.dir, clipboardObject.xDest, clipboardObject.yDest);
+            Transition c = new Transition(clipboardObject.tomap, clipboardObject.position, clipboardObject.dir, clipboardObject.xDest, clipboardObject.yDest, clipboardObject.BottomLayer);
             game.levels[game.selectedLevel].maps[game.selectedMap].transitions.Add(c);
             selectedObject = c;
             ismouseDown = true;

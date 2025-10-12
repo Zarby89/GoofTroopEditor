@@ -1,4 +1,5 @@
-﻿bank 90 is used for new ASM codes by default
+﻿bank 90 is used for new ASM plugins codes by default
+bank 91 is used for new ASM Required
 bank 92 is used for expanded map tile32 data
 $938000 to $939000 = code for expanded data
 $948000 expanded tile16

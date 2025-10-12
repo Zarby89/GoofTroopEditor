@@ -1260,6 +1260,7 @@ namespace GoofED
                         rom.WriteShort(startTransitionData, (short)transition.position);
                         startTransitionData++;
                         startTransitionData++;
+                        if (transition.BottomLayer) { transition.dir = transition.dir |= 0x80; }
                         rom.WriteByte(startTransitionData, transition.dir);
                         startTransitionData++;
                         rom.WriteByte(startTransitionData, transition.xDest);

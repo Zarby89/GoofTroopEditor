@@ -359,7 +359,15 @@ namespace GoofED
             addr++;
             for (int i = 0; i < count; i++)
             {
-                transitions.Add(new Transition(game.rom.ReadByte(addr), game.rom.ReadShort(addr + 1), game.rom.ReadByte(addr + 3), game.rom.ReadByte(addr + 4), game.rom.ReadByte(addr + 5)));
+                byte map = game.rom.ReadByte(addr);
+                ushort pos = game.rom.ReadShort(addr + 1);
+                byte dir = game.rom.ReadByte(addr + 3);
+                bool bottomLayer = false;
+                if ((dir & 0x80) == 0x80) { bottomLayer = true; }
+                byte xDest = game.rom.ReadByte(addr + 4);
+                byte yDest = game.rom.ReadByte(addr + 5);
+
+                transitions.Add(new Transition(map,pos ,dir ,xDest ,yDest, bottomLayer));
                 addr += 6;
             }
         }
