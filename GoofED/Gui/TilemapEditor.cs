@@ -436,7 +436,8 @@ namespace GoofTroopEditor.Gui
 
         private void button1_Click(object sender, EventArgs e)
         {
-
+            bool useExpanded = false;
+            int expPos = 0x958000;
             for (int i = 0; i < 5; i++)
             {
                 byte[] data = new byte[BGs[i].Length * 2];
@@ -446,22 +447,59 @@ namespace GoofTroopEditor.Gui
                     data[(j * 2) + 1] = (byte)(BGs[i][j]>>8);
                 }
                 int addr2 = game.rom.ReadLong(0x7FEA0 + (i * 5));
+                int addrNext = game.rom.ReadLong(0x7FEA0 + ((i+1) * 5));
+
                 int length2 = game.rom.ReadShort(0x7FEA0 + 3 + (i * 5));
-                game.rom.WriteBytes(Utils.SnesToPc(addr2), Compression.CompressGfx(data));
+                byte[] datac = Compression.CompressGfx(data);
+
+                if (useExpanded)
+                {
+                    game.rom.WriteLong(0x7FEA0 + (i * 5), expPos);
+                    game.rom.WriteBytes(Utils.SnesToPc(expPos), datac);
+                    expPos += datac.Length;
+                }
+                else
+                {
+                    if (datac.Length > addrNext - addr2)
+                    {
+                        MessageBox.Show("Tilemap" + i.ToString() + " is bigger than original space, Expanded space will be used for the tilemaps\r\n(This message is NOT an error) everything is fine!");
+                        useExpanded = true;
+                        i = 0;
+                        continue;
+                    }
+                    game.rom.WriteBytes(Utils.SnesToPc(addr2), datac);
+                }
+
+               
 
                 //BGs.Add(us);
             }
 
-
-            byte[] data2 = new byte[BGs[5].Length * 2];
-            for (int j = 0; j < BGs[5].Length; j++)
+            if (useExpanded)
             {
-                data2[(j * 2)] = (byte)BGs[5][j];
-                data2[(j * 2) + 1] = (byte)(BGs[5][j] >> 8);
+                byte[] data2 = new byte[BGs[5].Length * 2];
+                for (int j = 0; j < BGs[5].Length; j++)
+                {
+                    data2[(j * 2)] = (byte)BGs[5][j];
+                    data2[(j * 2) + 1] = (byte)(BGs[5][j] >> 8);
+                }
+                game.rom.WriteLong(0x7FEA0 + (8 * 5), expPos);
+                byte[] datac = Compression.CompressGfx(data2);
+                game.rom.WriteBytes(Utils.SnesToPc(expPos),datac );
+                expPos += datac.Length; ;
             }
-            int addr = game.rom.ReadLong(0x7FEA0 + (8 * 5));
-            int length = game.rom.ReadShort(0x7FEA0 + 3 + (8 * 5));
-            game.rom.WriteBytes(Utils.SnesToPc(addr), Compression.CompressGfx(data2));
+            else
+            {
+                byte[] data2 = new byte[BGs[5].Length * 2];
+                for (int j = 0; j < BGs[5].Length; j++)
+                {
+                    data2[(j * 2)] = (byte)BGs[5][j];
+                    data2[(j * 2) + 1] = (byte)(BGs[5][j] >> 8);
+                }
+                int addr = game.rom.ReadLong(0x7FEA0 + (8 * 5));
+                int length = game.rom.ReadShort(0x7FEA0 + 3 + (8 * 5));
+                game.rom.WriteBytes(Utils.SnesToPc(addr), Compression.CompressGfx(data2));
+            }
             this.Close();
         }
 

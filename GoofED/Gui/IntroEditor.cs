@@ -215,48 +215,6 @@ namespace GoofTroopEditor.Gui
 
 
 
-
-
-            s = Compression.DecompressGFX(game.rom.data, 0x04DEB0, 0x0600);
-
-            bg = new ushort[0x6C];
-            bg2 = new ushort[0x6C];
-            p = 0;
-            pp = 0;
-
-            for (int j = 0; j < 0x09; j++)
-            {
-                pp = (j * 0x40);
-                for (int i = 0; i < 0x0C; i++)
-                {
-                    bg[p] = (ushort)(s[pp] + (s[pp + 1] << 8));
-                    bg2[p] = (ushort)(s[pp + 0x18] + (s[pp + 0x19] << 8));
-                    p += 1;
-                    pp += 2;
-                }
-            }
-            BGs.Add(bg);
-            BGs.Add(bg2);
-
-            bg = new ushort[0x6C];
-            bg2 = new ushort[0x6C];
-            p = 0;
-            for (int j = 0; j < 0x09; j++)
-            {
-                pp = 0x240 + (j * 0x40);
-                for (int i = 0; i < 0x0C; i++)
-                {
-                    bg[p] = (ushort)(s[pp] + (s[pp + 1] << 8));
-                    bg2[p] = (ushort)(s[pp + 0x18] + (s[pp + 0x19] << 8));
-                    p += 1;
-                    pp += 2;
-                }
-            }
-            BGs.Add(bg);
-            BGs.Add(bg2);
-
-
-
             mainImage.DrawTilemap(BGs[(int)numericUpDown2.Value], 12, ptrImageVram, 0);
             mainPicturebox.Invalidate();
 
@@ -560,6 +518,87 @@ namespace GoofTroopEditor.Gui
                 game.rom.data[i + 0x04E2CD] = s[i];
             }
 
+
+
+
+
+
+
+            data = new byte[0x480];
+            for (int i = 0; i < 0x480; i++)
+            {
+                data[i] = 0x00;
+            }
+
+            p = 0;
+            pp = 0;
+
+            for (int l = 0; l < 9; l++)
+            {
+                pp = (l * 0x0C);
+                p = (l * 0x40);
+                for (int i = 0; i < 0x0C; i++)
+                {
+                    data[p] = (byte)(BGs[4][pp] & 0xFF);
+                    data[p + 1] = (byte)((BGs[4][pp] >> 8) & 0xFF);
+                    p += 2;
+                    pp++;
+                }
+            }
+
+
+            for (int l = 0; l < 9; l++)
+            {
+                pp = (l * 0x0C);
+                p = (l * 0x40) + 0x18;
+                for (int i = 0; i < 0x0C; i++)
+                {
+                    data[p] = (byte)(BGs[5][pp] & 0xFF);
+                    data[p + 1] = (byte)((BGs[5][pp] >> 8) & 0xFF);
+                    p += 2;
+                    pp++;
+                }
+            }
+
+
+
+
+
+
+
+
+            for (int l = 0; l < 9; l++)
+            {
+                pp = (l * 0x0C);
+                p = (l * 0x40) + 0x240;
+                for (int i = 0; i < 0x0C; i++)
+                {
+                    data[p] = (byte)(BGs[6][pp] & 0xFF);
+                    data[p + 1] = (byte)((BGs[6][pp] >> 8) & 0xFF);
+                    p += 2;
+                    pp++;
+                }
+            }
+
+
+            for (int l = 0; l < 9; l++)
+            {
+                pp = (l * 0x0C);
+                p = (l * 0x40) + 0x240 + 0x18;
+                for (int i = 0; i < 0x0C; i++)
+                {
+                    data[p] = (byte)(BGs[7][pp] & 0xFF);
+                    data[p + 1] = (byte)((BGs[7][pp] >> 8) & 0xFF);
+                    p += 2;
+                    pp++;
+                }
+            }
+
+            s = Compression.CompressGfx(data);
+            for (int i = 0; i < s.Length; i++)
+            {
+                game.rom.data[i + 0x04E5C9] = s[i];
+            }
 
             this.Close();
         }

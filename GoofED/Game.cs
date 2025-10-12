@@ -43,6 +43,9 @@ namespace GoofED
             fs.Close();
 
 
+
+
+
             LoadTiles32();
             LoadTiles16();
             LoadTexts();
