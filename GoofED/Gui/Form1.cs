@@ -1804,7 +1804,7 @@ namespace GoofED
         {
             byte[] backupROM = (byte[])game.rom.data.Clone();
 
-            game.rom.data[Constants.EditorVersion] = 0x01; // VERSION EDITOR! 01 = 1.4
+            game.rom.data[Constants.EditorVersion] = 0x02; // VERSION EDITOR! 02 = 1.4.2
            
             Asar.patch("ASM//required//darkice.asm", ref game.rom.data);
             Asar.patch("ASM//required//expandedtile32.asm", ref game.rom.data);
